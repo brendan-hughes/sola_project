@@ -1,0 +1,177 @@
+/* Dark Blue: #010620
+True Blue: #3066BE
+Khaki: #828E82
+Pewter Blue: #95B2B8
+Jonquil: #E6C229 */
+
+.hero {
+	height: 80vh;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: 1s ease-in-out;
+	background-image: url('../../../assets/solar_back.png');
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+.leftHero {
+	margin-left: 100px;
+	width: 40%;
+	padding: 20px;
+	backdrop-filter: blur(10px) opacity(0.6) drop-shadow(4px 4px 5px white);
+	border-radius: 20px;
+}
+
+.heroCard {
+	border-radius: 20px;
+	padding: 20px;
+	margin-right: 200px;
+	backdrop-filter: blur(10px) opacity(0.6) drop-shadow(4px 4px 5px white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 70%;
+}
+
+.border {
+	transition: 1s ease-in-out;
+}
+
+.borderExpand {
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+.heroHeader,
+p {
+	color: white;
+}
+
+h2 {
+	color: #95b2b8;
+}
+
+ul {
+	list-style: none;
+}
+
+.colorize {
+	color: #e6c229;
+}
+
+.leftArrow,
+.rightArrow {
+	position: absolute;
+	transition: 0.2s ease-in-out;
+}
+.leftArrow {
+	left: 25px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.rightArrow {
+	right: 25px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+	transform: scale(1.1);
+	color: white;
+	cursor: pointer;
+}
+
+.leftArrow:hover {
+	transform: translate(-5px);
+}
+
+.rightArrow:hover {
+	transform: translate(5px);
+}
+
+.cardTitle {
+	color: white;
+	font-size: 40px;
+	margin: auto;
+}
+
+.imagePlaceholder {
+	height: 200px;
+	margin: auto;
+}
+
+.cardFooter {
+	display: flex;
+}
+
+.cardValue {
+	margin-top: auto;
+	margin-bottom: auto;
+	color: white;
+}
+
+.viewButton,
+.viewButtonHidden {
+	background-color: #3066be;
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px solid white;
+	margin-left: auto;
+	transition: 0.2s ease-in-out;
+}
+
+.viewButtonHidden {
+	visibility: hidden;
+	height: 0;
+	margin-left: 0px;
+	width: 93px;
+}
+
+.viewButtonText {
+	margin: auto;
+}
+
+.viewButton:hover,
+.viewButtonHidden:hover {
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+@media screen and (max-width: 1260px) {
+	h1 {
+		font-size: 40px;
+	}
+
+	.cardTitle,
+	.cardValue {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	h1 {
+		font-size: 30px;
+	}
+
+	.leftHero {
+		width: 70%;
+		margin: auto;
+	}
+
+	.heroCard {
+		display: none;
+	}
+
+	.viewButtonHidden {
+		visibility: visible;
+		height: 40px;
+		width: 93px;
+		margin-left: 0px;
+	}
+}

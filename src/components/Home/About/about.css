@@ -1,0 +1,71 @@
+/* Dark Blue: #010620
+True Blue: #3066BE
+Khaki: #828E82
+Pewter Blue: #95B2B8
+Jonquil: #E6C229 */
+
+.aboutSection {
+	height: 80vh;
+	margin-top: 100px;
+	margin-left: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+.aboutHeaderContainer {
+	display: flex;
+	align-items: center;
+}
+
+.aboutIcon {
+	height: 60px;
+}
+
+.aboutHeader {
+	margin-left: 20px;
+}
+
+.aboutText {
+	color: black;
+}
+
+.aboutTextContainer {
+	width: 40%;
+	margin-left: 100px;
+	margin-top: 50px;
+}
+
+.aboutAchievmentsContainer {
+	margin-top: auto;
+	margin-bottom: 50px;
+	margin-left: 50px;
+	height: 200px;
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.aboutAchievementCard {
+	height: 200px;
+	width: 30%;
+	border-radius: 10px;
+	transition: 0.2s ease;
+}
+
+#achievementA {
+	background: rgba(130, 142, 130, 0.4);
+}
+#achievementB {
+	background: rgba(130, 142, 130, 0.6);
+}
+
+#achievementC {
+	background: rgba(130, 142, 130, 0.8);
+}
+
+.gradientImage {
+	position: absolute;
+	height: 500px;
+	right: 0px;
+	top: 1050px;
+}

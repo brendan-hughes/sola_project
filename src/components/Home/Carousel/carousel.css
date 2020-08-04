@@ -1,0 +1,29 @@
+/* Dark Blue: #010620
+True Blue: #3066BE
+Khaki: #828E82
+Pewter Blue: #95B2B8
+Jonquil: #E6C229 */
+
+.carouselSection {
+	margin-top: 50px;
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.carouselContainer {
+	width: 100%;
+	height: 80%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.carouselItem {
+	background: rgba(149, 178, 184, 0.5);
+	height: 80%;
+	width: 30%;
+	border-radius: 20px;
+}
