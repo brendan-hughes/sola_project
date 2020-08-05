@@ -6,10 +6,10 @@ function topnavFunctionality() {
 		'.shopDetails',
 		50,
 		-10,
-		130,
+		140,
 		10,
-		325,
-		130,
+		370,
+		140,
 		-10
 	);
 	hoverFunctionality(
@@ -18,10 +18,10 @@ function topnavFunctionality() {
 		'.contactDetails',
 		50,
 		-10,
-		130,
+		135,
 		10,
 		120,
-		130,
+		135,
 		-10
 	);
 }

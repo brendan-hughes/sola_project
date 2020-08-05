@@ -25,6 +25,7 @@ class Navbar extends Component {
 						<NavLink
 							activeStyle={activeStyle}
 							className="navLink hvr-underline-from-center shopNavLink"
+							activeClassName="act-underline-from-center"
 							to="/shop"
 						>
 							Shop
@@ -45,13 +46,18 @@ class Navbar extends Component {
 						<NavLink
 							activeStyle={activeStyle}
 							className="navLink hvr-underline-from-center contactNavLink"
+							activeClassName="act-underline-from-center"
 							to="/contact"
 						>
 							Contact
 						</NavLink>
 						<div className="navDetails contactDetails">
-							<p className="navDetailLink navDetailOption">Email</p>
-							<p className="navDetailLink navDetailOption">Instagram</p>
+							<Link to="/contact" className="navDetailLink navDetailOption">
+								Email
+							</Link>
+							<Link to="/findstore" className="navDetailLink navDetailOption">
+								Find Store
+							</Link>
 						</div>
 					</div>
 					<IconContext.Provider value={{ color: '#3066be', size: '50px' }}>
@@ -66,6 +72,7 @@ class Navbar extends Component {
 					<NavLink
 						activeStyle={activeStyle}
 						className="navLink hvr-underline-from-center"
+						activeClassName="act-underline-from-center"
 						to="/signin"
 					>
 						Sign In/Register

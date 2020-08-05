@@ -7,7 +7,7 @@ import './categoryview.css';
 function CategoryGridItem(props) {
 	return (
 		<Fragment>
-			<Link className="gridLink" to="/product/productA">
+			<Link className="gridLink" to="/product">
 				<div className="categoryGridItem">
 					<div className="upperGridItem">
 						<h2 className="gridItemTitle">{props.title}</h2>

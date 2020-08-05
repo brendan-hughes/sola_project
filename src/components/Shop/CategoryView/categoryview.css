@@ -2,7 +2,9 @@
 True Blue: #3066BE
 Khaki: #828E82
 Pewter Blue: #95B2B8
-Jonquil: #E6C229 */
+Jonquil: #E6C229 
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+*/
 
 .categoryViewSection {
 	padding-top: 150px;
@@ -24,7 +26,7 @@ Jonquil: #E6C229 */
 	justify-items: center;
 	grid-template-columns: repeat(3, 1fr);
 	grid-auto-rows: 300px;
-	grid-gap: 30px;
+	grid-gap: 100px;
 }
 
 .categoryGridItem {

@@ -9,7 +9,7 @@ Jonquil: #E6C229 */
 	align-items: center;
 	position: fixed;
 	top: 0;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background: white;
 	width: 100%;
 	z-index: 5;
 	height: 110px;
@@ -104,6 +104,32 @@ Jonquil: #E6C229 */
 	right: 0;
 }
 
+.act-underline-from-center {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	position: relative;
+	overflow: hidden;
+}
+.act-underline-from-center:before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #010620;
+	height: 2px;
+	-webkit-transition-property: left, right;
+	transition-property: left, right;
+	-webkit-transition-duration: 0.1s;
+	transition-duration: 0.1s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+
 .navDetailLink {
 	color: black;
 	cursor: pointer;
@@ -114,13 +140,17 @@ Jonquil: #E6C229 */
 
 .navDetailOption {
 	color: #3066be;
-	padding-left: 3px;
-	padding-right: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
 .navDetailOption:hover {
 	background: rgba(48, 102, 190, 0.3);
 	border-radius: 20px;
+	text-decoration: none;
+	color: #3066be;
 }
 
 .shopDetails,
@@ -132,12 +162,15 @@ Jonquil: #E6C229 */
 	transform: translate(40px);
 	top: 109px;
 	position: absolute;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background: white;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 	border-left: 2px solid #010620;
 	border-right: 2px solid #010620;
 	border-bottom: 2px solid #010620;
+	-webkit-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
+	-moz-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
+	box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
 }
 
 .contactDetails {

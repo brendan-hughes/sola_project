@@ -48,7 +48,7 @@ footer {
 
 .footerLink {
 	cursor: pointer;
-	transition: 0.2s ease;
+	transition: 0.2s;
 }
 
 .footerLink:hover {

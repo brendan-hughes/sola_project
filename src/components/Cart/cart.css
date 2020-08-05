@@ -1,0 +1,211 @@
+/* Dark Blue: #010620
+True Blue: #3066BE
+Khaki: #828E82
+Pewter Blue: #95B2B8
+Jonquil: #E6C229 
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+*/
+
+.cartSection {
+	min-height: 100vh;
+	display: flex;
+}
+.cartHeader {
+	color: black;
+	margin-left: 50px;
+}
+.cartViewBackButtonDiv {
+	color: black;
+	display: flex;
+	margin-top: 50px;
+	margin-left: 50px;
+	transition: 0.2s ease;
+}
+
+.cartViewBackButtonDiv:hover {
+	cursor: pointer;
+}
+
+.cartItemsDiv {
+	min-height: 100%;
+	width: 65%;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	padding-top: 150px;
+	padding-bottom: 50px;
+}
+
+.cartItemDiv {
+	height: 180px;
+	margin-top: 70px;
+	margin-left: 50px;
+	margin-right: 50px;
+	border-bottom: 1px solid rgba(90, 90, 90, 0.5);
+	padding-left: 50px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.cartItemImage {
+	width: 150px;
+}
+
+.cartItemDetailsDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: left;
+	width: 250px;
+	height: 100px;
+}
+
+.cartItemTitle {
+	color: #010620;
+	font-size: 24px;
+}
+.cartItemSku {
+	font-size: 12px;
+	color: grey;
+	font-weight: lighter;
+}
+
+.cartQuantityHeader {
+	margin: auto;
+}
+
+.cartItemValueDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 100px;
+}
+
+.cartItemValue {
+	font-size: 24px;
+	color: black;
+}
+
+.cartItemRemoveDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	opacity: 0.5;
+	transition: 0.2s ease;
+	margin-top: 20px;
+}
+.cartItemRemoveX {
+	color: rgba(0, 0, 0, 1);
+	margin-top: auto;
+	margin-bottom: 0px;
+}
+
+.cartItemRemoveText {
+	font-size: 12px;
+	color: rgba(90, 90, 90, 0.5);
+}
+
+.cartItemRemoveDiv:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+.cartPaymentDiv {
+	min-height: 100%;
+	width: 35%;
+	background: #010620;
+	padding-top: 150px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cartDetailsFooter {
+	display: flex;
+	justify-content: space-between;
+}
+
+.cartSubtotalDiv {
+	margin-top: 50px;
+	margin-right: 50px;
+	display: flex;
+}
+
+.cartSubtotalHeader {
+	color: black;
+	margin-right: 20px;
+	font-size: 24px;
+	font-weight: lighter;
+}
+
+.cartSubtotalAmount {
+	color: black;
+	font-size: 24px;
+}
+
+.cartPaymentDiv {
+}
+
+.paymentDivHeader {
+	color: white;
+	margin-left: 20px;
+}
+
+.paymentDetailsForm {
+	padding: 50px;
+}
+
+.paymentFormSection {
+	padding: 15px;
+}
+
+.paymentFormSectionHorizontal {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.paymentFormLabel {
+	font-size: 16px;
+}
+
+.paymentDetailsInput {
+	padding: 5px;
+	width: 200px;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 20px;
+	border: 1px solid white;
+}
+
+.paymentDetailsInputFull {
+	width: 80%;
+}
+.paymentDetailsInputAlmostFull {
+	width: 200px;
+}
+
+.checkoutButton {
+	margin-top: 50px;
+	width: 100%;
+	padding: 15px;
+	border-radius: 20px;
+	background: #3066be;
+	border: none;
+	color: white;
+	font-size: 24px;
+	transition: 0.2s ease;
+}
+
+.checkoutButton:hover {
+	transform: scale(1.05);
+}
+
+.paymentDetailsInputSmall {
+	margin: 10px;
+}
+
+.paymentDetailsCheckbox {
+}
