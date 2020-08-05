@@ -5,7 +5,9 @@ function Carousel() {
 	return (
 		<Fragment>
 			<section className="carouselSection">
-				<h1 className="carouselHeader">Cutting Edge Tech</h1>
+				<h1 className="carouselHeader" data-aos="zoom-in">
+					Cutting Edge Tech
+				</h1>
 				<div className="carouselContainer">
 					<div
 						className="carouselItem"

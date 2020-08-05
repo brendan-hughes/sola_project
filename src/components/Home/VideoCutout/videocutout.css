@@ -24,5 +24,14 @@
 	transition: 2s ease-in-out;
 }
 
-.growCutoutText {
+@media screen and (max-width: 1260px) {
+	.cutoutText {
+		font-size: 300px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.cutoutText {
+		font-size: 180px;
+	}
 }

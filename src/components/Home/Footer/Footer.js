@@ -7,19 +7,19 @@ function Footer() {
 			<footer>
 				<div className="upperFooter">
 					<div className="leftUpperFooter">
-						<p>Shop</p>
-						<p>Contact</p>
-						<p>Search</p>
-						<p>Sign In/Register</p>
+						<p className="footerLink">Shop</p>
+						<p className="footerLink">Contact</p>
+						<p className="footerLink">Search</p>
+						<p className="footerLink">Sign In/Register</p>
 					</div>
 					<div className="middleUpperFooter">
-						<p>Panels</p>
-						<p>Batteries</p>
-						<p>Lights</p>
-						<p>Find A Store</p>
+						<p className="footerLink">Panels</p>
+						<p className="footerLink">Batteries</p>
+						<p className="footerLink">Lights</p>
+						<p className="footerLink">Find A Store</p>
 					</div>
 					<div className="rightUpperFooter">
-						<p>Newsletter</p>
+						<p className="footerLink">Newsletter</p>
 						<input type="text" placeholder="Type your email..." />
 					</div>
 				</div>

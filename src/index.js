@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 import Shop from './components/Shop/Shop';
 import Contact from './components/Contact/Contact';
 import SignIn from './components/SignIn/SignIn';
+import Footer from './components/Home/Footer/Footer';
 
 ReactDOM.render(
 	<Router>
@@ -15,6 +16,7 @@ ReactDOM.render(
 		<Route exact path="/shop" component={Shop} />
 		<Route exact path="/contact" component={Contact} />
 		<Route exact path="/signin" component={SignIn} />
+		<Footer />
 	</Router>,
 	document.getElementById('root')
 );

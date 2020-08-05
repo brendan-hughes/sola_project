@@ -9,11 +9,11 @@ Jonquil: #E6C229 */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: 1s ease-in-out;
-	background-image: url('../../../assets/solar_back.png');
+	background-image: url('../../../assets/dark_panels.jpg');
 	background-size: cover;
 	background-position: bottom;
 	background-repeat: no-repeat;
+	margin-top: 100px;
 }
 
 .leftHero {

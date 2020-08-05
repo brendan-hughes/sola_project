@@ -6,6 +6,7 @@ Jonquil: #E6C229 */
 
 footer {
 	height: 20vh;
+	z-index: -1;
 }
 
 .upperFooter {
@@ -33,6 +34,7 @@ footer {
 	margin-top: auto;
 	margin-bottom: auto;
 	text-align: center;
+	transform: translate(30px);
 }
 
 .lowerFooter {
@@ -42,4 +44,13 @@ footer {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.footerLink {
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+
+.footerLink:hover {
+	transform: scale(1.05);
 }

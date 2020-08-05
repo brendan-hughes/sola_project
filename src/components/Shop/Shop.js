@@ -1,11 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
+import Sidebar from './Sidebar/Sidebar';
+import ProductView from './ProductView/ProductView';
+import CategoryView from './CategoryView/CategoryView';
+import BrandView from './BrandView/BrandView';
+import navFunctionality from '../../scripts/navFunctionality';
 
-function Shop() {
-	return (
-		<Fragment>
-			<h1>Shop</h1>
-		</Fragment>
-	);
+class Shop extends Component {
+	componentDidMount() {
+		navFunctionality();
+	}
+
+	render() {
+		return (
+			<Fragment>
+				<Sidebar />
+				<CategoryView />
+			</Fragment>
+		);
+	}
 }
 
 export default Shop;

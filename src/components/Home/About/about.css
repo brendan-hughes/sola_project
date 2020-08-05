@@ -6,10 +6,13 @@ Jonquil: #E6C229 */
 
 .aboutSection {
 	height: 80vh;
-	margin-top: 100px;
-	margin-left: 50px;
+	padding-top: 100px;
+	padding-left: 50px;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	background-color: white;
 }
 
 .aboutHeaderContainer {
@@ -46,26 +49,94 @@ Jonquil: #E6C229 */
 }
 
 .aboutAchievementCard {
-	height: 200px;
 	width: 30%;
 	border-radius: 10px;
 	transition: 0.2s ease;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.topAchievementText,
+.bottomAchievementText {
+	font-size: 15px;
+}
+
+.middleAchievementText {
+	font-size: 40px;
+}
+
+hr {
+	width: 50%;
+	margin: auto;
 }
 
 #achievementA {
-	background: rgba(130, 142, 130, 0.4);
-}
-#achievementB {
 	background: rgba(130, 142, 130, 0.6);
 }
-
-#achievementC {
+#achievementB {
 	background: rgba(130, 142, 130, 0.8);
 }
 
+#achievementC {
+	background: rgba(130, 142, 130, 1);
+}
+
 .gradientImage {
+	width: 40%;
 	position: absolute;
-	height: 500px;
-	right: 0px;
-	top: 1050px;
+	right: 50px;
+	top: 10%;
+}
+
+@media screen and (max-width: 1260px) {
+	.gradientImage {
+		top: 25%;
+	}
+
+	.topAchievementText,
+	.bottomAchievementText {
+		font-size: 12px;
+	}
+
+	.middleAchievementText {
+		font-size: 20px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.gradientImage {
+		display: none;
+	}
+
+	.aboutSection {
+		align-items: center;
+		margin-left: 0px;
+	}
+
+	.aboutHeader {
+		margin: auto;
+	}
+
+	.aboutIcon {
+		display: none;
+	}
+
+	.aboutTextContainer {
+		width: 80%;
+		margin-top: 25px;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+	.aboutAchievmentsContainer {
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 25px;
+	}
 }
