@@ -5,9 +5,10 @@ Pewter Blue: #95B2B8
 Jonquil: #E6C229 */
 
 .categoryViewSection {
-	margin-top: 150px;
+	padding-top: 150px;
 	display: flex;
 	flex-direction: column;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 .categoryViewHeader {
@@ -60,7 +61,8 @@ Jonquil: #E6C229 */
 }
 
 .lowerGridItem {
-	background: #010620;
+	background-image: linear-gradient(120deg, #010620 0%, #34384d 100%);
+	/* background: #010620; */
 	padding: 10px;
 	height: 18%;
 	border-bottom-left-radius: 20px;
