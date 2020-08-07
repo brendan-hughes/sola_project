@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { IconContext } from 'react-icons';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
 import './navbar.css';
 import topnavFunctionality from '../../scripts/topnavFunctionality';
 
@@ -69,18 +72,35 @@ class Navbar extends Component {
 							<FiShoppingCart className="cartIcon" />
 						</IconContext.Provider>
 					</Link>
-					<NavLink
-						activeStyle={activeStyle}
-						className="navLink hvr-underline-from-center"
-						activeClassName="act-underline-from-center"
-						to="/signin"
-					>
-						Sign In/Register
-					</NavLink>
+					{this.props.isAuthenticated ? (
+						<div
+							className="navLink hvr-underline-from-center signOutButton"
+							onClick={this.props.logout}
+						>
+							Sign Out
+						</div>
+					) : (
+						<NavLink
+							activeStyle={activeStyle}
+							className="navLink hvr-underline-from-center"
+							activeClassName="act-underline-from-center"
+							to="/signin"
+						>
+							Sign In/Register
+						</NavLink>
+					)}
 				</nav>
 			</div>
 		);
 	}
 }
 
-export default Navbar;
+Navbar.propTypes = {
+	logout: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

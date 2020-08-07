@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 import './signin.css';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
-import { login } from '../../actions/auth';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import Alert from '../Layout/Alert';
 
-const SignIn = (props) => {
+const Register = (props) => {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
@@ -15,17 +15,23 @@ const SignIn = (props) => {
 		password_confirm: '',
 	});
 
-	const { email, password } = formData;
+	const { name, email, password, password_confirm } = formData;
 
 	const onChange = (e) =>
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		try {
-			props.login({ email, password });
-		} catch (error) {
-			console.log(error);
+		console.log('Attempted to submit');
+		if (password !== password_confirm) {
+			props.setAlert('Passwords do not match.', 'passwordError');
+		} else {
+			console.log('Registering');
+			try {
+				props.register({ name, email, password });
+			} catch (error) {
+				console.log(error);
+			}
 		}
 	};
 
@@ -38,8 +44,19 @@ const SignIn = (props) => {
 		<Fragment>
 			<section className="signInSection">
 				<div className="signInContainer">
-					<div className="signInCard">
+					<div className="registerCard">
 						<form className="signInForm" onSubmit={(e) => onSubmit(e)}>
+							<div className="signInFormSection">
+								<p className="signInFormLabel">Name</p>
+								<input
+									type="text"
+									name="name"
+									required
+									className="signInInput signInInputFull"
+									value={name}
+									onChange={(e) => onChange(e)}
+								></input>
+							</div>
 							<div className="signInFormSection">
 								<p className="signInFormLabel">Email</p>
 								<input
@@ -62,13 +79,25 @@ const SignIn = (props) => {
 									className="signInInput signInInputFull"
 								></input>
 							</div>
-							<button className="signInButton">SIGN IN</button>
+							<div className="signInFormSection">
+								<p className="signInFormLabel">Confirm Password</p>
+								<input
+									type="password"
+									name="password_confirm"
+									required
+									onChange={(e) => onChange(e)}
+									value={password_confirm}
+									className="signInInput signInInputFull"
+								></input>
+							</div>
+							<button className="signInButton">REGISTER</button>
 						</form>
 					</div>
-					<p className="newUserText">
-						Don't have an account?
-						<Link to="/signin/register" className="registerLink">
-							Click to Register
+					<p className="returningUserText">
+						Already have an account?{' '}
+						<Link to="/signin" className="registerLink">
+							{' '}
+							Click to Sign In
 						</Link>
 					</p>
 					<Alert />
@@ -77,9 +106,10 @@ const SignIn = (props) => {
 		</Fragment>
 	);
 };
-SignIn.propTypes = {
+
+Register.propTypes = {
 	setAlert: PropTypes.func.isRequired,
-	login: PropTypes.func.isRequired,
+	register: PropTypes.func.isRequired,
 	isAuthenticated: PropTypes.bool,
 };
 
@@ -87,4 +117,4 @@ const mapStateToProps = (state) => ({
 	isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { setAlert, login })(SignIn);
+export default connect(mapStateToProps, { setAlert, register })(Register);

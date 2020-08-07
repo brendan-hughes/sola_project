@@ -177,6 +177,10 @@ Jonquil: #E6C229 */
 	transform: translate(63px);
 }
 
+.signOutButton {
+	cursor: pointer;
+}
+
 @media screen and (max-width: 1260px) {
 	.navLink,
 	.searchIcon,

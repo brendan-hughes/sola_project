@@ -75,6 +75,7 @@ class About extends Component {
 						</div>
 					</div>
 					<img
+						alt="Gradient Graphic Art"
 						className="gradientImage"
 						src={require('../../../assets/blue_gradient_com.png')}
 						data-aos="zoom-in-left"

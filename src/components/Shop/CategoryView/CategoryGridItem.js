@@ -13,6 +13,7 @@ function CategoryGridItem(props) {
 						<h2 className="gridItemTitle">{props.title}</h2>
 						<p className="gridItemPrice">$100</p>
 						<img
+							alt="productImage"
 							className="gridItemImage"
 							src={require('../../../assets/solar_panel3.png')}
 						></img>

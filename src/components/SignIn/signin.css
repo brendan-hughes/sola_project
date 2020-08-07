@@ -1,11 +1,29 @@
 .signInSection {
-	height: 80vh;
+	height: 90vh;
 	display: flex;
 	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.registerCard {
+	height: 500px;
+	width: 400px;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 20px;
+	background: #010620;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	-webkit-box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
+	-moz-box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
+	box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
 }
 
 .signInCard {
-	height: 450px;
+	height: 350px;
 	width: 400px;
 	margin: auto;
 	border-radius: 20px;
@@ -19,6 +37,12 @@
 	box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
 }
 
+.signInContainer {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+
 .signInFormSection {
 	padding: 5px;
 }
@@ -30,13 +54,25 @@
 .signInInput {
 	padding: 5px;
 	width: 250px;
-	background: rgba(255, 255, 255, 0.2);
+	background: rgb(233, 240, 253);
 	border-radius: 20px;
-	border: 1px solid white;
+	border: 3px solid transparent;
+	color: black;
+	transition: 0.1s ease;
+}
+
+.signInInput:focus,
+.signInInput:hover {
+	border: 3px solid #3066be;
+	background: rgb(233, 240, 253);
+}
+
+.signInInput:-webkit-autofill {
+	background: rgba(255, 255, 255, 0.5);
 }
 
 .signInButton {
-	margin-top: 50px;
+	margin-top: 25px;
 	width: 100%;
 	padding: 15px;
 	border-radius: 20px;
@@ -49,4 +85,37 @@
 
 .signInButton:hover {
 	transform: scale(1.05);
+}
+
+.signInButton:focus {
+	outline: none;
+}
+
+.alert {
+	background: rgba(247, 0, 0, 0.849);
+	color: white;
+	border-radius: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding: 8px;
+	transition: 0.2s;
+}
+
+.newUserText {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	color: black;
+}
+
+.returningUserText {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	color: black;
+}
+
+.registerLink {
+	margin-left: 5px;
 }

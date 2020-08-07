@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import './cart.css';
 
 class CartItem extends Component {
@@ -6,6 +6,7 @@ class CartItem extends Component {
 		return (
 			<div className="cartItemDiv">
 				<img
+					alt="Product View"
 					className="cartItemImage"
 					src={require('../../assets/solar_panel3.png')}
 				></img>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { TiArrowLeft, TiArrowRight, TiPlus } from 'react-icons/ti';
+import { TiArrowLeft, TiArrowRight } from 'react-icons/ti';
 import { IconContext } from 'react-icons';
 import './hero.css';
 import AOS from 'aos';
@@ -33,6 +33,7 @@ class Hero extends Component {
 							<div className="heroCard">
 								<h1 className="cardTitle">Card Title</h1>
 								<img
+									alt="Product View"
 									src={require('../../../assets/solar_panel3.png')}
 									className="imagePlaceholder"
 								></img>

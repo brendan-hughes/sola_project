@@ -1,0 +1,4 @@
+{
+	"mongoURI": "mongodb+srv://brendanhughes:LeoDalton1!@sola.p10je.mongodb.net/<dbname>?retryWrites=true&w=majority",
+	"jwtSecret": "solasecrettoken"
+}

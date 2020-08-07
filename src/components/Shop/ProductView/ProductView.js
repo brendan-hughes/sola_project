@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaStore } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
@@ -28,15 +27,28 @@ class ProductView extends Component {
 					<div className="productViewImageDiv">
 						<div className="productViewMainImageDiv">
 							<img
+								alt="Product View"
 								className="productViewMainImage"
 								src={require('../../../assets/solar_panel3.png')}
 							></img>
 						</div>
 						<div className="productViewSubImageCarousel">
-							<img className="productViewSubImage"></img>
-							<img className="productViewSubImage"></img>
-							<img className="productViewSubImage"></img>
-							<img className="productViewSubImage"></img>
+							<img
+								alt="Alternate Product View"
+								className="productViewSubImage"
+							></img>
+							<img
+								alt="Alternate Product View"
+								className="productViewSubImage"
+							></img>
+							<img
+								alt="Alternate Product View"
+								className="productViewSubImage"
+							></img>
+							<img
+								alt="Alternate Product View"
+								className="productViewSubImage"
+							></img>
 						</div>
 					</div>
 					<div className="productViewDetailsDiv">

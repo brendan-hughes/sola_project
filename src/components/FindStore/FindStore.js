@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
 import './findstore.css';
-import { render } from '@testing-library/react';
 
 class FindStore extends Component {
 	render() {
