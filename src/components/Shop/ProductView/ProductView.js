@@ -8,6 +8,7 @@ import navFunctionality from '../../../scripts/navFunctionality';
 import './productview.css';
 import { connect } from 'react-redux';
 import { addToCart } from '../../../actions/cart';
+import { loadProduct } from '../../../actions/product';
 import { v4 as uuid } from 'uuid';
 
 const productAddToCart = (e, props, quantity) => {
@@ -16,7 +17,11 @@ const productAddToCart = (e, props, quantity) => {
 		localStorage.setItem('cartToken', cartToken);
 	}
 	e.preventDefault();
-	props.addToCart('12345', localStorage.getItem('cartToken'), quantity);
+	props.addToCart(
+		props.productSku,
+		localStorage.getItem('cartToken'),
+		quantity
+	);
 };
 
 class ProductView extends Component {
@@ -27,6 +32,7 @@ class ProductView extends Component {
 
 	componentDidMount() {
 		navFunctionality();
+		this.props.loadProduct(window.location.pathname);
 	}
 
 	render() {
@@ -34,7 +40,12 @@ class ProductView extends Component {
 			<Fragment>
 				<Sidebar />
 				<section className="productViewSection">
-					<div className="productViewBackButtonDiv">
+					<div
+						className="productViewBackButtonDiv"
+						onClick={() => {
+							window.history.back();
+						}}
+					>
 						<IconContext.Provider value={{ size: '20px' }}>
 							<IoMdArrowRoundBack className="productViewBackButton" />
 						</IconContext.Provider>
@@ -70,15 +81,14 @@ class ProductView extends Component {
 					</div>
 					<div className="productViewDetailsDiv">
 						<div className="productViewCategoryTypeDiv">
-							<p className="productViewCategoryTypeText">PANELS</p>
+							<p className="productViewCategoryTypeText">
+								{this.props.productCategory}
+							</p>
 						</div>
-						<h1 className="productViewHeader">Product Title</h1>
-						<p className="skuHeader">SKU: 0293847362849</p>
+						<h1 className="productViewHeader">{this.props.productTitle}</h1>
+						<p className="skuHeader">SKU: {this.props.productSku}</p>
 						<p className="productViewDescription">
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-							Voluptatibus eaque eos dicta, nobis quaerat corporis consequuntur
-							vel perferendis, odit voluptates assumenda delectus modi
-							reiciendis voluptatum minus ex reprehenderit vero explicabo.
+							{this.props.productDescription}
 						</p>
 						<div className="productViewQuantAndValueDiv">
 							<div className="productViewQuantityDiv">
@@ -112,7 +122,9 @@ class ProductView extends Component {
 									</div>
 								</div>
 							</div>
-							<p className="productViewPriceValue">$100</p>
+							<p className="productViewPriceValue">
+								${this.props.productPrice}
+							</p>
 						</div>
 						<button
 							className="productViewAddToCart"
@@ -138,4 +150,15 @@ class ProductView extends Component {
 	}
 }
 
-export default connect(null, { addToCart })(ProductView);
+const mapStateToProps = (state) => ({
+	productTitle: state.product.productDetails.name,
+	productSku: state.product.productDetails.sku,
+	productCategory: state.product.productDetails.category,
+	productBrand: state.product.productDetails.brand,
+	productPrice: state.product.productDetails.price,
+	productDescription: state.product.productDetails.description,
+});
+
+export default connect(mapStateToProps, { addToCart, loadProduct })(
+	ProductView
+);

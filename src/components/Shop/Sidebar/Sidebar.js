@@ -10,30 +10,30 @@ function Sidebar() {
 			<div className="sidebarContainer">
 				<h3 className="viewMenu">View Menu</h3>
 				<h2 className="sidebarHeading">Shop by Category</h2>
-				<NavLink className="sidebarLink" to="/">
+				<NavLink className="sidebarLink" to="/shop/Panels/any">
 					Panels
 				</NavLink>
-				<NavLink className="sidebarLink" to="/">
+				<NavLink className="sidebarLink" to="/shop/Batteries/any">
 					Batteries
 				</NavLink>
-				<NavLink className="sidebarLink" to="/">
+				<NavLink className="sidebarLink" to="/shop/Lights/any">
 					Lights
 				</NavLink>
 				<IconContext.Provider value={{ size: '50px' }}>
 					<AiFillCaretRight className="sidebarArrow" />
 				</IconContext.Provider>
 				<h2 className="sidebarHeading">Shop by Brand</h2>
-				<NavLink className="sidebarLink" to="/">
+				<NavLink className="sidebarLink" to="/shop/any/Sola+">
 					Sola+
 				</NavLink>
-				<NavLink className="sidebarLink" to="/">
+				<NavLink className="sidebarLink" to="/shop/any/Green_Bean">
 					Green Bean
 				</NavLink>
-				<NavLink className="sidebarLink" to="/">
+				<NavLink className="sidebarLink" to="/shop/any/Commercial_Tech">
 					Commercial Tech
 				</NavLink>
-				<NavLink className="sidebarLink" to="/">
-					Martian Soil
+				<NavLink className="sidebarLink" to="/shop/any/Martian_Sun">
+					Martian Sun
 				</NavLink>
 			</div>
 		</Fragment>

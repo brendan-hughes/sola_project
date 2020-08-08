@@ -8,7 +8,7 @@ function topnavFunctionality() {
 		-10,
 		140,
 		10,
-		370,
+		420,
 		140,
 		-10
 	);
@@ -24,6 +24,26 @@ function topnavFunctionality() {
 		135,
 		-10
 	);
+	searchBarAnimation();
+}
+
+function searchBarAnimation() {
+	const searchBarInput = document.querySelector('.searchBarInput');
+	const searchIcon = document.querySelector('.searchIcon');
+	const searchBar = document.querySelector('.searchBar');
+	searchBar.addEventListener('mouseover', () => {
+		searchBarInput.classList.add('searchBarActive');
+		searchIcon.classList.add('searchIconActive');
+	});
+	searchBar.addEventListener('mouseout', () => {
+		searchBarInput.classList.remove('searchBarActive');
+		searchIcon.classList.remove('searchIconActive');
+	});
+	searchIcon.addEventListener('click', () => {
+		if (!searchBarInput.value) {
+			searchBarInput.focus();
+		}
+	});
 }
 
 function hoverFunctionality(

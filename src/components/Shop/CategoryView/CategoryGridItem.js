@@ -7,11 +7,11 @@ import './categoryview.css';
 function CategoryGridItem(props) {
 	return (
 		<Fragment>
-			<Link className="gridLink" to="/product">
+			<Link className="gridLink" to={`/product/${props.productSku}`}>
 				<div className="categoryGridItem">
 					<div className="upperGridItem">
-						<h2 className="gridItemTitle">{props.title}</h2>
-						<p className="gridItemPrice">$100</p>
+						<h2 className="gridItemTitle">{props.productTitle}</h2>
+						<p className="gridItemPrice">${props.productPrice}</p>
 						<img
 							alt="productImage"
 							className="gridItemImage"
@@ -32,10 +32,7 @@ function CategoryGridItem(props) {
 							</button>
 						</div>
 
-						<p className="gridItemDetailText">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-							ad assumenda ab sapiente vitae? Adipisci!
-						</p>
+						<p className="gridItemDetailText">{props.productDescription}</p>
 					</div>
 				</div>
 			</Link>

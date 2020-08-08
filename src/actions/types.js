@@ -11,3 +11,7 @@ export const LOGOUT = 'LOGOUT';
 export const CART_UPDATE = 'CART_UPDATE';
 export const CART_FAIL = 'CART_FAIL';
 export const LOAD_CART = 'LOAD_CART';
+export const LOAD_SHOP = 'LOAD_SHOP';
+export const SHOP_FAIL = 'SHOP_FAIL';
+export const LOAD_PRODUCT = 'LOAD_PRODUCT';
+export const PRODUCT_FAIL = 'PRODUCT_FAIL';

@@ -53,18 +53,48 @@ Jonquil: #E6C229 */
 	margin: 0;
 }
 
-.searchIcon,
 .cartIcon {
 	height: 20px;
 	min-width: 80px;
-	margin-left: 50px;
 	margin-right: 50px;
-	color: black;
+	margin-bottom: 3px;
 }
 
+.cartDiv {
+	display: flex;
+	margin-left: 50px;
+	justify-content: center;
+	align-items: center;
+}
+
+.cartQuantityText {
+	color: white;
+	text-align: center;
+	background: #3066be;
+	padding: 5px;
+	padding-left: 7px;
+	padding-right: 7px;
+	position: relative;
+	left: 75px;
+	bottom: 12px;
+	border-radius: 10px;
+	font-size: 10px;
+	cursor: pointer;
+}
+
+.searchIcon {
+	height: 20px;
+	transition: 0.1s ease;
+}
+
+.searchIconDiv {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 50px;
+}
 .signRegister {
 	margin-left: 100px;
-	margin-right: 100px;
+	cursor: pointer;
 }
 
 .navLink:hover {
@@ -81,6 +111,12 @@ Jonquil: #E6C229 */
 	position: relative;
 	overflow: hidden;
 }
+
+/* Dark Blue: #010620
+True Blue: #3066BE
+Khaki: #828E82
+Pewter Blue: #95B2B8
+Jonquil: #E6C229 */
 .hvr-underline-from-center:before {
 	content: '';
 	position: absolute;
@@ -88,8 +124,8 @@ Jonquil: #E6C229 */
 	left: 51%;
 	right: 51%;
 	bottom: 0;
-	background: #010620;
-	height: 2px;
+	background: #3066be;
+	height: 1px;
 	-webkit-transition-property: left, right;
 	transition-property: left, right;
 	-webkit-transition-duration: 0.1s;
@@ -120,8 +156,8 @@ Jonquil: #E6C229 */
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: #010620;
-	height: 2px;
+	background: #3066be;
+	height: 1px;
 	-webkit-transition-property: left, right;
 	transition-property: left, right;
 	-webkit-transition-duration: 0.1s;
@@ -165,9 +201,9 @@ Jonquil: #E6C229 */
 	background: white;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
-	border-left: 2px solid #010620;
-	border-right: 2px solid #010620;
-	border-bottom: 2px solid #010620;
+	border-left: 2px solid #3066be;
+	border-right: 2px solid #3066be;
+	border-bottom: 2px solid #3066be;
 	-webkit-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
 	-moz-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
 	box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
@@ -179,11 +215,56 @@ Jonquil: #E6C229 */
 
 .signOutButton {
 	cursor: pointer;
+	margin-left: 100px;
 }
 
+.searchBar {
+	display: flex;
+	cursor: pointer;
+}
+
+.searchBarInput {
+	width: 50px;
+	transition: 0.2s ease;
+	border-radius: 10px;
+	padding: 5px;
+	border: 1px solid #3066be;
+	background: rgba(20, 20, 20, 0.02);
+	opacity: 0;
+	color: #3066be;
+}
+
+.searchBarInput::placeholder {
+	color: #3066be5b;
+}
+.searchIconActive {
+	cursor: pointer;
+	transform: scale(1.2) rotate(-10deg);
+}
+
+.searchBarInput:hover {
+	opacity: 1;
+	width: 220px;
+}
+
+.searchBarActive {
+	opacity: 0.5;
+	width: 220px;
+}
+
+.searchIcon:hover {
+	cursor: pointer;
+	transform: scale(1.2) rotate(-10deg);
+}
+
+.searchBarInput:focus,
+.searchBarInput:active {
+	opacity: 1;
+	width: 220px;
+	background: rgba(20, 20, 20, 0.05);
+}
 @media screen and (max-width: 1260px) {
 	.navLink,
-	.searchIcon,
 	.cartIcon {
 		margin-left: 20px;
 		margin-right: 20px;

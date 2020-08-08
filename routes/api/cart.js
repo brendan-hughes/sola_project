@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator');
 const Product = require('../../models/product');
 const CartItem = require('../../models/cartItem');
 
+const taxRate = 1.13;
 //Add To Cart
 router.post('/add/:sku/:cart/:quantity', async function (req, res) {
 	try {
@@ -15,14 +16,20 @@ router.post('/add/:sku/:cart/:quantity', async function (req, res) {
 		const cart = req.params.cart;
 		const quantity = parseInt(req.params.quantity);
 		const currentCart = await Cart.findOne({ cartToken: cart });
+
 		if (!currentCart) {
 			try {
 				//If they currently have nothing in their cart, create the cart and add the product with the specified quantity
+				console.log('No cart found, creating brand new.');
 				const product = await Product.findOne({ sku });
 				const cartItem = new CartItem({ product, quantity, sku });
+
 				const newCart = new Cart({
 					contents: [cartItem],
 					cartToken: cart,
+					totalQuantity: quantity,
+					subTotal: product.price * quantity,
+					totalPrice: product.price * quantity * taxRate,
 				});
 				await newCart.save();
 			} catch (error) {
@@ -30,40 +37,56 @@ router.post('/add/:sku/:cart/:quantity', async function (req, res) {
 				res.status(500).send('Server error');
 			}
 		} else {
-			const currentContents = currentCart.contents;
 			//If cart exists, check if product exists in cart already, in which case we'll increase the quantity specified
-			currentContents.forEach(async (item) => {
-				if (item.sku === sku) {
-					//Product was found in cart, so we increase quantity
-
-					try {
-						const updatedContents = [...currentContents];
-						updatedContents.find((item, index) => {
-							if (item.sku === sku) {
-								item.quantity = item.quantity + quantity;
-							}
-						});
-
-						await Cart.updateOne(
-							{ cartToken: cart },
-							{ contents: updatedContents }
-						);
-					} catch (error) {
-						console.log(error);
-					}
+			const currentCartContents = currentCart.contents;
+			let updatedContents = [];
+			const originalLength = currentCartContents.length;
+			let wasFound = false;
+			currentCartContents.forEach((product) => {
+				//If SKU matches, we'll update the quantity specified.
+				if (product.sku === sku) {
+					wasFound = true;
+					let currentQuantity = product.quantity;
+					let updatedQuantity = currentQuantity + quantity;
+					updatedContents.push({
+						product: product.product,
+						quantity: updatedQuantity,
+						sku: product.sku,
+					});
 				} else {
-					//If product is not in the cart, add Product To Cart with specified quantity
-					const product = await Product.findOne({ sku });
-					const cartItem = new CartItem({ product, quantity, sku });
-					await Cart.updateOne(
-						{ cartToken: cart },
-						{ contents: [...currentContents, cartItem] }
-					);
+					//If SKU doesn't match, add it as is to the updatedContents array of products
+					updatedContents.push(product);
 				}
 			});
+			//If the product wasn't found but the cart exists, we need to add it still
+			if (!wasFound) {
+				const product = await Product.findOne({ sku });
+				const newProduct = new CartItem({ product, quantity, sku });
+				updatedContents.push(newProduct);
+			}
+
+			//Once done iterating over the cart contents, we finish up with the cart updates.
+			let totalQuantity = 0;
+			let subTotal = 0;
+			let totalPrice = 0;
+			updatedContents.forEach((product) => {
+				totalQuantity = totalQuantity + product.quantity;
+				subTotal = subTotal + product.quantity * product.product.price;
+			});
+			totalPrice = subTotal * taxRate;
+
+			const newCart = new Cart({
+				contents: updatedContents,
+				cartToken: currentCart.cartToken,
+				totalQuantity: totalQuantity,
+				subTotal: subTotal,
+				totalPrice: totalPrice,
+			});
+			await Cart.deleteOne({ cartToken: currentCart.cartToken });
+			await newCart.save();
 		}
-		const result = 'Adding product number: ' + sku + ' To cart: ' + cart;
-		res.send(result);
+		const resultCart = await Cart.findOne({ cartToken: cart });
+		res.send(resultCart);
 	} catch (error) {
 		console.log(error);
 		res.status(500).send('Server error');
@@ -76,13 +99,119 @@ router.get('/load/:cart', async function (req, res) {
 		const cart = req.params.cart;
 		const currentCart = await Cart.findOne({ cartToken: cart });
 		if (!currentCart) {
-			res.send(0);
+			res.status(500).send('No cart found.');
 		} else {
+			console.log('Found cart, sending. ', currentCart);
 			res.send(currentCart);
 		}
 	} catch (error) {
 		res.status(500).send('Server error');
 	}
+});
+
+//Reduce Quantity
+router.post('/reduce/:sku/:cart', async function (req, res) {
+	try {
+		console.log('Reducing');
+		const sku = req.params.sku;
+		const cart = req.params.cart;
+		const currentCart = await Cart.findOne({ cartToken: cart });
+		currentCart.contents.forEach((product) => {
+			if (product.sku === sku) {
+				product.quantity = product.quantity - 1;
+			}
+		});
+		//Once done reducing, calculate new totals for cart.
+		let totalQuantity = 0;
+		let subTotal = 0;
+		let totalPrice = 0;
+		currentCart.contents.forEach((product) => {
+			totalQuantity = totalQuantity + product.quantity;
+			subTotal = subTotal + product.quantity * product.product.price;
+		});
+		totalPrice = subTotal * taxRate;
+
+		const newCart = new Cart({
+			contents: currentCart.contents,
+			cartToken: currentCart.cartToken,
+			totalQuantity: totalQuantity,
+			subTotal: subTotal,
+			totalPrice: totalPrice,
+		});
+		await Cart.deleteOne({ cartToken: currentCart.cartToken });
+		await newCart.save();
+		res.send(newCart);
+	} catch (error) {}
+});
+
+//Increase Quantity
+router.post('/increase/:sku/:cart', async function (req, res) {
+	try {
+		console.log('Increasing');
+		const sku = req.params.sku;
+		const cart = req.params.cart;
+		const currentCart = await Cart.findOne({ cartToken: cart });
+		currentCart.contents.forEach((product) => {
+			if (product.sku === sku) {
+				product.quantity = product.quantity + 1;
+			}
+		});
+		//Once done reducing, calculate new totals for cart.
+		let totalQuantity = 0;
+		let subTotal = 0;
+		let totalPrice = 0;
+		currentCart.contents.forEach((product) => {
+			totalQuantity = totalQuantity + product.quantity;
+			subTotal = subTotal + product.quantity * product.product.price;
+		});
+		totalPrice = subTotal * taxRate;
+
+		const newCart = new Cart({
+			contents: currentCart.contents,
+			cartToken: currentCart.cartToken,
+			totalQuantity: totalQuantity,
+			subTotal: subTotal,
+			totalPrice: totalPrice,
+		});
+		await Cart.deleteOne({ cartToken: currentCart.cartToken });
+		await newCart.save();
+		res.send(newCart);
+	} catch (error) {}
+});
+
+//Remove From Cart
+router.post('/remove/:sku/:cart', async function (req, res) {
+	try {
+		console.log('Removing from cart');
+		const sku = req.params.sku;
+		const cart = req.params.cart;
+		const currentCart = await Cart.findOne({ cartToken: cart });
+		currentCart.contents.forEach((product) => {
+			if (product.sku === sku) {
+				currentCart.contents.remove(product);
+			}
+		});
+		//Once done removing, calculate new totals for cart.
+		let totalQuantity = 0;
+		let subTotal = 0;
+		let totalPrice = 0;
+		currentCart.contents.forEach((product) => {
+			totalQuantity = totalQuantity + product.quantity;
+			subTotal = subTotal + product.quantity * product.product.price;
+		});
+		totalPrice = subTotal * taxRate;
+
+		const newCart = new Cart({
+			contents: currentCart.contents,
+			cartToken: currentCart.cartToken,
+			totalQuantity: totalQuantity,
+			subTotal: subTotal,
+			totalPrice: totalPrice,
+		});
+		await Cart.deleteOne({ cartToken: currentCart.cartToken });
+		await newCart.save();
+		res.send(newCart);
+	} catch (error) {}
 });
 
 module.exports = router;

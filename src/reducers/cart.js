@@ -1,19 +1,20 @@
 import { CART_UPDATE, CART_FAIL, LOAD_CART } from '../actions/types';
 
 const initialState = {
-	cartContents: [],
+	contents: [],
+	totalQuantity: 0,
+	subTotal: 0,
+	totalPrice: 0,
 };
 
 export default function (state = initialState, action) {
 	const { type, payload } = action;
 	switch (type) {
 		case CART_UPDATE:
-			return {
-				...payload,
-			};
-		case CART_FAIL:
 		case LOAD_CART:
-			return state;
+			return payload;
+		case CART_FAIL:
+			return { contents: [], totalQuantity: 0, subTotal: 0, totalPrice: 0 };
 		default:
 			return state;
 	}

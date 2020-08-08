@@ -16,6 +16,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import { loadCart } from './actions/cart';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -24,6 +25,7 @@ if (localStorage.token) {
 class App extends Component {
 	componentDidMount() {
 		store.dispatch(loadUser());
+		store.dispatch(loadCart(localStorage.getItem('cartToken')));
 	}
 
 	render() {
@@ -33,12 +35,12 @@ class App extends Component {
 					<Router>
 						<Navbar />
 						<Route exact path="/" component={Home} />
-						<Route exact path="/shop" component={CategoryView} />
+						<Route path="/shop" component={CategoryView} />
 						<Route exact path="/contact" component={Contact} />
 						<Route exact path="/findstore" component={FindStore} />
 						<Route exact path="/signin" component={SignIn} />
 						<Route exact path="/signin/register" component={Register} />
-						<Route exact path="/product" component={ProductView} />
+						<Route path="/product" component={ProductView} />
 						<Route exact path="/cart" component={Cart} />
 						<Footer />
 					</Router>
