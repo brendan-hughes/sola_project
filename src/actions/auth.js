@@ -9,8 +9,6 @@ import {
 	LOGOUT,
 } from './types';
 import { setAlert } from './alert';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import setAuthToken from '../utils/setAuthToken';
 
 //Load User

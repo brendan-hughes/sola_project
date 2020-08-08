@@ -4,7 +4,7 @@ import { IoMdArrowRoundBack } from 'react-icons/io';
 import { IconContext } from 'react-icons';
 import './cart.css';
 
-class SignIn extends Component {
+class Cart extends Component {
 	render() {
 		return (
 			<Fragment>
@@ -92,4 +92,4 @@ class SignIn extends Component {
 	}
 }
 
-export default SignIn;
+export default Cart;
