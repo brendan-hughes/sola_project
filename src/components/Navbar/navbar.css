@@ -9,13 +9,19 @@ Jonquil: #E6C229 */
 	align-items: center;
 	position: fixed;
 	top: 0;
-	background: white;
 	width: 100%;
+	background: linear-gradient(
+		to right,
+		rgba(237, 237, 237, 1) 0%,
+		rgba(246, 246, 246, 1) 34%,
+		rgba(255, 255, 255, 1) 100%
+	);
 	z-index: 5;
 	height: 110px;
-	-webkit-box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
-	-moz-box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
-	box-shadow: 0px 2px 6px 0px rgba(97, 97, 97, 1);
+	-webkit-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 1);
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 1);
+	transition: 0.5s ease;
 }
 
 .navContainer {
@@ -48,7 +54,7 @@ Jonquil: #E6C229 */
 }
 
 .navHeader {
-	color: black;
+	color: #3066be;
 	text-decoration: none;
 	margin: 0;
 }
@@ -168,10 +174,14 @@ Jonquil: #E6C229 */
 
 .navDetailLink {
 	color: black;
-	cursor: pointer;
 }
 
-.navDetails {
+.navDetailHeading {
+	margin-bottom: 5px;
+}
+
+.navDetailSecondHeading {
+	margin-top: 10px;
 }
 
 .navDetailOption {
@@ -263,6 +273,7 @@ Jonquil: #E6C229 */
 	width: 220px;
 	background: rgba(20, 20, 20, 0.05);
 }
+
 @media screen and (max-width: 1260px) {
 	.navLink,
 	.cartIcon {

@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react';
 import './videocutout.css';
+import Sola from './SOLA.svg';
 
 function VideoCutout() {
 	return (
 		<Fragment>
 			<section className="videoCutoutSection">
-				<h2 className="cutoutText" data-aos="fade-up" data-aos-duration="2000">
-					SOLA
-				</h2>
+				<img className="videoCutoutText" src={Sola}></img>
 			</section>
 		</Fragment>
 	);

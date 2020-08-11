@@ -25,6 +25,7 @@ function topnavFunctionality() {
 		-10
 	);
 	searchBarAnimation();
+	firstAnimation();
 }
 
 function searchBarAnimation() {
@@ -84,6 +85,24 @@ function hoverFunctionality(
 			// console.log('delete');
 			detailsDiv.style.display = 'none';
 			open = false;
+		}
+	});
+}
+
+function firstAnimation() {
+	window.addEventListener('scroll', (e) => {
+		// const navBar = document.querySelector('.navbar');
+		// const navLinks = document.querySelectorAll('.navLink');
+		// const navIcons = document.querySelectorAll('.navIcon');
+		// const aboutSection = document.querySelector('.aboutSection');
+		// const carouselSection = document.querySelector('.carouselSection');
+		// const heroSection = document.querySelector('.hero');
+		const videoCutoutSection = document.querySelector('.videoCutoutSection');
+		if (videoCutoutSection) {
+			const videoCutoutSectionHeight = videoCutoutSection.getBoundingClientRect()
+				.top;
+			if (videoCutoutSectionHeight <= 0) {
+			}
 		}
 	});
 }

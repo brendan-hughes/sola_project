@@ -15,6 +15,11 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/cart', require('./routes/api/cart'));
 app.use('/api/product', require('./routes/api/product'));
 app.use('/api/shop', require('./routes/api/shop'));
+app.use('/api/nav', require('./routes/api/nav'));
+app.use('/api/contact', require('./routes/api/contact'));
+app.use('/api/charge', require('./routes/api/charge'));
+app.use('/api/admin', require('./routes/api/admin'));
+
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
 });

@@ -1,4 +1,9 @@
-import { CART_UPDATE, CART_FAIL, LOAD_CART } from '../actions/types';
+import {
+	CART_UPDATE,
+	CART_FAIL,
+	LOAD_CART,
+	ORDER_SUCCESS,
+} from '../actions/types';
 
 const initialState = {
 	contents: [],
@@ -15,6 +20,13 @@ export default function (state = initialState, action) {
 			return payload;
 		case CART_FAIL:
 			return { contents: [], totalQuantity: 0, subTotal: 0, totalPrice: 0 };
+		case ORDER_SUCCESS:
+			return {
+				contents: [],
+				totalQuantity: 0,
+				subTotal: 0,
+				totalPrice: 0,
+			};
 		default:
 			return state;
 	}

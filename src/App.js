@@ -11,12 +11,16 @@ import ProductView from './components/Shop/ProductView/ProductView';
 import CategoryView from './components/Shop/CategoryView/CategoryView';
 import FindStore from './components/FindStore/FindStore';
 import Cart from './components/Cart/Cart';
+import Admin from './components/Admin/Admin';
+import SuccessfulCheckout from './components/Status/SuccessfulCheckout';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
+import { checkAdmin } from './actions/admin';
 import setAuthToken from './utils/setAuthToken';
 import { loadCart } from './actions/cart';
+import { loadNav } from './actions/nav';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -25,7 +29,9 @@ if (localStorage.token) {
 class App extends Component {
 	componentDidMount() {
 		store.dispatch(loadUser());
+		store.dispatch(loadNav());
 		store.dispatch(loadCart(localStorage.getItem('cartToken')));
+		store.dispatch(checkAdmin());
 	}
 
 	render() {
@@ -42,6 +48,8 @@ class App extends Component {
 						<Route exact path="/signin/register" component={Register} />
 						<Route path="/product" component={ProductView} />
 						<Route exact path="/cart" component={Cart} />
+						<Route exact path="/success" component={SuccessfulCheckout} />
+						<Route exact path="/admin" component={Admin} />
 						<Footer />
 					</Router>
 				</Fragment>

@@ -19,6 +19,7 @@ router.get('/', auth, async (req, res) => {
 		const user = await (await User.findById(req.user.id)).isSelected(
 			'-password'
 		);
+		console.log(user);
 		res.json(user);
 	} catch (error) {
 		console.error(error.message);

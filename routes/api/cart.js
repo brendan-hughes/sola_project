@@ -19,8 +19,8 @@ router.post('/add/:sku/:cart/:quantity', async function (req, res) {
 
 		if (!currentCart) {
 			try {
+				console.log('Not found');
 				//If they currently have nothing in their cart, create the cart and add the product with the specified quantity
-				console.log('No cart found, creating brand new.');
 				const product = await Product.findOne({ sku });
 				const cartItem = new CartItem({ product, quantity, sku });
 
@@ -31,10 +31,14 @@ router.post('/add/:sku/:cart/:quantity', async function (req, res) {
 					subTotal: product.price * quantity,
 					totalPrice: product.price * quantity * taxRate,
 				});
-				await newCart.save();
+				try {
+					await newCart.save();
+				} catch (error) {
+					console.log(error);
+				}
 			} catch (error) {
 				console.log(error);
-				res.status(500).send('Server error');
+				return res.status(500).send('Server error');
 			}
 		} else {
 			//If cart exists, check if product exists in cart already, in which case we'll increase the quantity specified
@@ -86,10 +90,14 @@ router.post('/add/:sku/:cart/:quantity', async function (req, res) {
 			await newCart.save();
 		}
 		const resultCart = await Cart.findOne({ cartToken: cart });
-		res.send(resultCart);
+		try {
+			res.send(resultCart);
+		} catch (error) {
+			console.log(error);
+		}
 	} catch (error) {
 		console.log(error);
-		res.status(500).send('Server error');
+		return res.status(500).send('Server error');
 	}
 });
 
@@ -101,7 +109,6 @@ router.get('/load/:cart', async function (req, res) {
 		if (!currentCart) {
 			res.status(500).send('No cart found.');
 		} else {
-			console.log('Found cart, sending. ', currentCart);
 			res.send(currentCart);
 		}
 	} catch (error) {
@@ -112,7 +119,6 @@ router.get('/load/:cart', async function (req, res) {
 //Reduce Quantity
 router.post('/reduce/:sku/:cart', async function (req, res) {
 	try {
-		console.log('Reducing');
 		const sku = req.params.sku;
 		const cart = req.params.cart;
 		const currentCart = await Cart.findOne({ cartToken: cart });
@@ -147,7 +153,6 @@ router.post('/reduce/:sku/:cart', async function (req, res) {
 //Increase Quantity
 router.post('/increase/:sku/:cart', async function (req, res) {
 	try {
-		console.log('Increasing');
 		const sku = req.params.sku;
 		const cart = req.params.cart;
 		const currentCart = await Cart.findOne({ cartToken: cart });
@@ -182,7 +187,6 @@ router.post('/increase/:sku/:cart', async function (req, res) {
 //Remove From Cart
 router.post('/remove/:sku/:cart', async function (req, res) {
 	try {
-		console.log('Removing from cart');
 		const sku = req.params.sku;
 		const cart = req.params.cart;
 		const currentCart = await Cart.findOne({ cartToken: cart });

@@ -1,28 +1,26 @@
 .videoCutoutSection {
 	height: 80vh;
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: -1;
-	display: flex;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-}
-
-.overlay {
-	width: 100%;
-	height: 100%;
-	display: flex;
+	width: 100vw;
 	overflow: hidden;
-}
-
-.cutoutText {
-	background-image: url('../../../assets/dusk_panel1.jpg');
+	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	font-size: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: -1;
+	background-image: url('../../../assets/dusk_panel1.jpg');
+}
+
+.videoCutoutText {
+	transition: 0.5s ease-in-out;
+	width: 100%;
+	transform: scale(1) translateY(-50px);
 	margin: auto;
-	-webkit-text-fill-color: transparent;
-	-webkit-background-clip: text;
-	transition: 2s ease-in-out;
+}
+
+.growCutout {
+	transform: scale(2) translateY(-50px);
 }
 
 @media screen and (max-width: 1260px) {

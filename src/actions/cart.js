@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { CART_UPDATE, CART_FAIL, LOAD_CART } from './types';
+import { CART_UPDATE, CART_FAIL, LOAD_CART, ORDER_SUCCESS } from './types';
 
 export const addToCart = (sku, cart, quantity) => async (dispatch) => {
+	console.log('Adding to cart');
 	const config = {
 		headers: {
 			'Content-Type': 'application/json',
@@ -14,7 +15,6 @@ export const addToCart = (sku, cart, quantity) => async (dispatch) => {
 			config
 		);
 		const payload = res.data;
-		console.log('Payload received in cartjs action ', payload);
 		dispatch({
 			type: CART_UPDATE,
 			payload: payload,
@@ -37,7 +37,6 @@ export const loadCart = (cart) => async (dispatch) => {
 	try {
 		const res = await axios.get(`/api/cart/load/${cart}`, config);
 		const payload = res.data;
-		console.log('Loading cart, found this: ', payload);
 		dispatch({
 			type: LOAD_CART,
 			payload: payload,
@@ -113,4 +112,16 @@ export const removeFromCart = (sku, cart) => async (dispatch) => {
 			type: CART_FAIL,
 		});
 	}
+};
+
+export const orderSuccess = () => (dispatch) => {
+	dispatch({
+		type: ORDER_SUCCESS,
+		payload: {
+			contents: [],
+			totalQuantity: 0,
+			subTotal: 0,
+			totalPrice: 0,
+		},
+	});
 };
