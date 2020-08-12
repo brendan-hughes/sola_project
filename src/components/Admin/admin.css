@@ -9,17 +9,15 @@ Jonquil: #E6C229
 .adminSection {
 	height: 100vh;
 	display: flex;
-	padding-top: 100px;
+	padding-top: 127px;
 	justify-content: center;
 	align-items: center;
 }
 
 .ordersPanel {
-	height: 75vh;
-	width: 80vw;
+	width: 100vw;
 	z-index: 2;
 	position: absolute;
-	padding: 20px;
 }
 
 .ordersPanelNav {
@@ -43,7 +41,7 @@ Jonquil: #E6C229
 }
 
 .panelNavActive {
-	background: white;
+	background: #95b2b8;
 }
 
 .panelNavInactive {
@@ -56,25 +54,22 @@ Jonquil: #E6C229
 	margin: auto;
 }
 .panelNavHeaderActive {
-	color: #010620;
+	color: WHITE;
 }
 .panelNavHeaderInactive {
 	color: white;
 }
 
 .ordersPanelBody {
-	background: white;
+	background: #95b2b8;
 	width: 100%;
-	height: 95%;
+	height: 83vh;
 	flex-direction: column;
 	justify-content: start;
 	align-items: center;
 	border: 2px solid #010620;
 	border-top: none;
-
 	overflow: auto;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
 	padding: 25px;
 }
 
