@@ -28,3 +28,4 @@ export const EDIT_ORDER = 'EDIT_ORDER';
 export const EDIT_PRODUCT = 'EDIT_PRODUCT'; //Pass new details and it updates in MongoDB, returns up to date list of products
 export const ADD_PRODUCT = 'ADD_PRODUCT'; //Pass details to add to MongoDB, returns up to date list of products
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+export const ADMIN_LOGOUT = 'ADMIN_LOGOUT';

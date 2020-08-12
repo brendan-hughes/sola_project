@@ -38,6 +38,10 @@ Jonquil: #E6C229
 	padding: 10px;
 }
 
+.panelNavButton:hover {
+	cursor: pointer;
+}
+
 .panelNavActive {
 	background: white;
 }
@@ -62,13 +66,16 @@ Jonquil: #E6C229
 	background: white;
 	width: 100%;
 	height: 95%;
-	display: flex;
-	justify-content: space-around;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
 	border: 2px solid #010620;
 	border-top: none;
 
+	overflow: auto;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
+	padding: 25px;
 }
 
 .inventoryPanel {
@@ -79,6 +86,119 @@ Jonquil: #E6C229
 	z-index: 1;
 }
 
+.orderItemCard {
+	width: 70%;
+	height: 200px;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	margin: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 15px;
+	border: 2px solid #010620;
+	border-radius: 10px;
+}
+
+.orderCardRowContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.orderCardTopRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 15px;
+	position: relative;
+}
+
+.orderCardTextContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.orderCardText {
+	color: #3066be;
+	font-size: 12px;
+	margin: 0px;
+	margin-left: 10px;
+	padding: 0px;
+}
+
+.orderCardHeader,
+.orderCardUnderlineHeader {
+	color: #010620;
+	font-size: 12px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.orderCardUnderlineHeader {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.orderCardNotes {
+	border: 2px solid #010620;
+	padding: 10px;
+	border-radius: 10px;
+	width: 250px;
+	height: 50px;
+	resize: none;
+}
+
+.orderCardEditContainer {
+	width: 150px;
+	height: 40px;
+	margin-left: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	transition: 0.2s ease;
+}
+
+.orderCardEditContainer:hover {
+	opacity: 1;
+}
+
+.smallIconText {
+	color: #010620;
+	font-size: 10px;
+}
+.removeIconDiv,
+.saveIconDiv {
+	opacity: 0.3;
+	transition: 0.2s ease;
+}
+.removeIconDiv:hover,
+.saveIconDiv:hover {
+	opacity: 1;
+}
+
+.orderPanelIconDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.orderCardBottomRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.orderStatusDropdown {
+	font-size: 11px;
+	margin: 3px;
+	border: 1px solid #010620;
+	border-radius: 5px;
+}
+
 .loader {
 	border: 8px solid #f3f3f3;
 	border-top: 8px solid #3066be;
@@ -87,6 +207,21 @@ Jonquil: #E6C229
 	height: 60px;
 	animation: spin 2s linear infinite;
 	margin: auto;
+}
+
+.savedPopupDiv {
+	position: absolute;
+	right: 150px;
+	bottom: 60px;
+}
+.savedPopup {
+	color: #3066be;
+	font-size: 12px;
+}
+
+.centerStatusText {
+	text-align: center;
+	color: #010620;
 }
 
 @keyframes spin {

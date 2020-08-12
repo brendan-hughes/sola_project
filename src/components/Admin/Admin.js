@@ -69,15 +69,7 @@ class Admin extends Component {
 									</p>
 								</div>
 							</div>
-							{this.state.loading === true ? (
-								<div className="ordersPanelBody">
-									<div className="loader"></div>
-								</div>
-							) : this.state.togglePanel === 'Orders' ? (
-								<Orders />
-							) : (
-								<Inventory />
-							)}
+							{this.state.togglePanel === 'Orders' ? <Orders /> : <Inventory />}
 						</div>
 						<div className="inventoryPanel"></div>
 					</section>

@@ -9,6 +9,13 @@ const OrderSchema = new mongoose.Schema({
 	},
 	cart: Cart,
 	customer: Customer,
+	status: {
+		type: String,
+		default: 'Pending',
+	},
+	orderNotes: {
+		type: String,
+	},
 	date: {
 		type: Date,
 		default: Date.now,

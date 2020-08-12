@@ -9,6 +9,7 @@ import {
 	LOGOUT,
 } from './types';
 import { setAlert } from './alert';
+import { checkAdmin, adminLogOut } from './admin';
 import setAuthToken from '../utils/setAuthToken';
 
 //Load User
@@ -76,6 +77,7 @@ export const login = ({ email, password }) => async (dispatch) => {
 			payload: res.data,
 		});
 		dispatch(loadUser());
+		dispatch(checkAdmin());
 	} catch (error) {
 		// const errors = error.response.data.errors;
 		// if (errors) {
@@ -93,4 +95,5 @@ export const logout = () => (dispatch) => {
 	dispatch({
 		type: LOGOUT,
 	});
+	dispatch(adminLogOut());
 };
