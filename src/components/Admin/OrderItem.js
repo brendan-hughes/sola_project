@@ -218,7 +218,7 @@ class OrderItem extends Component {
 						<div className="orderCardCartDetails">
 							<h2 className="orderCardUnderlineHeader">Order Contents</h2>
 							{this.props.cartContents.map((item) => (
-								<div className="orderCardTextContainer">
+								<div key={item.product.name} className="orderCardTextContainer">
 									{' '}
 									<h2 className="orderCardHeader">{item.quantity} x</h2>{' '}
 									<p className="orderCardText">{item.product.name}</p>

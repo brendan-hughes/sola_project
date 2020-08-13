@@ -3,8 +3,12 @@ const router = express.Router();
 const User = require('../../models/user');
 const Product = require('../../models/product');
 const Order = require('../../models/order');
+const Photo = require('../../models/photo');
 const auth = require('../../middleware/auth');
+const fs = require('fs');
+const multer = require('multer');
 
+//Check If User Is Admin
 router.get('/', auth, async function (req, res) {
 	try {
 		const user = await User.findById(req.user.id);
@@ -68,6 +72,54 @@ router.post('/orders', auth, async function (req, res) {
 			);
 			res.json(order);
 		}
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.get('/inventory', auth, async function (req, res) {
+	try {
+		const inventory = await Product.find();
+		res.json(inventory);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.post('/inventory', auth, async function (req, res) {
+	try {
+		const { sku, brand, description, name, category, price, stock } = req.body;
+
+		try {
+			const product = await Product.findOneAndUpdate(
+				{ sku },
+				{
+					sku,
+					description,
+					brand,
+					name,
+					category,
+					price,
+					stock,
+				},
+				{ returnOriginal: false }
+			);
+		} catch (error) {
+			const newProduct = new Product({
+				sku,
+				description,
+				name,
+				brand,
+				category,
+				price,
+				stock,
+			});
+			await newProduct.save();
+		}
+
+		//Send back updated inventory
+		const inventory = await Product.find();
+		res.json(inventory);
 	} catch (error) {
 		console.log(error);
 	}

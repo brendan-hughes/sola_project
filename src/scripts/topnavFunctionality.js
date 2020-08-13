@@ -62,29 +62,38 @@ function hoverFunctionality(
 	window.addEventListener('mousemove', (e) => {
 		const navLink = document.querySelector(specifiedLink);
 		const detailsDiv = document.querySelector(specifiedDetails);
-		const detailsDivPlace = navLink.getBoundingClientRect();
+		let detailsDivPlace;
+		try {
+			detailsDivPlace = navLink.getBoundingClientRect();
+		} catch (error) {
+			console.log(error);
+		}
 		// console.log(e.clientY - detailsDivPlace.y);
 		// console.log(e.clientX - detailsDivPlace.x);
 
-		if (
-			open !== true &&
-			e.clientY - detailsDivPlace.y <= y1 &&
-			e.clientY - detailsDivPlace.y > y2 &&
-			e.clientX - detailsDivPlace.x <= x1 &&
-			e.clientX - detailsDivPlace.x > x2
-		) {
-			// console.log('OPENING');
-			open = true;
-			detailsDiv.style.display = 'flex';
-		} else if (
-			open === true &&
-			(e.clientY - detailsDivPlace.y > y3 ||
-				e.clientX - detailsDivPlace.x > x3 ||
-				e.clientX - detailsDivPlace.x < x4)
-		) {
-			// console.log('delete');
-			detailsDiv.style.display = 'none';
-			open = false;
+		try {
+			if (
+				open !== true &&
+				e.clientY - detailsDivPlace.y <= y1 &&
+				e.clientY - detailsDivPlace.y > y2 &&
+				e.clientX - detailsDivPlace.x <= x1 &&
+				e.clientX - detailsDivPlace.x > x2
+			) {
+				// console.log('OPENING');
+				open = true;
+				detailsDiv.style.display = 'flex';
+			} else if (
+				open === true &&
+				(e.clientY - detailsDivPlace.y > y3 ||
+					e.clientX - detailsDivPlace.x > x3 ||
+					e.clientX - detailsDivPlace.x < x4)
+			) {
+				// console.log('delete');
+				detailsDiv.style.display = 'none';
+				open = false;
+			}
+		} catch (error) {
+			console.log(error);
 		}
 	});
 }

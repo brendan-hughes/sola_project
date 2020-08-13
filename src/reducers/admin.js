@@ -3,10 +3,11 @@ import {
 	LOAD_ORDERS,
 	EDIT_ORDER,
 	ADMIN_LOGOUT,
+	LOAD_INVENTORY,
 } from '../actions/types';
 
 const initialState = {
-	isAdmin: false,
+	isAdmin: true,
 	orders: [],
 	inventory: [],
 };
@@ -24,6 +25,11 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				orders: payload,
+			};
+		case LOAD_INVENTORY:
+			return {
+				...state,
+				inventory: payload,
 			};
 		case ADMIN_LOGOUT:
 			return {
