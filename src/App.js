@@ -21,6 +21,14 @@ import { checkAdmin } from './actions/admin';
 import setAuthToken from './utils/setAuthToken';
 import { loadCart } from './actions/cart';
 import { loadNav } from './actions/nav';
+import TagManager from 'react-gtm-module';
+
+const tagManagerArgs = {
+	gtmId: 'GTM-P3MXV28',
+	dataLayer: {},
+};
+
+TagManager.initialize(tagManagerArgs);
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);

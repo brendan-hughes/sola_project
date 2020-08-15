@@ -7,8 +7,17 @@ import { connect } from 'react-redux';
 import { loadCart } from '../../actions/cart';
 import './cart.css';
 import { loadStripe } from 'stripe';
+import TagManager from 'react-gtm-module';
 
 class Cart extends Component {
+	componentDidMount() {
+		TagManager.dataLayer({
+			dataLayer: {
+				page: 'cart',
+			},
+		});
+	}
+
 	render() {
 		return (
 			<Fragment>

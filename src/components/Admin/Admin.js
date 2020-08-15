@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { loadOrders } from '../../actions/admin';
 import './admin.css';
 
+import TagManager from 'react-gtm-module';
+
 class Admin extends Component {
 	constructor(props) {
 		super(props);
@@ -13,6 +15,11 @@ class Admin extends Component {
 			togglePanel: 'Orders',
 			loading: false,
 		};
+		TagManager.dataLayer({
+			dataLayer: {
+				page: 'admin',
+			},
+		});
 	}
 
 	render() {

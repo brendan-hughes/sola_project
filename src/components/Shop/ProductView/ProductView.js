@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../../actions/cart';
 import { loadProduct } from '../../../actions/product';
 import { v4 as uuid } from 'uuid';
+import TagManager from 'react-gtm-module';
 
 const productAddToCart = (e, props, quantity) => {
 	if (!localStorage.getItem('cartToken')) {
@@ -32,7 +33,17 @@ class ProductView extends Component {
 
 	componentDidMount() {
 		navFunctionality();
-		this.props.loadProduct(window.location.pathname);
+		this.props.loadProduct(window.location.pathname).then(() => {
+			TagManager.dataLayer({
+				dataLayer: {
+					page: 'product',
+					productName: this.props.productTitle,
+					productCategory: this.props.productCategory,
+					shopCategory: this.props.productCategory,
+					productBrand: this.props.productBrand,
+				},
+			});
+		});
 	}
 
 	render() {

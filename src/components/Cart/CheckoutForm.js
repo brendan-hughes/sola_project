@@ -10,6 +10,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import TagManager from 'react-gtm-module';
 
 const stripePromise = loadStripe(
 	'pk_test_51HE0nBAShFn2PFDA4aOcHt1Lf843Vt8MXA5AkFmkfCB0kxBCCh1uHIm6IU3SnOZs5rIOIMroxXpLjp4UwkERezfn00QCAPsJXq'
@@ -86,7 +87,26 @@ const FormBody = (props) => {
 	return (
 		<div className="cartPaymentDiv">
 			<h2 className="paymentDivHeader">Shipping Details</h2>
-			<form className="paymentDetailsForm" onSubmit={(e) => handleSubmit(e)}>
+			<form
+				className="paymentDetailsForm"
+				onSubmit={(e) => {
+					try {
+						TagManager.dataLayer({
+							dataLayer: {
+								ecommerceTransaction: {
+									cartID: localStorage.getItem('cartToken'),
+									cartQuantity: props.cartQuantity,
+									cartSubtotal: props.cartSubtotal,
+									cartTotal: props.cartTotal,
+								},
+							},
+						});
+					} catch (error) {
+						console.log(error);
+					}
+					handleSubmit(e);
+				}}
+			>
 				<div className="paymentFormSection">
 					<p className="paymentFormLabel">Name on Card</p>
 					<input

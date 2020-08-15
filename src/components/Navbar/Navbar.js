@@ -10,6 +10,7 @@ import { loadCart } from '../../actions/cart';
 import { loadNav } from '../../actions/nav';
 import './navbar.css';
 import topnavFunctionality from '../../scripts/topnavFunctionality';
+import TagManager from 'react-gtm-module';
 
 const activeStyle = { color: '#7d94ba', textDecoration: 'none' };
 

@@ -5,6 +5,7 @@ import './categoryview.css';
 import navFunctionality from '../../../scripts/navFunctionality';
 import { connect } from 'react-redux';
 import { loadShop } from '../../../actions/shop';
+import TagManager from 'react-gtm-module';
 
 class CategoryView extends Component {
 	constructor(props) {
@@ -16,12 +17,26 @@ class CategoryView extends Component {
 
 	componentDidMount() {
 		navFunctionality();
-		this.props.loadShop(window.location.pathname);
+		this.props.loadShop(window.location.pathname).then(() => {
+			TagManager.dataLayer({
+				dataLayer: {
+					page: 'shop',
+					shopCategory: this.props.category,
+				},
+			});
+		});
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevState.currentcat !== window.location.pathname) {
-			this.props.loadShop(window.location.pathname);
+			this.props.loadShop(window.location.pathname).then(() => {
+				TagManager.dataLayer({
+					dataLayer: {
+						page: 'shop',
+						shopCategory: this.props.category,
+					},
+				});
+			});
 			this.setState({ currentcat: window.location.pathname });
 		}
 	}
