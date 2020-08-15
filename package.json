@@ -2,7 +2,7 @@
 	"name": "sola_project",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://brendan-hughes.github.io/sola_project/",
+	"homepage": "https://brendan-hughes.github.io/",
 	"dependencies": {
 		"@glidejs/glide": "^3.4.1",
 		"@stripe/react-stripe-js": "^1.1.2",
