@@ -2,6 +2,7 @@
 	"name": "sola_project",
 	"version": "0.1.0",
 	"private": true,
+	"homepage": "https://brendan-hughes.github.io/sola_project/",
 	"dependencies": {
 		"@glidejs/glide": "^3.4.1",
 		"@stripe/react-stripe-js": "^1.1.2",
@@ -50,7 +51,9 @@
 		"startserver": "node server",
 		"server": "nodemon server",
 		"client": "npm start",
-		"dev": "concurrently \"npm run server\" \"npm run client\""
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"predeploy": "yarn build",
+		"deploy": "gh-pages -d build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
