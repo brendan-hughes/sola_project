@@ -7,7 +7,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 import { loadCart } from '../../actions/cart';
-import { loadNav } from '../../actions/nav';
+import {
+	loadNav,
+	searchProducts,
+	removeSearchProducts,
+} from '../../actions/nav';
 import './navbar.css';
 import topnavFunctionality from '../../scripts/topnavFunctionality';
 import TagManager from 'react-gtm-module';
@@ -15,6 +19,13 @@ import TagManager from 'react-gtm-module';
 const activeStyle = { color: '#7d94ba', textDecoration: 'none' };
 
 class Navbar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			searchQuery: '',
+			searchLoading: false,
+		};
+	}
 	componentDidMount() {
 		topnavFunctionality();
 	}
@@ -90,17 +101,64 @@ class Navbar extends Component {
 							</Link>
 						</div>
 					</div>
-
-					<div className="searchBar navIcon">
-						<input
-							className="searchBarInput"
-							type="text"
-							placeholder="Search Sola"
-						></input>
-						<div className="searchIconDiv">
-							<IconContext.Provider value={{ color: '#3066be', size: '50px' }}>
-								<FiSearch className="searchIcon" />
-							</IconContext.Provider>
+					<div className="searchBarContainer">
+						<div className="searchBar navIcon">
+							<input
+								className="searchBarInput"
+								type="text"
+								placeholder="Search Sola"
+								onBlur={(e) => {
+									const displaySearchBar = document.querySelector(
+										'.displaySearchBar'
+									);
+									setTimeout(() => {
+										displaySearchBar.classList.remove('activeSearchBar');
+										this.props.removeSearchProducts();
+									}, 1000);
+								}}
+								onChange={(e) => {
+									const displaySearchBar = document.querySelector(
+										'.displaySearchBar'
+									);
+									displaySearchBar.classList.add('activeSearchBar');
+									this.setState({
+										searchLoading: true,
+									});
+									this.props.searchProducts(e.target.value).then(() => {
+										this.setState({
+											searchLoading: false,
+										});
+									});
+								}}
+							></input>
+							<div className="searchIconDiv">
+								<IconContext.Provider
+									value={{ color: '#3066be', size: '50px' }}
+								>
+									<FiSearch className="searchIcon" />
+								</IconContext.Provider>
+							</div>
+						</div>
+						<div className="displaySearchBar">
+							{this.state.searchLoading ? (
+								<div className="searchLoading"></div>
+							) : this.props.searchResults !== undefined ? (
+								this.props.searchResults.map((result) => {
+									return (
+										<Link to={`/product/${result.sku}`}>
+											<div className="searchResultCard">
+												<div className="searchResultCardLeft">
+													<p className="searchResultName">{result.name}</p>
+													<p className="searchResultBrand">{result.brand}</p>
+												</div>
+												<div className="searchResultCardRight">
+													<p className="searchResultPrice">${result.price}</p>
+												</div>
+											</div>
+										</Link>
+									);
+								})
+							) : null}
 						</div>
 					</div>
 					<div className="cartDiv navIcon">
@@ -113,6 +171,7 @@ class Navbar extends Component {
 							</IconContext.Provider>
 						</Link>
 					</div>
+
 					{this.props.isAdmin ? (
 						<NavLink
 							activeStyle={activeStyle}
@@ -160,6 +219,13 @@ const mapStateToProps = (state) => ({
 	categoriesList: state.nav.categoriesList,
 	brandList: state.nav.brandList,
 	isAdmin: state.admin.isAdmin,
+	searchResults: state.nav.searchResults,
 });
 
-export default connect(mapStateToProps, { logout, loadCart, loadNav })(Navbar);
+export default connect(mapStateToProps, {
+	logout,
+	loadCart,
+	loadNav,
+	searchProducts,
+	removeSearchProducts,
+})(Navbar);

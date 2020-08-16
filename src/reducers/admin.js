@@ -7,7 +7,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-	isAdmin: true,
+	isAdmin: false,
 	orders: [],
 	inventory: [],
 };

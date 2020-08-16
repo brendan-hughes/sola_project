@@ -228,6 +228,13 @@ Jonquil: #E6C229 */
 	margin-left: 100px;
 }
 
+.searchBarContainer {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	position: relative;
+}
+
 .searchBar {
 	display: flex;
 	cursor: pointer;
@@ -274,6 +281,102 @@ Jonquil: #E6C229 */
 	background: rgba(20, 20, 20, 0.05);
 }
 
+.displaySearchBar {
+	width: 250px;
+	height: 0px;
+	background: transparent;
+	display: none;
+	transition: 0.2s ease;
+	position: absolute;
+	top: 65px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	overflow: auto;
+	padding-top: 120px;
+	padding-bottom: 30px;
+}
+
+.activeSearchBar {
+	background: white;
+	width: 250px;
+	height: 220px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	position: absolute;
+	top: 70px;
+	border-left: 2px solid #3066be;
+	border-right: 2px solid #3066be;
+	border-bottom: 2px solid #3066be;
+}
+
+.searchLoading {
+	border: 8px solid #f3f3f3;
+	border-top: 8px solid #3066be;
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	animation: spin 2s linear infinite;
+	margin: auto;
+}
+
+.searchResultCard {
+	color: black;
+	width: 200px;
+	margin-bottom: 15px;
+	padding-top: 10px;
+	padding-left: 10px;
+	display: flex;
+	flex-direction: row;
+	border: 2px solid #3066be;
+	border-radius: 10px;
+	background: linear-gradient(
+		to right,
+		rgba(237, 237, 237, 1) 0%,
+		rgba(246, 246, 246, 1) 34%,
+		rgba(255, 255, 255, 1) 100%
+	);
+}
+
+.searchResultCardLeft {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.searchResultCardRight {
+	margin-left: auto;
+	margin-right: 20px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.searchResultHeader {
+	color: #3f454e9f;
+}
+
+.searchResultName {
+	color: black;
+	margin: 0px;
+	font-size: 14px;
+}
+
+.searchResultBrand {
+	color: #3066be;
+	font-size: 12px;
+}
+
+.searchResultPrice {
+	color: black;
+	font-size: 12px;
+}
+
+.noSearchResults {
+	font-size: 10px;
+	color: black;
+}
+
 @media screen and (max-width: 1260px) {
 	.navLink,
 	.cartIcon {
@@ -283,4 +386,13 @@ Jonquil: #E6C229 */
 }
 
 @media screen and (max-width: 900px) {
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

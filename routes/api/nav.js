@@ -22,4 +22,21 @@ router.get('/load', async function (req, res) {
 	}
 });
 
+router.post('/product', async function (req, res) {
+	try {
+		const query = req.body.query.toLowerCase();
+		const products = await Product.find();
+		const returnList = [];
+		products.forEach((product) => {
+			const name = product.name.toLowerCase();
+			if (name.includes(query)) {
+				returnList.push(product);
+			}
+		});
+		res.send({ returnList });
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 module.exports = router;

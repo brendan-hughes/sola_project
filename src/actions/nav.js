@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOAD_NAV, NAV_FAIL } from './types';
+import { LOAD_NAV, NAV_FAIL, LOAD_SEARCH, REMOVE_SEARCH } from './types';
 
 export const loadNav = () => async (dispatch) => {
 	const config = {
@@ -23,4 +23,25 @@ export const loadNav = () => async (dispatch) => {
 			type: NAV_FAIL,
 		});
 	}
+};
+
+export const searchProducts = (query) => async (dispatch) => {
+	try {
+		const response = await axios.post('/api/nav/product', { query });
+		const payload = {
+			searchResults: response.data,
+		};
+		dispatch({
+			type: LOAD_SEARCH,
+			payload: payload,
+		});
+	} catch (error) {}
+};
+
+export const removeSearchProducts = () => async (dispatch) => {
+	try {
+		dispatch({
+			type: REMOVE_SEARCH,
+		});
+	} catch (error) {}
 };
