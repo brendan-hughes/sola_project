@@ -1,4 +1,6 @@
 import React, { Fragment, Component } from 'react';
+import { GoogleMap } from 'react-google-maps';
+import Map from './Map';
 import './findstore.css';
 
 class FindStore extends Component {
@@ -6,28 +8,8 @@ class FindStore extends Component {
 		return (
 			<Fragment>
 				<section className="findStoreSection">
-					<div className="findStoreMapArea"></div>
-					<div className="findStoreSearchArea">
-						<h1 className="findStoreHeader">
-							Find <span className="colorize">Sola</span> in your area:
-						</h1>
-						<form className="findStoreForm">
-							<input
-								type="text"
-								placeholder="Country"
-								className="findStoreCountryInput"
-							></input>
-							<div className="findStoreSearchLine">
-								<input
-									type="text"
-									placeholder="Postal Code"
-									className="findStorePostalInput"
-								></input>
-								<button className="findStoreSearchButton">SEARCH</button>
-							</div>
-						</form>
-						<div className="findStoreStylizedDiv"></div>
-					</div>
+					<Map />
+
 					<div className="findStoreInfoModal">
 						<p className="findStoreModalSubHead">FOR NEW CUSTOMERS</p>
 						<h2 className="findStoreModalHead">Join the Sola Network</h2>

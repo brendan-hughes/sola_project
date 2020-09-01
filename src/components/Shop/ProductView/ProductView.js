@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaStore } from 'react-icons/fa';
 import { IoMdArrowRoundBack } from 'react-icons/io';
@@ -12,7 +13,6 @@ import { loadProduct } from '../../../actions/product';
 import { v4 as uuid } from 'uuid';
 import TagManager from 'react-gtm-module';
 import firebase from 'firebase/app';
-import Axios from 'axios';
 
 const productAddToCart = (e, props, quantity) => {
 	if (!localStorage.getItem('cartToken')) {
@@ -34,7 +34,6 @@ class ProductView extends Component {
 			quantityMeasure: 1,
 			imgURL: '',
 			imgLoading: true,
-			sku: this.props.productSku,
 		};
 	}
 
@@ -55,23 +54,24 @@ class ProductView extends Component {
 			firebase.initializeApp(firebaseConfig);
 		}
 		var storage = firebase.storage();
-		try {
-			const urlArray = window.location.href.split('/');
-			const sku = urlArray[urlArray.length - 1];
-			//Get name of image from mongoDB
-			storage
-				.ref(`productImages/${sku}/solar_panel3.png`)
-				.getDownloadURL()
-				.then((url) => {
-					console.log('success');
-					console.log(url);
-					this.setState({ img: url, imgLoading: false });
-				});
-		} catch (error) {
-			console.log(error);
-		}
 
 		this.props.loadProduct(window.location.pathname).then(() => {
+			try {
+				const urlArray = window.location.href.split('/');
+				const sku = urlArray[urlArray.length - 1];
+				const productImage = this.props.productImages[0];
+				storage
+					.ref(`productImages/${sku}/${productImage}`)
+					.getDownloadURL()
+					.then((url) => {
+						console.log('success');
+						console.log(url);
+						this.setState({ img: url, imgLoading: false });
+					});
+			} catch (error) {
+				console.log(error);
+			}
+
 			TagManager.dataLayer({
 				dataLayer: {
 					page: 'product',
@@ -104,7 +104,9 @@ class ProductView extends Component {
 					<div className="productViewImageDiv">
 						<div className="productViewMainImageDiv">
 							{this.state.imgLoading ? (
-								<div>?</div>
+								<div className="productImageLoader">
+									<div className="loader"></div>
+								</div>
 							) : (
 								<img
 									alt="Product View"
@@ -178,12 +180,12 @@ class ProductView extends Component {
 								<AiOutlineShoppingCart className="productViewAddToCartIcon" />
 							</IconContext.Provider>
 						</button>
-						<button className="productViewFindInStore">
+						<Link className="productViewFindInStore" to={`/findstore`}>
 							<p className="productViewFindInStoreText"></p>Find In Store{' '}
 							<IconContext.Provider value={{ size: '20px' }}>
 								<FaStore className="productViewFindInStoreIcon" />
 							</IconContext.Provider>
-						</button>
+						</Link>
 					</div>
 				</section>
 			</Fragment>
@@ -198,6 +200,7 @@ const mapStateToProps = (state) => ({
 	productBrand: state.product.productDetails.brand,
 	productPrice: state.product.productDetails.price,
 	productDescription: state.product.productDetails.description,
+	productImages: state.product.productDetails.images,
 });
 
 export default connect(mapStateToProps, { addToCart, loadProduct })(

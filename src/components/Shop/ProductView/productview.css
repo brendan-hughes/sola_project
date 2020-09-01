@@ -130,6 +130,7 @@ Jonquil: #E6C229
 .productViewMainImage {
 	height: 500px;
 	margin: auto;
+	padding: 50px;
 }
 
 .productViewSubImageCarousel {
@@ -189,6 +190,12 @@ Jonquil: #E6C229
 .productViewAddToCart:hover,
 .productViewFindInStore:hover {
 	transform: scale(1.1);
+	text-decoration: none;
+}
+
+.productViewFindInStore:hover {
+	transform: scale(1.1);
+	color: #3066be;
 }
 
 .productViewQuantityButtonPositive:hover,
@@ -197,4 +204,10 @@ Jonquil: #E6C229
 	color: #3066be;
 	font-weight: 900;
 	background: rgba(0, 0, 0, 0.1);
+}
+
+.productImageLoader {
+	height: 500px;
+	margin: auto;
+	display: flex;
 }

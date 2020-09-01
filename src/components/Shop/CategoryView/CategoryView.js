@@ -55,6 +55,7 @@ class CategoryView extends Component {
 								productDescription={product.description}
 								productPrice={product.price}
 								productSku={product.sku}
+								productImage={product.images[0]}
 							/>
 						))}
 					</div>

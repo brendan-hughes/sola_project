@@ -14,28 +14,40 @@ Jonquil: #E6C229
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	z-index: -5;
-	top: 110px;
-	background-image: url('../../assets/googlemaps.png');
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	padding-top: 20px;
+	padding-bottom: 30vh;
 }
 
 .findStoreSearchArea {
 	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-	height: 400px;
+	height: 350px;
 	width: 400px;
 	position: absolute;
 	top: 200px;
 	left: 50px;
 	border-radius: 20px;
-	-webkit-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
-	-moz-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
-	box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
+	-webkit-box-shadow: 0 6px 6px -6px rgb(27, 27, 27);
+	-moz-box-shadow: 0 6px 6px -6px rgba(27, 27, 27, 1);
+	box-shadow: 0 6px 6px -6px rgba(27, 27, 27, 1);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	z-index: 1;
+}
+.locationSearchPopover {
+	z-index: 2;
+	border-radius: 10px;
+	border: 2px solid rgba(90, 90, 90, 0.5);
+	border-top: none;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	padding: 5px;
+	transform: translateY(-10px);
+}
+
+.locationSearchOption {
+	color: #010620;
+	list-style-type: none;
 }
 
 .findStoreHeader {
@@ -57,6 +69,15 @@ Jonquil: #E6C229
 	border-radius: 10px;
 	border: 2px solid rgba(90, 90, 90, 0.5);
 	padding: 10px;
+	width: 100%;
+}
+
+.errrror {
+	margin: auto;
+	color: black;
+	position: absolute;
+	top: 100px;
+	left: 500px;
 }
 
 .findStoreSearchLine {
@@ -69,7 +90,6 @@ Jonquil: #E6C229
 	width: 100%;
 	border-radius: 10px;
 	border: 2px solid #3066be;
-	margin-left: 30px;
 	background: white;
 	color: #3066be;
 }
@@ -89,9 +109,9 @@ Jonquil: #E6C229
 	position: absolute;
 	top: 650px;
 	left: 50px;
-	-webkit-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
-	-moz-box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
-	box-shadow: 0 6px 6px -6px rgba(97, 97, 97, 1);
+	-webkit-box-shadow: 0 6px 6px -6px rgb(27, 27, 27);
+	-moz-box-shadow: 0 6px 6px -6px rgba(27, 27, 27, 1);
+	box-shadow: 0 6px 6px -6px rgba(27, 27, 27, 1);
 	padding: 20px;
 }
 
@@ -115,4 +135,17 @@ Jonquil: #E6C229
 .findStoreModalExit:hover {
 	transform: scale(1.1);
 	cursor: pointer;
+}
+
+.mapName {
+	color: #3066be;
+	font-size: 14px;
+	font-weight: bold;
+	margin: auto;
+}
+
+.mapDescription {
+	color: black;
+	font-size: 12px;
+	padding-top: 5px;
 }
