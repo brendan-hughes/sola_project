@@ -5,7 +5,7 @@ import './inventory.css';
 import { IconContext } from 'react-icons';
 import { FaSave } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillPlusCircle } from 'react-icons/ai';
-import { saveInventory, saveImages } from '../../actions/admin';
+import { saveInventory, saveImages, removeImage } from '../../actions/admin';
 import { loadNav } from '../../actions/nav';
 
 class InventoryItem extends Component {
@@ -132,36 +132,57 @@ class InventoryItem extends Component {
 								<div
 									className="orderPanelIconDiv removeIconDiv"
 									onClick={() => {
-										this.props.saveImages(this.state);
-										// if (
-										// 	this.state.name !== this.props.name ||
-										// 	this.state.sku !== this.props.sku ||
-										// 	this.state.brand !== this.props.brand ||
-										// 	this.state.category !== this.props.category ||
-										// 	this.state.price !== this.props.price ||
-										// 	this.state.stock !== this.props.stock ||
-										// 	this.state.description !== this.props.description ||
-										// 	this.state.addedImages.length > 0
-										// ) {
-										// 	this.props
-										// 		.saveInventory(this.state)
-										// 		.then(() => this.props.loadNav());
-										// 	this.setState({
-										// 		showSaved: true,
-										// 		showNoChanges: false,
-										// 	});
-										// 	setTimeout(() => {
-										// 		this.setState({ showSaved: false });
-										// 	}, 3000);
-										// } else {
-										// 	this.setState({
-										// 		showSaved: false,
-										// 		showNoChanges: true,
-										// 	});
-										// 	setTimeout(() => {
-										// 		this.setState({ showNoChanges: false });
-										// 	}, 3000);
-										// }
+										if (
+											this.state.name !== this.props.name ||
+											this.state.sku !== this.props.sku ||
+											this.state.brand !== this.props.brand ||
+											this.state.category !== this.props.category ||
+											this.state.price !== this.props.price ||
+											this.state.stock !== this.props.stock ||
+											this.state.description !== this.props.description ||
+											this.state.addedImages.length > 0
+										) {
+											this.props.saveImages(this.state);
+											this.props
+												.saveInventory(this.state)
+												.then(() => this.props.loadNav());
+											const newImageList = [];
+											if (
+												this.state.images.length > 0 ||
+												this.state.images !== null ||
+												this.state.addedImages.length > 0 ||
+												this.state.addedImages !== null
+											) {
+												this.state.images.forEach((image) => {
+													newImageList.push(image);
+													console.log('This is an image from state' + image);
+												});
+												this.state.addedImages.forEach((image) => {
+													newImageList.push(image);
+													console.log(
+														'This is an added image from state' + image
+													);
+												});
+											}
+
+											this.setState({
+												showSaved: true,
+												showNoChanges: false,
+												addedImages: [],
+												images: newImageList,
+											});
+											setTimeout(() => {
+												this.setState({ showSaved: false });
+											}, 3000);
+										} else {
+											this.setState({
+												showSaved: false,
+												showNoChanges: true,
+											});
+											setTimeout(() => {
+												this.setState({ showNoChanges: false });
+											}, 3000);
+										}
 									}}
 								>
 									<FaSave className="removeIcon" />
@@ -235,22 +256,43 @@ class InventoryItem extends Component {
 											}
 									  })
 									: null}
-								{this.props.images !== null
-									? this.props.images.map((image) => (
-											<div
-												key={this.props.sku + image.imagedetails.name}
-												className="inventoryItemImageLine addNewImageTextDiv addedImageTextDiv"
-											>
-												<IconContext.Provider
-													value={{ color: '#3066be', size: '12px' }}
+								{this.props.images.length > 0 || this.props.images !== null
+									? this.props.images.map((image) =>
+											image !== '' ? (
+												<div
+													key={this.props.sku + image}
+													className="inventoryItemImageLine addNewImageTextDiv addedImageTextDiv"
 												>
-													<AiFillCloseCircle className="removeNewImageIcon" />
-												</IconContext.Provider>
-												<p className="inventoryCardText inventoryCardImageTitleText addImageText">
-													{image.imagedetails.name}
-												</p>
-											</div>
-									  ))
+													<IconContext.Provider
+														value={{ color: '#3066be', size: '12px' }}
+													>
+														<AiFillCloseCircle
+															className="removeNewImageIcon"
+															onClick={(e) => {
+																this.props.removeImage(this.state, image);
+																const imageList = [
+																	...this.state.images,
+																	...this.state.addedImages,
+																];
+																let newList = [];
+																imageList.forEach((imageName) => {
+																	if (imageName !== image) {
+																		newList.push(imageName);
+																	}
+																});
+																this.setState({
+																	...this.state,
+																	images: [...newList],
+																});
+															}}
+														/>
+													</IconContext.Provider>
+													<p className="inventoryCardText inventoryCardImageTitleText addImageText">
+														{image}
+													</p>
+												</div>
+											) : null
+									  )
 									: null}
 							</div>
 						</div>
@@ -280,6 +322,9 @@ class InventoryItem extends Component {
 
 const mapStateToProps = (state) => ({});
 
-export default connect(mapStateToProps, { saveInventory, loadNav, saveImages })(
-	InventoryItem
-);
+export default connect(mapStateToProps, {
+	saveInventory,
+	loadNav,
+	saveImages,
+	removeImage,
+})(InventoryItem);

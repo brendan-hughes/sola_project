@@ -11,6 +11,8 @@ import { addToCart } from '../../../actions/cart';
 import { loadProduct } from '../../../actions/product';
 import { v4 as uuid } from 'uuid';
 import TagManager from 'react-gtm-module';
+import firebase from 'firebase/app';
+import Axios from 'axios';
 
 const productAddToCart = (e, props, quantity) => {
 	if (!localStorage.getItem('cartToken')) {
@@ -28,11 +30,47 @@ const productAddToCart = (e, props, quantity) => {
 class ProductView extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { quantityMeasure: 1 };
+		this.state = {
+			quantityMeasure: 1,
+			imgURL: '',
+			imgLoading: true,
+			sku: this.props.productSku,
+		};
 	}
 
 	componentDidMount() {
 		navFunctionality();
+
+		if (!firebase.apps.length) {
+			const firebaseConfig = {
+				apiKey: 'AIzaSyA_yN_Qvt0JCCAKFjwoSHoa1V8G4fIq8gM',
+				authDomain: 'sola-b8331.firebaseapp.com',
+				databaseURL: 'https://sola-b8331.firebaseio.com',
+				projectId: 'sola-b8331',
+				storageBucket: 'sola-b8331.appspot.com',
+				messagingSenderId: '304188953924',
+				appId: '1:304188953924:web:0ac558f29a331c00f5f311',
+				measurementId: 'G-SWHNR7V607',
+			};
+			firebase.initializeApp(firebaseConfig);
+		}
+		var storage = firebase.storage();
+		try {
+			const urlArray = window.location.href.split('/');
+			const sku = urlArray[urlArray.length - 1];
+			//Get name of image from mongoDB
+			storage
+				.ref(`productImages/${sku}/solar_panel3.png`)
+				.getDownloadURL()
+				.then((url) => {
+					console.log('success');
+					console.log(url);
+					this.setState({ img: url, imgLoading: false });
+				});
+		} catch (error) {
+			console.log(error);
+		}
+
 		this.props.loadProduct(window.location.pathname).then(() => {
 			TagManager.dataLayer({
 				dataLayer: {
@@ -65,29 +103,21 @@ class ProductView extends Component {
 
 					<div className="productViewImageDiv">
 						<div className="productViewMainImageDiv">
-							<img
-								alt="Product View"
-								className="productViewMainImage"
-								src={require('../../../assets/solar_panel3.png')}
-							></img>
+							{this.state.imgLoading ? (
+								<div>?</div>
+							) : (
+								<img
+									alt="Product View"
+									className="productViewMainImage"
+									src={this.state.img}
+								></img>
+							)}
 						</div>
 						<div className="productViewSubImageCarousel">
-							<img
-								alt="Alternate Product View"
-								className="productViewSubImage"
-							></img>
-							<img
-								alt="Alternate Product View"
-								className="productViewSubImage"
-							></img>
-							<img
-								alt="Alternate Product View"
-								className="productViewSubImage"
-							></img>
-							<img
-								alt="Alternate Product View"
-								className="productViewSubImage"
-							></img>
+							<img className="productViewSubImage"></img>
+							<img className="productViewSubImage"></img>
+							<img className="productViewSubImage"></img>
+							<img className="productViewSubImage"></img>
 						</div>
 					</div>
 					<div className="productViewDetailsDiv">

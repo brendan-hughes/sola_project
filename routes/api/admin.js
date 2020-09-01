@@ -125,4 +125,56 @@ router.post('/inventory', auth, async function (req, res) {
 	}
 });
 
+router.post('/imagesave', auth, async function (req, res) {
+	try {
+		const { sku, images } = req.body;
+
+		try {
+			const product = await Product.findOneAndUpdate(
+				{ sku },
+				{
+					images,
+				},
+				{ returnOriginal: false }
+			);
+		} catch (error) {
+			console.log(error);
+		}
+
+		//Send back updated inventory
+		const inventory = await Product.find();
+		res.json(inventory);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.post('/imageremove', auth, async function (req, res) {
+	try {
+		const { sku, image } = req.body;
+		console.log('Images in API:' + image);
+
+		try {
+			const product = await Product.findOne({ sku });
+			const currentImages = product.images;
+			let newImageList = [];
+			currentImages.forEach((img) => {
+				if (img !== image) {
+					newImageList.push(img);
+				}
+			});
+			console.log(newImageList);
+			await Product.findOneAndUpdate({ sku }, { images: newImageList });
+		} catch (error) {
+			console.log(error);
+		}
+
+		//Send back updated inventory
+		const inventory = await Product.find();
+		res.json(inventory);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 module.exports = router;

@@ -11,6 +11,9 @@ import {
 
 import axios from 'axios';
 
+import firebase from 'firebase/app';
+import firebaseStorage from 'firebase/storage';
+
 export const checkAdmin = () => async (dispatch) => {
 	try {
 		const res = await axios.get('/api/admin');
@@ -103,7 +106,6 @@ export const loadInventory = () => async (dispatch) => {
 };
 
 export const saveInventory = (state) => async (dispatch) => {
-	// const images = [...state.images, ...state.addedImages];
 	try {
 		const body = {
 			sku: state.sku,
@@ -113,9 +115,8 @@ export const saveInventory = (state) => async (dispatch) => {
 			category: state.category,
 			price: state.price,
 			stock: state.stock,
-			// images: state.images,
-			// addedImages: state.addedImages,
 		};
+
 		const res = await axios.post('/api/admin/inventory', body);
 
 		dispatch({
@@ -127,4 +128,98 @@ export const saveInventory = (state) => async (dispatch) => {
 	}
 };
 
-export const saveImages = (state) => async (dispatch) => {};
+export const saveImages = (state) => async (dispatch) => {
+	if (!firebase.apps.length) {
+		const firebaseConfig = {
+			apiKey: 'AIzaSyA_yN_Qvt0JCCAKFjwoSHoa1V8G4fIq8gM',
+			authDomain: 'sola-b8331.firebaseapp.com',
+			databaseURL: 'https://sola-b8331.firebaseio.com',
+			projectId: 'sola-b8331',
+			storageBucket: 'sola-b8331.appspot.com',
+			messagingSenderId: '304188953924',
+			appId: '1:304188953924:web:0ac558f29a331c00f5f311',
+			measurementId: 'G-SWHNR7V607',
+		};
+		firebase.initializeApp(firebaseConfig);
+	}
+
+	const storage = firebase.storage();
+	let imageList = [...state.images];
+	const addedImages = state.addedImages;
+
+	addedImages.forEach((image) => {
+		imageList.push(image.imagedetails.name);
+
+		const upload = storage
+			.ref(`productImages/${state.sku}/${image.imagedetails.name}`)
+			.put(image.imagedetails);
+		upload.on(
+			'state_changed',
+			(snapshot) => {
+				//Progress Function
+			},
+			(error) => {
+				//Error Function
+				console.group(error);
+			},
+			() => {
+				//Complete Function
+			}
+		);
+	});
+	const body = {
+		sku: state.sku,
+		images: imageList,
+	};
+	const res = await axios.post('/api/admin/imagesave', body);
+	dispatch({
+		type: LOAD_INVENTORY,
+		payload: res.data,
+	});
+};
+
+export const removeImage = (state, image) => async (dispatch) => {
+	//Remove from firebase
+	if (!firebase.apps.length) {
+		const firebaseConfig = {
+			apiKey: 'AIzaSyA_yN_Qvt0JCCAKFjwoSHoa1V8G4fIq8gM',
+			authDomain: 'sola-b8331.firebaseapp.com',
+			databaseURL: 'https://sola-b8331.firebaseio.com',
+			projectId: 'sola-b8331',
+			storageBucket: 'sola-b8331.appspot.com',
+			messagingSenderId: '304188953924',
+			appId: '1:304188953924:web:0ac558f29a331c00f5f311',
+			measurementId: 'G-SWHNR7V607',
+		};
+		firebase.initializeApp(firebaseConfig);
+	}
+
+	const storage = firebase.storage();
+	const deleteReference = storage.ref(`productImages/${state.sku}/${image}`);
+
+	deleteReference
+		.delete()
+		.then()
+		.catch((error) => {
+			console.log(error);
+			console.log(deleteReference);
+			console.log(`productImages/${state.sku}/${image}`);
+		});
+
+	//Remove from mongoDB and return new state
+	try {
+		const body = {
+			sku: state.sku,
+			image,
+		};
+
+		const res = await axios.post('/api/admin/imageremove', body);
+
+		dispatch({
+			type: LOAD_INVENTORY,
+			payload: res.data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
