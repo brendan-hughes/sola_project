@@ -14,8 +14,6 @@ export const submitMessage = (subject, email, name, message) => async (
 		console.log('Sending message');
 		const body = JSON.stringify({ subject, email, name, message });
 		const response = await axios.post('/api/contact', body, config);
-		console.log(response);
-		console.log(response.errors);
 		if (response.data === 'Success') {
 			dispatch({
 				type: CONTACT_SUBMIT,

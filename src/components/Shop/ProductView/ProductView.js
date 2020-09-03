@@ -9,7 +9,11 @@ import navFunctionality from '../../../scripts/navFunctionality';
 import './productview.css';
 import { connect } from 'react-redux';
 import { addToCart } from '../../../actions/cart';
-import { loadProduct } from '../../../actions/product';
+import {
+	loadProduct,
+	startSession,
+	updateSession,
+} from '../../../actions/product';
 import { v4 as uuid } from 'uuid';
 import TagManager from 'react-gtm-module';
 import firebase from 'firebase/app';
@@ -34,6 +38,12 @@ class ProductView extends Component {
 			quantityMeasure: 1,
 			imgURL: '',
 			imgLoading: true,
+			recommendations: [],
+			recommendationsLoading: true,
+			recommendationImage1: '',
+			recommendationImage2: '',
+			recommendationImage3: '',
+			sku: '',
 		};
 	}
 
@@ -56,6 +66,7 @@ class ProductView extends Component {
 		var storage = firebase.storage();
 
 		this.props.loadProduct(window.location.pathname).then(() => {
+			this.setState({ sku: this.props.productSku });
 			try {
 				const urlArray = window.location.href.split('/');
 				const sku = urlArray[urlArray.length - 1];
@@ -64,10 +75,66 @@ class ProductView extends Component {
 					.ref(`productImages/${sku}/${productImage}`)
 					.getDownloadURL()
 					.then((url) => {
-						console.log('success');
-						console.log(url);
 						this.setState({ img: url, imgLoading: false });
 					});
+				if (!sessionStorage.getItem('session')) {
+					const sessionID = uuid();
+					sessionStorage.setItem('session', sessionID);
+					//Create new session
+					this.props.startSession(sessionID, this.props.productSku).then(() => {
+						let recoNumber = 1;
+						this.props.recommendations.forEach((recommendation) => {
+							storage
+								.ref(
+									`productImages/${recommendation.sku}/${recommendation.images[0]}`
+								)
+								.getDownloadURL()
+								.then((url) => {
+									if (recoNumber === 1) {
+										this.setState({ recommendationImage1: url });
+									}
+									if (recoNumber === 2) {
+										this.setState({ recommendationImage2: url });
+									}
+									if (recoNumber === 3) {
+										this.setState({ recommendationImage3: url });
+									}
+									recoNumber = recoNumber + 1;
+								});
+						});
+
+						this.setState({ recommendationsLoading: false });
+					});
+				} else {
+					const sessionID = sessionStorage.getItem('session');
+					//Update session
+					this.props
+						.updateSession(sessionID, this.props.productSku)
+						.then(() => {
+							let recoNumber = 1;
+							this.props.recommendations.forEach((recommendation) => {
+								storage
+									.ref(
+										`productImages/${recommendation.sku}/${recommendation.images[0]}`
+									)
+									.getDownloadURL()
+									.then((url) => {
+										if (recoNumber === 1) {
+											this.setState({ recommendationImage1: url });
+										}
+										if (recoNumber === 2) {
+											this.setState({ recommendationImage2: url });
+										}
+										if (recoNumber === 3) {
+											this.setState({ recommendationImage3: url });
+										}
+										recoNumber = recoNumber + 1;
+									});
+							});
+
+							this.setState({ recommendationsLoading: false });
+						});
+				}
 			} catch (error) {
 				console.log(error);
 			}
@@ -92,7 +159,7 @@ class ProductView extends Component {
 					<div
 						className="productViewBackButtonDiv"
 						onClick={() => {
-							window.history.back();
+							window.location.pathname = '/shop/Panels/any';
 						}}
 					>
 						<IconContext.Provider value={{ size: '20px' }}>
@@ -115,13 +182,81 @@ class ProductView extends Component {
 								></img>
 							)}
 						</div>
-						<div className="productViewSubImageCarousel">
-							<img className="productViewSubImage"></img>
-							<img className="productViewSubImage"></img>
-							<img className="productViewSubImage"></img>
-							<img className="productViewSubImage"></img>
-						</div>
+
+						{this.state.recommendationsLoading ? null : (
+							<div className="recommenderContainer">
+								<h2 className="recommenderHeader">Customers Also Viewed:</h2>
+
+								<div className="productViewSubImageCarousel">
+									<button
+										className="recommendationItemContainer"
+										onClick={() => {
+											window.location.pathname = `/product/${this.props.recommendations[0].sku}`;
+											this.setState({
+												sku: this.props.recommendations[0].sku,
+											});
+										}}
+									>
+										<div className="recommendationItemCard">
+											<p className="recommendationTitle">
+												{this.props.recommendations[0].name}
+											</p>
+											<div className="recommendationImageContainer">
+												<img
+													className="recommendationImage"
+													src={this.state.recommendationImage1}
+												></img>
+											</div>
+										</div>
+									</button>
+
+									<button
+										className="recommendationItemContainer"
+										onClick={() => {
+											window.location.pathname = `/product/${this.props.recommendations[1].sku}`;
+											this.setState({
+												sku: this.props.recommendations[1].sku,
+											});
+										}}
+									>
+										<div className="recommendationItemCard">
+											<p className="recommendationTitle">
+												{this.props.recommendations[1].name}
+											</p>
+											<div className="recommendationImageContainer">
+												<img
+													className="recommendationImage"
+													src={this.state.recommendationImage2}
+												></img>
+											</div>
+										</div>
+									</button>
+									<button
+										className="recommendationItemContainer"
+										onClick={() => {
+											window.location.pathname = `/product/${this.props.recommendations[2].sku}`;
+											this.setState({
+												sku: this.props.recommendations[2].sku,
+											});
+										}}
+									>
+										<div className="recommendationItemCard">
+											<p className="recommendationTitle">
+												{this.props.recommendations[2].name}
+											</p>
+											<div className="recommendationImageContainer">
+												<img
+													className="recommendationImage"
+													src={this.state.recommendationImage3}
+												></img>
+											</div>
+										</div>
+									</button>
+								</div>
+							</div>
+						)}
 					</div>
+
 					<div className="productViewDetailsDiv">
 						<div className="productViewCategoryTypeDiv">
 							<p className="productViewCategoryTypeText">
@@ -201,8 +336,12 @@ const mapStateToProps = (state) => ({
 	productPrice: state.product.productDetails.price,
 	productDescription: state.product.productDetails.description,
 	productImages: state.product.productDetails.images,
+	recommendations: state.product.recommendations,
 });
 
-export default connect(mapStateToProps, { addToCart, loadProduct })(
-	ProductView
-);
+export default connect(mapStateToProps, {
+	addToCart,
+	loadProduct,
+	startSession,
+	updateSession,
+})(ProductView);

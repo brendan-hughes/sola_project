@@ -135,15 +135,12 @@ Jonquil: #E6C229
 
 .productViewSubImageCarousel {
 	height: 200px;
-	background: grey;
 	display: flex;
-	overflow: hidden;
+	justify-content: space-between;
+	align-items: center;
 }
-
-.productViewSubImage {
-	background: white;
-	height: 150px;
-	width: 150px;
+.recommenderContainer {
+	width: 80%;
 	margin: auto;
 }
 
@@ -210,4 +207,50 @@ Jonquil: #E6C229
 	height: 500px;
 	margin: auto;
 	display: flex;
+}
+
+.recommendationItemCard {
+	margin: auto;
+	width: 150px;
+	background: white;
+	border: 2px solid #3066be;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.recommendationImage {
+	width: 100px;
+}
+.recommendationImageContainer {
+	width: 100px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.recommenderHeader {
+	color: #3066be;
+	font-size: 18px;
+}
+
+.recommendationTitle {
+	color: #3066be;
+	font-weight: bold;
+}
+
+.recommendationItemContainer {
+	transition: 0.2s;
+	opacity: 0.8;
+	border: none;
+}
+
+.recommendationItemContainer:hover {
+	opacity: 1;
+	text-decoration-line: none;
+	transform: scale(1.05);
 }

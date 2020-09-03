@@ -45,22 +45,20 @@ class App extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<Fragment>
-					<Router>
-						<Navbar />
-						<Route exact path="/" component={Home} />
-						<Route path="/shop" component={CategoryView} />
-						<Route exact path="/contact" component={Contact} />
-						<Route exact path="/findstore" component={FindStore} />
-						<Route exact path="/signin" component={SignIn} />
-						<Route exact path="/signin/register" component={Register} />
-						<Route path="/product" component={ProductView} />
-						<Route exact path="/cart" component={Cart} />
-						<Route exact path="/success" component={SuccessfulCheckout} />
-						<Route exact path="/admin" component={Admin} />
-						<Footer />
-					</Router>
-				</Fragment>
+				<Router>
+					<Navbar />
+					<Route exact path="/" component={Home} />
+					<Route path="/shop" component={CategoryView} />
+					<Route exact path="/contact" component={Contact} />
+					<Route exact path="/findstore" component={FindStore} />
+					<Route exact path="/signin" component={SignIn} />
+					<Route exact path="/signin/register" component={Register} />
+					<Route path="/product" component={ProductView} />
+					<Route exact path="/cart" component={Cart} />
+					<Route exact path="/success" component={SuccessfulCheckout} />
+					<Route exact path="/admin" component={Admin} />
+					<Footer />
+				</Router>
 			</Provider>
 		);
 	}
