@@ -30,7 +30,8 @@ router.post('/product', async function (req, res) {
 			const returnList = [];
 			products.forEach((product) => {
 				const name = product.name.toLowerCase();
-				if (name.includes(query)) {
+				const brand = product.brand.toLowerCase();
+				if (name.includes(query) || brand.includes(query)) {
 					returnList.push(product);
 				}
 			});

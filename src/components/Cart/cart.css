@@ -116,7 +116,7 @@ Jonquil: #E6C229
 .cartPaymentDiv {
 	min-height: 100%;
 	width: 35%;
-	background: #010620;
+	background: #dfe4eb;
 	padding-top: 150px;
 	display: flex;
 	flex-direction: column;
@@ -158,12 +158,16 @@ Jonquil: #E6C229
 }
 
 .paymentDivHeader {
-	color: white;
+	color: black;
 	margin-left: 20px;
 }
 
 .paymentDetailsForm {
 	padding: 50px;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .paymentFormSection {
@@ -183,17 +187,19 @@ Jonquil: #E6C229
 .paymentDetailsInput {
 	padding: 5px;
 	width: 200px;
-	background: rgba(255, 255, 255, 0.2);
-	border-radius: 20px;
-	border: 1px solid white;
-	color: white;
+	background: white;
+	border: 1px solid #ebf2ff;
+	color: #3066be;
+	border-radius: 10px;
+	font-weight: lighter;
+	transition: 0.2s;
+}
+.paymentDetailsInput:focus {
+	border: 1px solid #3066be;
 }
 
 .paymentDetailsInputFull {
-	width: 80%;
-}
-.paymentDetailsInputAlmostFull {
-	width: 200px;
+	width: 320px;
 }
 
 .checkoutButton {
@@ -210,10 +216,6 @@ Jonquil: #E6C229
 
 .checkoutButton:hover {
 	transform: scale(1.05);
-}
-
-.paymentDetailsInputSmall {
-	margin: 10px;
 }
 
 .paymentDetailsCheckbox {
@@ -242,7 +244,7 @@ Jonquil: #E6C229
 }
 
 .cardPaymentElement {
-	width: 100%;
+	width: 320px;
 	color: white;
 }
 

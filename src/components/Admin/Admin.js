@@ -78,7 +78,6 @@ class Admin extends Component {
 							</div>
 							{this.state.togglePanel === 'Orders' ? <Orders /> : <Inventory />}
 						</div>
-						<div className="inventoryPanel"></div>
 					</section>
 				</Fragment>
 			);

@@ -108,73 +108,53 @@ const FormBody = (props) => {
 				}}
 			>
 				<div className="paymentFormSection">
-					<p className="paymentFormLabel">Name on Card</p>
 					<input
 						type="text"
 						name="nameOnCard"
+						placeholder="Full Name"
 						onChange={(e) => onChange(e)}
 						className="paymentDetailsInput paymentDetailsInputFull"
 					></input>
 				</div>
 				<div className="paymentFormSection">
-					<p className="paymentFormLabel">Address</p>
 					<input
 						type="text"
 						name="address"
+						placeholder="Address"
 						onChange={(e) => onChange(e)}
 						className="paymentDetailsInput paymentDetailsInputFull"
 					></input>
 				</div>
-				{cartFormData.sameAsAddress === false ? (
-					<div className="paymentFormSectionHorizontal">
-						<div className="paymentFormSection ">
-							<p className="paymentFormLabel">Shipping Address</p>
-							<input
-								type="text"
-								name="shippingAddress"
-								onChange={(e) => onChange(e)}
-								className="paymentDetailsInput paymentDetailsInputAlmostFull"
-							></input>
-						</div>
-						<div className="paymentFormSectionHorizontalItem">
-							<p className="paymentFormLabel">Same As Address?</p>
-							<div
-								onClick={() => onChange('check')}
-								className="paymentDetailsCheckbox"
-							>
-								No
-							</div>
-						</div>
-					</div>
-				) : (
-					<div className="paymentFormSectionHorizontal">
-						<div className="paymentFormSection deactivatedInput" readonly>
-							<p className="paymentFormLabel">Shipping Address</p>
-							<div className="paymentDetailsInput paymentDetailsInputAlmostFull shippingAddressReplacementDiv"></div>
-						</div>
-						<div className="paymentFormSectionHorizontalItem">
-							<p className="paymentFormLabel">Same As Address?</p>
-							<div
-								onClick={() => onChange('check')}
-								className="paymentDetailsCheckbox 
-								paymentDetailsCheckboxActive"
-							>
-								Yes
-							</div>
-						</div>
-					</div>
-				)}
+				<div className="paymentFormSection">
+					<input
+						type="text"
+						name="address"
+						placeholder="City"
+						onChange={(e) => onChange(e)}
+						className="paymentDetailsInput paymentDetailsInputFull"
+					></input>
+				</div>
+				<div className="paymentFormSection">
+					<input
+						type="text"
+						name="address"
+						placeholder="Province"
+						onChange={(e) => onChange(e)}
+						className="paymentDetailsInput paymentDetailsInputFull"
+					></input>
+				</div>
 
 				<div className="paymentFormSection">
-					<p className="paymentFormLabel">Card Number</p>
 					<CardElement
+						placeholder="Credit Card Number"
 						className="paymentDetailsInput paymentDetailsInputFull cardPaymentElement"
 						options={{
 							style: {
 								base: {
-									color: 'white',
+									color: '#3066be',
 									'::placeholder': {
-										color: 'white',
+										color: 'grey',
+										fontFamily: 'sans-serif',
 									},
 								},
 								invalid: {

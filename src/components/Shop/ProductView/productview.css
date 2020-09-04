@@ -213,7 +213,7 @@ Jonquil: #E6C229
 	margin: auto;
 	width: 150px;
 	background: white;
-	border: 2px solid #3066be;
+	border: 1px solid #cfd9e9;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -247,10 +247,13 @@ Jonquil: #E6C229
 	transition: 0.2s;
 	opacity: 0.8;
 	border: none;
+	border-radius: 10px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .recommendationItemContainer:hover {
 	opacity: 1;
 	text-decoration-line: none;
 	transform: scale(1.05);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

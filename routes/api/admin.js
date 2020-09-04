@@ -91,19 +91,35 @@ router.post('/inventory', auth, async function (req, res) {
 		const { sku, brand, description, name, category, price, stock } = req.body;
 
 		try {
-			const product = await Product.findOneAndUpdate(
-				{ sku },
-				{
+			const tryProduct = await Product.find({ sku });
+			if (tryProduct.length === 1) {
+				console.log('Found product, updating.');
+				const product = await Product.findOneAndUpdate(
+					{ sku },
+					{
+						sku,
+						description,
+						brand,
+						name,
+						category,
+						price,
+						stock,
+					},
+					{ returnOriginal: false }
+				);
+			} else {
+				console.log("Couldn't find product, creating new product.");
+				const newProduct = new Product({
 					sku,
 					description,
-					brand,
 					name,
+					brand,
 					category,
 					price,
 					stock,
-				},
-				{ returnOriginal: false }
-			);
+				});
+				await newProduct.save();
+			}
 		} catch (error) {
 			const newProduct = new Product({
 				sku,
@@ -165,6 +181,24 @@ router.post('/imageremove', auth, async function (req, res) {
 			});
 			console.log(newImageList);
 			await Product.findOneAndUpdate({ sku }, { images: newImageList });
+		} catch (error) {
+			console.log(error);
+		}
+
+		//Send back updated inventory
+		const inventory = await Product.find();
+		res.json(inventory);
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+router.post('/inventory/remove/:sku', auth, async function (req, res) {
+	try {
+		const sku = req.params.sku;
+
+		try {
+			const product = await Product.findOneAndDelete({ sku });
 		} catch (error) {
 			console.log(error);
 		}

@@ -14,11 +14,13 @@ export const loadShop = (shopRoute) => async (dispatch) => {
 		if (category === 'any' && brand !== 'any') {
 			currentCategory = brand.replace('_', ' ');
 		} else if (brand === 'any' && category !== 'any') {
-			currentCategory = category;
+			currentCategory = category.replace('_', ' ');
 		} else if (brand === 'any' && category === 'any') {
 			currentCategory = 'All Products';
 		}
 		try {
+			console.log('looking for this category:' + category);
+			console.log('looking for this brand:' + brand);
 			const res = await axios.get(`/api/shop/${category}/${brand}`, config);
 			dispatch({
 				type: LOAD_SHOP,

@@ -140,25 +140,32 @@ class Navbar extends Component {
 							</div>
 						</div>
 						<div className="displaySearchBar">
-							{this.state.searchLoading ? (
-								<div className="searchLoading"></div>
-							) : this.props.searchResults !== undefined ? (
-								this.props.searchResults.map((result) => {
-									return (
-										<Link to={`/product/${result.sku}`}>
-											<div className="searchResultCard">
-												<div className="searchResultCardLeft">
-													<p className="searchResultName">{result.name}</p>
-													<p className="searchResultBrand">{result.brand}</p>
+							<div className="searchResultsContainer">
+								{this.state.searchLoading ? (
+									<div className="searchResultsContainer">
+										<div className="searchLoading"></div>
+									</div>
+								) : this.props.searchResults !== undefined ? (
+									this.props.searchResults.map((result) => {
+										return (
+											<Link
+												className="searchResultCardLink"
+												to={`/product/${result.sku}`}
+											>
+												<div className="searchResultCard">
+													<div className="searchResultCardLeft">
+														<p className="searchResultName">{result.name}</p>
+														<p className="searchResultBrand">{result.brand}</p>
+													</div>
+													<div className="searchResultCardRight">
+														<p className="searchResultPrice">${result.price}</p>
+													</div>
 												</div>
-												<div className="searchResultCardRight">
-													<p className="searchResultPrice">${result.price}</p>
-												</div>
-											</div>
-										</Link>
-									);
-								})
-							) : null}
+											</Link>
+										);
+									})
+								) : null}
+							</div>
 						</div>
 					</div>
 					<div className="cartDiv navIcon">

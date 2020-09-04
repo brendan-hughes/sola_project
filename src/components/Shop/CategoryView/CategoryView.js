@@ -42,11 +42,12 @@ class CategoryView extends Component {
 	}
 
 	render() {
+		const categoryName = this.props.category.replace('_', ' ');
 		return (
 			<Fragment>
 				<Sidebar />
 				<section className="categoryViewSection">
-					<h1 className="categoryViewHeader">{this.props.category}</h1>
+					<h1 className="categoryViewHeader">{categoryName}</h1>
 					<div className="categoryGrid">
 						{this.props.relevantProducts.map((product) => (
 							<CategoryGridItem

@@ -92,7 +92,12 @@ class CategoryGridItem extends Component {
 							</div>
 
 							<p className="gridItemDetailText">
-								{this.props.productDescription}
+								{this.props.productDescription.length < 300
+									? this.props.productDescription
+									: this.props.productDescription
+											.split('')
+											.slice(0, 300)
+											.join('') + '...'}
 							</p>
 						</div>
 					</div>

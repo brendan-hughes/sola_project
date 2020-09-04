@@ -129,6 +129,8 @@ export const saveInventory = (state) => async (dispatch) => {
 };
 
 export const saveImages = (state) => async (dispatch) => {
+	console.log('In the API, saving, images.');
+	console.log(state.addedImages);
 	if (!firebase.apps.length) {
 		const firebaseConfig = {
 			apiKey: 'AIzaSyA_yN_Qvt0JCCAKFjwoSHoa1V8G4fIq8gM',
@@ -171,6 +173,8 @@ export const saveImages = (state) => async (dispatch) => {
 		sku: state.sku,
 		images: imageList,
 	};
+	console.log("This is what we're posting:");
+	console.log(body);
 	const res = await axios.post('/api/admin/imagesave', body);
 	dispatch({
 		type: LOAD_INVENTORY,
@@ -201,8 +205,6 @@ export const removeImage = (state, image) => async (dispatch) => {
 		.delete()
 		.then()
 		.catch((error) => {
-			console.log(error);
-			console.log(deleteReference);
 			console.log(`productImages/${state.sku}/${image}`);
 		});
 
@@ -215,6 +217,18 @@ export const removeImage = (state, image) => async (dispatch) => {
 
 		const res = await axios.post('/api/admin/imageremove', body);
 
+		dispatch({
+			type: LOAD_INVENTORY,
+			payload: res.data,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const removeProduct = (sku) => async (dispatch) => {
+	try {
+		const res = await axios.post('/api/admin/inventory/remove/' + sku);
 		dispatch({
 			type: LOAD_INVENTORY,
 			payload: res.data,

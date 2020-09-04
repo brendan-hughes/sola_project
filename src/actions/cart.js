@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CART_UPDATE, CART_FAIL, LOAD_CART, ORDER_SUCCESS } from './types';
 
-export const addToCart = (sku, cart, quantity) => async (dispatch) => {
+export const addToCart = (sku, cart, quantity, image) => async (dispatch) => {
 	console.log('Adding to cart');
 	const config = {
 		headers: {

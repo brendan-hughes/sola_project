@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './cart.css';
 import { connect } from 'react-redux';
+import firebase from 'firebase/app';
 import {
 	reduceQuantity,
 	increaseQuantity,
@@ -22,14 +23,55 @@ const removeCart = (e, props, sku) => {
 };
 
 class CartItem extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			imgURL: '',
+			imgLoading: true,
+		};
+	}
+	componentDidMount() {
+		if (!firebase.apps.length) {
+			const firebaseConfig = {
+				apiKey: 'AIzaSyA_yN_Qvt0JCCAKFjwoSHoa1V8G4fIq8gM',
+				authDomain: 'sola-b8331.firebaseapp.com',
+				databaseURL: 'https://sola-b8331.firebaseio.com',
+				projectId: 'sola-b8331',
+				storageBucket: 'sola-b8331.appspot.com',
+				messagingSenderId: '304188953924',
+				appId: '1:304188953924:web:0ac558f29a331c00f5f311',
+				measurementId: 'G-SWHNR7V607',
+			};
+			firebase.initializeApp(firebaseConfig);
+		}
+		var storage = firebase.storage();
+
+		try {
+			storage
+				.ref(
+					`productImages/${this.props.productSku}/${this.props.productImage}`
+				)
+				.getDownloadURL()
+				.then((url) => {
+					this.setState({ img: url, imgLoading: false });
+				});
+		} catch (error) {
+			console.log(error);
+		}
+	}
 	render() {
 		return (
 			<div className="cartItemDiv">
-				<img
-					alt="Product View"
-					className="cartItemImage"
-					src={require('../../assets/solar_panel3.png')}
-				></img>
+				{this.state.imgLoading ? (
+					<div className="loader"></div>
+				) : (
+					<img
+						alt="productImage"
+						className="cartItemImage"
+						src={this.state.img}
+					></img>
+				)}
+
 				<div className="cartItemDetailsDiv">
 					<p className="cartItemTitle">{this.props.productTitle}</p>
 					<p className="cartItemSku">SKU: #{this.props.productSku}</p>

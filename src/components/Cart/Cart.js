@@ -34,6 +34,7 @@ class Cart extends Component {
 									productTitle={cartItem.product.name}
 									productDescription={cartItem.product.description}
 									productSku={cartItem.product.sku}
+									productImage={cartItem.product.images[0]}
 									productCategory={cartItem.product.category}
 									productPrice={cartItem.product.price}
 									productBrand={cartItem.product.brand}

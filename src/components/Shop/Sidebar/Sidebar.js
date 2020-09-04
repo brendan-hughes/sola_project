@@ -8,7 +8,7 @@ function Sidebar() {
 	return (
 		<Fragment>
 			<div className="sidebarContainer">
-				<h3 className="viewMenu">View Menu</h3>
+				<h3 className="viewMenu">Menu</h3>
 				<h2 className="sidebarHeading">Shop by Category</h2>
 				<NavLink className="sidebarLink" to="/shop/Panels/any">
 					Panels
@@ -19,7 +19,7 @@ function Sidebar() {
 				<NavLink className="sidebarLink" to="/shop/Lights/any">
 					Lights
 				</NavLink>
-				<IconContext.Provider value={{ size: '50px' }}>
+				<IconContext.Provider value={{ size: '25px' }}>
 					<AiFillCaretRight className="sidebarArrow" />
 				</IconContext.Provider>
 				<h2 className="sidebarHeading">Shop by Brand</h2>

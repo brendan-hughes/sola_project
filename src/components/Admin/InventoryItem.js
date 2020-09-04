@@ -5,7 +5,12 @@ import './inventory.css';
 import { IconContext } from 'react-icons';
 import { FaSave } from 'react-icons/fa';
 import { AiFillCloseCircle, AiFillPlusCircle } from 'react-icons/ai';
-import { saveInventory, saveImages, removeImage } from '../../actions/admin';
+import {
+	saveInventory,
+	saveImages,
+	removeImage,
+	removeProduct,
+} from '../../actions/admin';
 import { loadNav } from '../../actions/nav';
 
 class InventoryItem extends Component {
@@ -192,7 +197,11 @@ class InventoryItem extends Component {
 							<IconContext.Provider value={{ color: '#010620', size: '20px' }}>
 								<div
 									className="orderPanelIconDiv removeIconDiv"
-									onClick={() => {}}
+									onClick={() => {
+										this.props
+											.removeProduct(this.props.sku)
+											.then(() => this.props.loadNav());
+									}}
 								>
 									<AiFillCloseCircle className="removeIcon" />
 									<p className="smallIconText">Remove</p>
@@ -230,24 +239,27 @@ class InventoryItem extends Component {
 														value={image.name}
 														className="inventoryItemImageLine addNewImageTextDiv addedImageTextDiv"
 													>
-														<IconContext.Provider
-															value={{ color: '#3066be', size: '12px' }}
-														>
-															<AiFillCloseCircle
-																className="removeNewImageIcon"
-																onClick={(e) => {
-																	const newAddedImages = this.state.addedImages.filter(
-																		(image) => {
-																			return image.imagedetails.name !== key;
-																		}
-																	);
-																	this.setState({
-																		...this.state,
-																		addedImages: newAddedImages,
-																	});
-																}}
-															/>
-														</IconContext.Provider>
+														<div className="imageRemoveBtnContainer">
+															<IconContext.Provider
+																value={{ color: '#3066be', size: '12px' }}
+															>
+																<AiFillCloseCircle
+																	className="removeNewImageIcon"
+																	onClick={(e) => {
+																		const newAddedImages = this.state.addedImages.filter(
+																			(image) => {
+																				return image.imagedetails.name !== key;
+																			}
+																		);
+																		this.setState({
+																			...this.state,
+																			addedImages: newAddedImages,
+																		});
+																	}}
+																/>
+															</IconContext.Provider>
+														</div>
+
 														<p className="inventoryCardText inventoryCardImageTitleText addImageText">
 															{image.imagedetails.name}
 														</p>
@@ -327,4 +339,5 @@ export default connect(mapStateToProps, {
 	loadNav,
 	saveImages,
 	removeImage,
+	removeProduct,
 })(InventoryItem);

@@ -183,7 +183,34 @@ class ProductView extends Component {
 							)}
 						</div>
 
-						{this.state.recommendationsLoading ? null : (
+						{this.state.recommendationsLoading ? (
+							<div className="recommenderContainer">
+								<h2 className="recommenderHeader">Customers Also Viewed:</h2>
+								<div className="productViewSubImageCarousel">
+									<div className="recommendationItemContainer">
+										<div className="recommendationItemCard">
+											<div className="recommendationImageContainer">
+												<div className="loader"></div>
+											</div>
+										</div>
+									</div>
+									<div className="recommendationItemContainer">
+										<div className="recommendationItemCard">
+											<div className="recommendationImageContainer">
+												<div className="loader"></div>
+											</div>
+										</div>
+									</div>
+									<div className="recommendationItemContainer">
+										<div className="recommendationItemCard">
+											<div className="recommendationImageContainer">
+												<div className="loader"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						) : (
 							<div className="recommenderContainer">
 								<h2 className="recommenderHeader">Customers Also Viewed:</h2>
 

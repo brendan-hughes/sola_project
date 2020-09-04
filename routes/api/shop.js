@@ -8,8 +8,10 @@ router.get('/:category/:brand', async function (req, res) {
 		let category = req.params.category;
 		let brand = req.params.brand;
 		brand = brand.replace('_', ' ');
+		category = category.replace('_', ' ');
 		let relevantProducts;
 		if (brand === 'any' && category !== 'any') {
+			console.log('In the API, looking for category: ' + category);
 			relevantProducts = await Product.find({ category });
 		} else if (category === 'any' && brand !== 'any') {
 			relevantProducts = await Product.find({ brand });
