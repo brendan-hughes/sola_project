@@ -125,6 +125,7 @@
 	padding: 10px;
 	border-radius: 10px;
 	resize: none;
+	font-weight: lighter;
 	height: 250px;
 }
 

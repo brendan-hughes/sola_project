@@ -4,24 +4,95 @@ Khaki: #828E82
 Pewter Blue: #95B2B8
 Jonquil: #E6C229 */
 
-.hero {
+.heroContainer {
+	position: relative;
 	height: 80vh;
+	margin: 100px 0 0 0;
+}
+
+.heroTrack {
+}
+
+.heroSlide {
+	position: absolute;
+	transition: 0.3s ease;
+}
+
+.heroSlideActive {
+	height: 80vh;
+	width: 100vw;
+	padding: 0px;
+	background: red;
+}
+
+.heroSlideLeft {
+	transform: translateX(-100vw);
+	padding: 0px;
+	height: 80vh;
+	width: 100vw;
+}
+
+.heroSlideRight {
+	position: absolute;
+	padding: 0px;
+	height: 80vh;
+	width: 100vw;
+	background: red;
+	transform: translateX(100vw);
+}
+
+.heroSlideInvisible {
+	height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.heroOneContainer {
+	background-image: linear-gradient(to bottom, #010620b2, #e6c3290e),
+		url('../../../assets/dark_panels.jpg');
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-image: linear-gradient(to bottom, #010620b2, #e6c3290e),
-		url('../../../assets/dark_panels.jpg');
+	height: 100%;
 	background-size: cover;
 	background-position: bottom;
 	background-repeat: no-repeat;
-	margin-top: 100px;
+}
+
+.heroTwoContainer {
+	background-image: linear-gradient(to bottom, #010620b2, #e6c3290e),
+		url('../../../assets/windpower.jpeg');
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+.heroThreeContainer {
+	background-image: linear-gradient(to bottom, #010620b2, #e6c3290e),
+		url('../../../assets/sky_panels1.jpeg');
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+.heroSubheader {
+	color: #cfd9e9;
 }
 
 .leftHero {
 	margin-left: 100px;
 	width: 40%;
 	padding: 20px;
-	backdrop-filter: blur(10px) opacity(0.6) drop-shadow(4px 4px 5px white);
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
 	border-radius: 20px;
 }
 
@@ -29,7 +100,8 @@ Jonquil: #E6C229 */
 	border-radius: 20px;
 	padding: 20px;
 	margin-right: 200px;
-	backdrop-filter: blur(10px) opacity(0.6) drop-shadow(4px 4px 5px white);
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -52,6 +124,7 @@ h1 {
 .heroHeader,
 p {
 	color: white;
+	font-weight: lighter;
 }
 
 h2 {
@@ -63,12 +136,21 @@ ul {
 }
 
 .colorize {
-	color: #e6c229;
+	/* color: #e6c229; */
+	color: #243147;
+	font-weight: bolder;
+}
+.hiddenArrow {
+	position: absolute;
+	top: 50%;
+	transition: 0.2s ease-in-out;
+	opacity: 0;
+	pointer-events: none;
 }
 
-.leftArrow,
-.rightArrow {
+.arrow {
 	position: absolute;
+	top: 50%;
 	transition: 0.2s ease-in-out;
 }
 .leftArrow {
@@ -97,9 +179,10 @@ ul {
 }
 
 .cardTitle {
-	color: white;
+	color: #cfd9e9;
 	font-size: 40px;
 	margin: auto;
+	font-weight: lighter;
 }
 
 .imagePlaceholder {
@@ -115,6 +198,7 @@ ul {
 	margin-top: auto;
 	margin-bottom: auto;
 	color: white;
+	font-weight: lighter;
 }
 
 .viewButton,
@@ -142,6 +226,51 @@ ul {
 .viewButtonHidden:hover {
 	transform: scale(1.1);
 	cursor: pointer;
+}
+
+.heroNav {
+	height: 30px;
+	width: 150px;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
+	border-radius: 20px;
+	padding: 0px;
+	margin: 0px auto 0px auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	opacity: 0.7;
+	transition: 0.2s ease;
+	position: relative;
+	top: 70vh;
+}
+
+.heroNav:hover {
+	opacity: 1;
+}
+
+.heroNavButton {
+	width: 15px;
+	height: 15px;
+	border-radius: 100px;
+	border: 2px solid #cfd9e9;
+	background: transparent;
+	transition: 0.2s ease;
+	outline: none;
+}
+
+.heroNavButton:hover {
+	border: 2px solid white;
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.heroNavButtonActive {
+	background: white;
+}
+
+.heroNavButtonActive:hover {
+	background: #cfd9e9;
+	border: 2px solid #cfd9e9;
 }
 
 @media screen and (max-width: 1260px) {

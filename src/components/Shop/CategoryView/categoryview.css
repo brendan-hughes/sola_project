@@ -10,7 +10,11 @@ Jonquil: #E6C229
 	padding-top: 150px;
 	display: flex;
 	flex-direction: column;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background-image: linear-gradient(
+		to bottom,
+		rgba(68, 115, 208, 0.1) 0%,
+		white 50%
+	);
 }
 
 .categoryViewHeader {

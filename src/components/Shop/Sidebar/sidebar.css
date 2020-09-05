@@ -9,7 +9,7 @@ Jonquil: #E6C229 */
 	left: -250px;
 	top: 300px;
 	width: 300px;
-	height: 300px;
+	height: 400px;
 	background: rgba(209, 217, 231, 0.5);
 	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
 	display: flex;
@@ -68,7 +68,7 @@ Jonquil: #E6C229 */
 .sidebarArrow {
 	position: fixed;
 	left: 265px;
-	top: 140px;
+	top: 200px;
 	color: rgba(40, 52, 86, 0.3);
 	transition: 0.2s ease-in-out;
 }
@@ -77,4 +77,22 @@ Jonquil: #E6C229 */
 	transform: scale(1.1);
 	color: rgba(40, 52, 86, 0);
 	left: 250px;
+}
+.sidebarHero {
+	background: rgba(255, 255, 255, 0.6);
+	margin: 30px 50px 30px 20px;
+	height: 200px;
+	border: 1px solid #90a4c4;
+	border-radius: 10px;
+	background-image: url('../../../assets/sky_panels1.jpeg');
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	display: flex;
+}
+
+.sidebarHeroText {
+	font-size: 18px;
+	margin: auto;
+	font-weight: normal;
 }

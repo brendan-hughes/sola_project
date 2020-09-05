@@ -133,7 +133,7 @@ function Search({ panTo }) {
 	return (
 		<div className="findStoreSearchArea">
 			<h1 className="findStoreHeader">
-				Find <span className="colorize">Sola</span> in your area:
+				Find <span className="colorize2">Sola</span> in your area:
 			</h1>
 			<div className="findStoreForm">
 				<Combobox

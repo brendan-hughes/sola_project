@@ -4,6 +4,9 @@ Khaki: #828E82
 Pewter Blue: #95B2B8
 Jonquil: #E6C229 
 	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+	GreyBlye: #ebf2ff;
+Grey: #c6c8cc;
 */
 
 .findStoreSection {
@@ -19,7 +22,7 @@ Jonquil: #E6C229
 }
 
 .findStoreSearchArea {
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background-image: linear-gradient(120deg, #ebf2ff 0%, #ffffff 100%);
 	height: 350px;
 	width: 400px;
 	position: absolute;
@@ -37,7 +40,8 @@ Jonquil: #E6C229
 .locationSearchPopover {
 	z-index: 2;
 	border-radius: 10px;
-	border: 2px solid rgba(90, 90, 90, 0.5);
+
+	border: 1px solid rgba(79, 116, 202, 1);
 	border-top: none;
 	border-top-right-radius: 0;
 	border-top-left-radius: 0;
@@ -54,6 +58,12 @@ Jonquil: #E6C229
 	font-size: 40px;
 	padding-left: 40px;
 	padding-top: 20px;
+	font-weight: lighter;
+}
+
+.colorize2 {
+	color: rgba(79, 116, 202, 1);
+	font-weight: normal;
 }
 
 .findStoreForm {
@@ -67,17 +77,10 @@ Jonquil: #E6C229
 .findStoreCountryInput,
 .findStorePostalInput {
 	border-radius: 10px;
-	border: 2px solid rgba(90, 90, 90, 0.5);
+	border: 1px solid rgba(79, 116, 202, 1);
 	padding: 10px;
+	font-weight: lighter;
 	width: 100%;
-}
-
-.errrror {
-	margin: auto;
-	color: black;
-	position: absolute;
-	top: 100px;
-	left: 500px;
 }
 
 .findStoreSearchLine {
@@ -95,24 +98,27 @@ Jonquil: #E6C229
 }
 
 .findStoreStylizedDiv {
-	background: #010620;
+	background: rgba(79, 116, 202, 1);
 	height: 20%;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 20px;
+	border-top: 1px solid white;
 }
 
 .findStoreInfoModal {
 	height: 200px;
 	width: 400px;
 	border-radius: 20px;
-	background: #3066be;
+	background: rgba(255, 255, 255, 0.1);
 	position: absolute;
 	top: 650px;
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
 	left: 50px;
 	-webkit-box-shadow: 0 6px 6px -6px rgb(27, 27, 27);
 	-moz-box-shadow: 0 6px 6px -6px rgba(27, 27, 27, 1);
 	box-shadow: 0 6px 6px -6px rgba(27, 27, 27, 1);
 	padding: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .findStoreModalExit {

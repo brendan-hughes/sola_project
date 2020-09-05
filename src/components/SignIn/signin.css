@@ -1,7 +1,11 @@
 .signInSection {
 	height: 90vh;
 	display: flex;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background-image: linear-gradient(
+		to bottom,
+		rgba(68, 115, 208, 0.1) 0%,
+		white 50%
+	);
 	flex-direction: column;
 	overflow: hidden;
 }

@@ -35,6 +35,9 @@ function Sidebar() {
 				<NavLink className="sidebarLink" to="/shop/any/Martian_Sun">
 					Martian Sun
 				</NavLink>
+				<div className="sidebarHero">
+					<p className="sidebarHeroText">Find Store</p>
+				</div>
 			</div>
 		</Fragment>
 	);

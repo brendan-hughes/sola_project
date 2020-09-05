@@ -12,7 +12,11 @@ Jonquil: #E6C229
 	padding-top: 170px;
 	display: flex;
 	justify-content: space-around;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background-image: linear-gradient(
+		to bottom,
+		rgba(68, 115, 208, 0.1) 0%,
+		white 50%
+	);
 }
 
 .productViewBackButtonDiv {
@@ -161,7 +165,7 @@ Jonquil: #E6C229
 .productViewAddToCart,
 .productViewFindInStore {
 	display: flex;
-	background: #3066be;
+	background: rgba(62, 103, 184, 1);
 	color: white;
 	border: none;
 	border-radius: 20px;
@@ -213,7 +217,7 @@ Jonquil: #E6C229
 	margin: auto;
 	width: 150px;
 	background: white;
-	border: 1px solid #cfd9e9;
+	border: 1px solid rgb(68, 115, 208);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -234,13 +238,13 @@ Jonquil: #E6C229
 }
 
 .recommenderHeader {
-	color: #3066be;
+	color: rgb(68, 115, 208);
 	font-size: 18px;
 }
 
 .recommendationTitle {
-	color: #3066be;
-	font-weight: bold;
+	color: rgb(68, 115, 208);
+	font-weight: normal;
 }
 
 .recommendationItemContainer {

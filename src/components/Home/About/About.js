@@ -9,7 +9,7 @@ class About extends Component {
 			<Fragment>
 				<section className="aboutSection">
 					<div className="leftAbout">
-						<div className="aboutHeaderContainer" data-aos="zoom-out-right">
+						<div className="aboutHeaderContainer">
 							<IconContext.Provider value={{ color: '#E6C229', size: '60px' }}>
 								<div className="aboutIcon">
 									<MdWbSunny className="aboutIcon" />
@@ -18,18 +18,18 @@ class About extends Component {
 							<h1 className="aboutHeader">Why Sola?</h1>
 						</div>
 						<div className="aboutTextContainer">
-							<p className="aboutText" data-aos="fade-right">
+							<p className="aboutText">
 								Lorem ipsum dolor sit amet consectetur adipisicing elit.
 								Obcaecati, ad animi molestias tenetur asperiores ab debitis
 								repellendus rerum accusamus ducimus eligendi?
 							</p>
-							<p className="aboutText" data-aos="fade-right">
+							<p className="aboutText">
 								Vel praesentium facere voluptas modi a porro iure velit non
 								nesciunt harum, officiis sapiente laudantium debitis error
 								voluptate in. Veniam commodi pariatur, sint itaque rerum tenetur
 								sed nemo accusantium?
 							</p>
-							<p className="aboutText" data-aos="fade-right">
+							<p className="aboutText">
 								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 								Tenetur eum odit aliquam, delectus, soluta dolorem vel inventore
 								officia ipsa, quo eligendi mollitia numquam? Quidem, modi amet!
@@ -37,35 +37,21 @@ class About extends Component {
 							</p>
 						</div>
 						<div className="aboutAchievmentsContainer">
-							<div
-								className="aboutAchievementCard"
-								id="achievementA"
-								data-aos="fade-right"
-							>
+							<div className="aboutAchievementCard" id="achievementA">
 								<p className="topAchievementText">HISTORICALLY GREAT</p>
 								<hr></hr>
 								<p className="middleAchievementText">1.5M</p>
 								<hr></hr>
 								<p className="bottomAchievementText">CUSTOMERS SERVED</p>
 							</div>
-							<div
-								className="aboutAchievementCard"
-								id="achievementB"
-								data-aos="fade-right"
-								data-aos-delay="300"
-							>
+							<div className="aboutAchievementCard" id="achievementB">
 								<p className="topAchievementText">BEST IN CLASS</p>
 								<hr></hr>
 								<p className="middleAchievementText">#1</p>
 								<hr></hr>
 								<p className="bottomAchievementText">SOLAR PROVIDER</p>
 							</div>
-							<div
-								className="aboutAchievementCard"
-								id="achievementC"
-								data-aos="fade-right"
-								data-aos-delay="600"
-							>
+							<div className="aboutAchievementCard" id="achievementC">
 								<p className="topAchievementText">SAVE MORE</p>
 								<hr></hr>
 								<p className="middleAchievementText">70%</p>
@@ -78,7 +64,6 @@ class About extends Component {
 						alt="Gradient Graphic Art"
 						className="gradientImage"
 						src={require('../../../assets/blue_gradient_com.png')}
-						data-aos="zoom-in-left"
 					/>
 				</section>
 			</Fragment>

@@ -12,9 +12,9 @@ Jonquil: #E6C229 */
 	width: 100%;
 	background: linear-gradient(
 		to right,
-		rgba(237, 237, 237, 1) 0%,
-		rgba(246, 246, 246, 1) 34%,
-		rgba(255, 255, 255, 1) 100%
+		rgb(223, 228, 236) 0%,
+		rgba(246, 246, 246, 1) 60%,
+		rgba(255, 255, 255, 1) 100% /*209 217 231*/
 	);
 	z-index: 10;
 	height: 110px;
@@ -46,13 +46,13 @@ Jonquil: #E6C229 */
 	margin-left: 50px;
 	margin-right: 50px;
 	text-decoration: none;
-	color: #3066be;
+	color: rgb(68, 115, 208);
 	min-width: 120px;
 	text-align: center;
 }
 
 .navHeader {
-	color: #3066be;
+	color: rgb(68, 115, 208);
 	text-decoration: none;
 	margin: 0;
 }
@@ -74,7 +74,7 @@ Jonquil: #E6C229 */
 .cartQuantityText {
 	color: white;
 	text-align: center;
-	background: #3066be;
+	background: rgb(68, 115, 208);
 	padding: 5px;
 	padding-left: 7px;
 	padding-right: 7px;
@@ -176,6 +176,7 @@ Jonquil: #E6C229 */
 
 .navDetailHeading {
 	margin-bottom: 5px;
+	font-weight: normal;
 }
 
 .navDetailSecondHeading {
@@ -205,7 +206,7 @@ Jonquil: #E6C229 */
 	transform: translate(40px);
 	top: 109px;
 	position: absolute;
-	background: rgba(255, 255, 255, 0.55);
+	background: rgba(255, 255, 255, 0.8);
 	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
