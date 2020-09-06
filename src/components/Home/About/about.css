@@ -6,18 +6,34 @@ Jonquil: #E6C229 */
 
 .aboutSection {
 	height: 80vh;
-	padding-top: 100px;
-	padding-left: 50px;
+	padding: 100px 0px 50px 50px;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	overflow: hidden;
 	position: relative;
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background: linear-gradient(
+		to right,
+		rgb(223, 228, 236) 0%,
+		rgba(246, 246, 246, 1) 60%,
+		rgba(255, 255, 255, 1) 100% /*209 217 231*/
+	);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.leftAbout {
+	width: 40vw;
+}
+
+.rightAbout {
+	width: 40vw;
+	margin-left: auto;
+	display: flex;
 }
 
 .aboutHeaderContainer {
 	display: flex;
 	align-items: center;
+	margin-left: 100px;
+	width: 100%;
 }
 
 .aboutIcon {
@@ -25,7 +41,7 @@ Jonquil: #E6C229 */
 }
 
 .aboutHeader {
-	margin-left: 20px;
+	margin-right: 40px;
 }
 
 .aboutText {
@@ -33,25 +49,24 @@ Jonquil: #E6C229 */
 }
 
 .aboutTextContainer {
-	width: 40%;
+	width: 100%;
 	margin-left: 100px;
 	margin-top: 50px;
 }
 
 .aboutAchievmentsContainer {
-	margin-top: auto;
-	margin-bottom: 50px;
-	margin-left: 50px;
 	height: 200px;
-	width: 50%;
+	margin-left: 100px;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 }
 
 .aboutAchievementCard {
-	width: 30%;
+	margin: 0 auto 0 auto;
 	border-radius: 10px;
 	transition: 0.2s ease;
+	width: 30%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -59,6 +74,16 @@ Jonquil: #E6C229 */
 	align-items: center;
 	margin-top: 20px;
 	padding: 20px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	border: 1px solid white;
+	transition: 0.2s ease;
+}
+
+#achievementA:hover,
+#achievementB:hover,
+#achievementC:hover {
+	transform: scale(1.05);
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .topAchievementText,
@@ -76,21 +101,40 @@ hr {
 }
 
 #achievementA {
-	background: rgba(130, 142, 130, 0.6);
+	background: linear-gradient(
+		to right,
+		rgba(68, 115, 208, 0.9) 0%,
+		rgba(90, 129, 207, 0.9) 100% /*209 217 231*/
+	);
 }
 #achievementB {
-	background: rgba(130, 142, 130, 0.8);
+	background: linear-gradient(
+		to right,
+		rgba(68, 115, 208, 0.7) 0%,
+		rgba(90, 129, 207, 0.7) 100% /*209 217 231*/
+	);
 }
 
 #achievementC {
-	background: rgba(130, 142, 130, 1);
+	background: linear-gradient(
+		to right,
+		rgba(68, 115, 208, 0.5) 0%,
+		rgba(90, 129, 207, 0.5) 100% /*209 217 231*/
+	);
+}
+.aboutIconImage {
+	height: 60px;
 }
 
-.gradientImage {
-	width: 40%;
-	position: absolute;
-	right: 50px;
-	top: 10%;
+.aboutProductCarousel {
+	width: 300px;
+	height: 400px;
+	margin: auto;
+	background: rgb(223, 228, 236);
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+	border-radius: 20px;
+	overflow: hidden;
+	transition: 0.3s ease-out;
 }
 
 @media screen and (max-width: 1260px) {

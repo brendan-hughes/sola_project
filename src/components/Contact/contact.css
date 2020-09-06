@@ -21,6 +21,8 @@ Jonquil: #E6C229
 .contactHeader {
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 30px;
+	color: #3066be;
 }
 
 .contactForm {
@@ -29,6 +31,10 @@ Jonquil: #E6C229
 	width: 400px;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 20px;
+	border: 1px solid #cfd9e9;
+	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+	border-radius: 20px;
 }
 
 .contactFormInput {
@@ -79,11 +85,13 @@ textarea:focus {
 	margin-left: auto;
 	margin-right: auto;
 	background: white;
-	border: 2px solid #3066be;
+	border: 1px solid #cfd9e9;
 	color: #3066be;
 	border-radius: 10px;
 	margin-top: 20px;
 	padding: 5px;
+	font-weight: lighter;
+	z-index: 10;
 }
 
 .errorInput {

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import './carousel.css';
 
-function Carousel() {
+function ReverseCarousel() {
 	return (
 		<Fragment>
-			<section className="carouselSection">
+			<section className="reverseCarouselSection">
 				<div className="carouselContainer"></div>
 			</section>
 		</Fragment>
 	);
 }
 
-export default Carousel;
+export default ReverseCarousel;

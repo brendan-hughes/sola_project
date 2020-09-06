@@ -10,12 +10,13 @@ class About extends Component {
 				<section className="aboutSection">
 					<div className="leftAbout">
 						<div className="aboutHeaderContainer">
-							<IconContext.Provider value={{ color: '#E6C229', size: '60px' }}>
-								<div className="aboutIcon">
-									<MdWbSunny className="aboutIcon" />
-								</div>
-							</IconContext.Provider>
-							<h1 className="aboutHeader">Why Sola?</h1>
+							<h1 className="aboutHeader">Why Sola?</h1>{' '}
+							<div className="aboutIcon">
+								<img
+									className="aboutIconImage"
+									src={require('../../../assets/solarpanelicon.png')}
+								></img>
+							</div>
 						</div>
 						<div className="aboutTextContainer">
 							<p className="aboutText">
@@ -60,11 +61,19 @@ class About extends Component {
 							</div>
 						</div>
 					</div>
-					<img
-						alt="Gradient Graphic Art"
-						className="gradientImage"
-						src={require('../../../assets/blue_gradient_com.png')}
-					/>
+					<div className="rightAbout">
+						<div className="aboutProductCarousel">
+							<div className="upperGridItem">
+								<h2 className="gridItemTitle">Title</h2>
+								<p className="gridItemPrice">$</p>
+
+								<img alt="productImage" className="gridItemImage"></img>
+							</div>
+							<div className="lowerGridItem">
+								<div className="detailsLine"></div>
+							</div>
+						</div>
+					</div>
 				</section>
 			</Fragment>
 		);

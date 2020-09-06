@@ -1,15 +1,17 @@
 .videoCutoutSection {
 	height: 80vh;
-	width: 100vw;
-	overflow: hidden;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	padding: 100px 0px 50px 50px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: -1;
-	background-image: url('../../../assets/dusk_panel1.jpg');
+	flex-direction: row;
+	overflow: hidden;
+	position: relative;
+	background: linear-gradient(
+		to right,
+		rgb(223, 228, 236) 0%,
+		rgba(246, 246, 246, 1) 60%,
+		rgba(255, 255, 255, 1) 100% /*209 217 231*/
+	);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .videoCutoutText {

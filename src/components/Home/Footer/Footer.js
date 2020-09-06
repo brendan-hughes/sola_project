@@ -15,7 +15,7 @@ function Footer() {
 						<p className="footerLink">Find A Store</p>
 					</div>
 					<div className="middleUpperFooter">
-						<p className="footerHeader">Categories</p>
+						<p className="footerHeader">Top Categories</p>
 						<p className="footerLink">Panels</p>
 						<p className="footerLink">Batteries</p>
 						<p className="footerLink">Lights</p>
@@ -28,22 +28,7 @@ function Footer() {
 								type="email"
 								placeholder="Email Address"
 							/>
-							<button
-								className="newsletterButton"
-								onClick={(e) => {
-									const msg = {
-										to: e.target.value,
-										from: 'brendanhughes.dev@gmai.com',
-										subject: 'Sending with Twilio SendGrid is Fun',
-										text: 'and easy to do anywhere, even with Node.js',
-										html:
-											'<strong>and easy to do anywhere, even with Node.js</strong>',
-									};
-									sgMail.send(msg);
-								}}
-							>
-								Sign Up
-							</button>
+							<button className="newsletterButton">Sign Up</button>
 						</div>
 					</div>
 				</div>

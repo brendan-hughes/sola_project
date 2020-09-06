@@ -5,17 +5,40 @@ Pewter Blue: #95B2B8
 Jonquil: #E6C229 */
 
 .carouselSection {
-	height: 70vh;
+	height: 5vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	background: #010620;
-	color: white;
+	background: linear-gradient(207deg, #5a81cf, #7396df, #6b9ad0, #ffffff);
+	background-size: 1000% 1000%;
+	-webkit-animation: carouselSky 10s ease infinite;
+	-moz-animation: carouselSky 10s ease infinite;
+	animation: carouselSky 10s ease infinite;
+	overflow: hidden;
+	border-top: 3px solid #c5d9ff;
+	border-bottom: 3px solid #c5d9ff;
+}
+
+.reverseCarouselSection {
+	height: 5vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background: linear-gradient(207deg, #5a81cf, #7396df, #6b9ad0, #ffffff);
+	background-size: 1000% 1000%;
+	-webkit-animation: carouselSkyReverse 10s ease infinite;
+	-moz-animation: carouselSkyReverse 10s ease infinite;
+	animation: carouselSkyReverse 10s ease infinite;
+	overflow: hidden;
+	border-top: 3px solid #bad1fc;
+	border-bottom: 3px solid #bad1fc;
 }
 
 .carouselContainer {
-	width: 100%;
+	width: 200vw;
+	overflow: hidden;
 	height: 80%;
 	display: flex;
 	justify-content: space-around;
@@ -27,4 +50,27 @@ Jonquil: #E6C229 */
 	height: 80%;
 	width: 30%;
 	border-radius: 20px;
+}
+
+@keyframes carouselSky {
+	0% {
+		background-position: 0% 54%;
+	}
+	50% {
+		background-position: 100% 54%;
+	}
+	100% {
+		background-position: 0% 54%;
+	}
+}
+@keyframes carouselSkyReverse {
+	0% {
+		background-position: 100% 0%;
+	}
+	50% {
+		background-position: 0% 100%;
+	}
+	100% {
+		background-position: 100% 0%;
+	}
 }

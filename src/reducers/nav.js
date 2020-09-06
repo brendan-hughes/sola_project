@@ -3,12 +3,16 @@ import {
 	NAV_FAIL,
 	LOAD_SEARCH,
 	REMOVE_SEARCH,
+	VIEWED_MODAL,
+	VIEWED_BUBBLE,
 } from '../actions/types';
 
 const initialState = {
 	categoriesList: [],
 	brandList: [],
 	searchResults: [],
+	viewedModal: false,
+	viewedBubble: false,
 };
 
 export default function (state = initialState, action) {
@@ -16,6 +20,7 @@ export default function (state = initialState, action) {
 	switch (type) {
 		case LOAD_NAV:
 			return {
+				...state,
 				categoriesList: payload.categoriesList,
 				brandList: payload.brandList,
 			};
@@ -28,6 +33,16 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				searchResults: [],
+			};
+		case VIEWED_MODAL:
+			return {
+				...state,
+				viewedModal: true,
+			};
+		case VIEWED_BUBBLE:
+			return {
+				...state,
+				viewedBubble: true,
 			};
 		case NAV_FAIL:
 		default:

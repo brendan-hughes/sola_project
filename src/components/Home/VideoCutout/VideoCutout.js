@@ -6,7 +6,7 @@ function VideoCutout() {
 	return (
 		<Fragment>
 			<section className="videoCutoutSection">
-				<img className="videoCutoutText" src={Sola}></img>
+				{/* <img className="videoCutoutText" src={Sola}></img> */}
 			</section>
 		</Fragment>
 	);

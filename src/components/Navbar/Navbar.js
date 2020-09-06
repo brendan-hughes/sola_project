@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { IconContext } from 'react-icons';
+import ChatBubble from './ChatBubble';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -207,6 +208,7 @@ class Navbar extends Component {
 						</NavLink>
 					)}
 				</nav>
+				<ChatBubble />
 			</div>
 		);
 	}

@@ -27,6 +27,7 @@
 		"gridfs-stream": "^1.1.1",
 		"hover.css": "^2.3.2",
 		"jsonwebtoken": "^8.5.1",
+		"magnet-mouse": "github:fluffy-factory/magnet-mouse",
 		"method-override": "^3.0.0",
 		"mongoose": "^5.9.27",
 		"multer": "^1.4.2",

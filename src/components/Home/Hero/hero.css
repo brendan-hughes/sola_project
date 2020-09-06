@@ -7,22 +7,20 @@ Jonquil: #E6C229 */
 .heroContainer {
 	position: relative;
 	height: 80vh;
-	margin: 100px 0 0 0;
-}
-
-.heroTrack {
+	margin: 0 0 0 0;
+	overflow: hidden;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .heroSlide {
 	position: absolute;
-	transition: 0.3s ease;
 }
 
 .heroSlideActive {
 	height: 80vh;
 	width: 100vw;
 	padding: 0px;
-	background: red;
+	transition: 0.3s ease;
 }
 
 .heroSlideLeft {
@@ -30,15 +28,18 @@ Jonquil: #E6C229 */
 	padding: 0px;
 	height: 80vh;
 	width: 100vw;
+	display: hidden;
+	transition: 0.3s ease;
 }
 
 .heroSlideRight {
-	position: absolute;
 	padding: 0px;
 	height: 80vh;
 	width: 100vw;
-	background: red;
 	transform: translateX(100vw);
+	display: hidden;
+	transition: 0.3s ease;
+	display: hidden;
 }
 
 .heroSlideInvisible {

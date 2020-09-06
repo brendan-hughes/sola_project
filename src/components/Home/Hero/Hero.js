@@ -5,7 +5,6 @@ import HeroThree from './HeroThree';
 import { TiArrowLeft, TiArrowRight } from 'react-icons/ti';
 import { IconContext } from 'react-icons';
 import './hero.css';
-import handleCarousel from './carousel';
 
 class Hero extends Component {
 	constructor(props) {
@@ -13,6 +12,85 @@ class Hero extends Component {
 		this.state = {
 			currentPosition: 1,
 		};
+	}
+
+	componentDidMount() {
+		this.interval = setInterval(() => {
+			const handleCarousel = (state, change) => {
+				const heroOne = document.querySelector('#heroOne');
+				const heroTwo = document.querySelector('#heroTwo');
+				const heroThree = document.querySelector('#heroThree');
+				const navIconOne = document.querySelector('#heroNavButtonOne');
+				const navIconTwo = document.querySelector('#heroNavButtonTwo');
+				const navIconThree = document.querySelector('#heroNavButtonThree');
+				const rightArrow = document.querySelector('.rightArrow');
+				const leftArrow = document.querySelector('.leftArrow');
+				if (state.currentPosition === 1 && change === 1) {
+					leftArrow.classList.add('arrow');
+					leftArrow.classList.remove('hiddenArrow');
+					heroOne.classList.add('heroSlideLeft');
+					heroOne.classList.remove('heroSlideActive');
+					heroTwo.classList.add('heroSlideActive');
+					heroTwo.classList.remove('heroSlideRight');
+					navIconOne.classList.remove('heroNavButtonActive');
+					navIconTwo.classList.add('heroNavButtonActive');
+					this.setState({
+						currentPosition: 2,
+					});
+				} else if (state.currentPosition === 2 && change === 1) {
+					rightArrow.classList.add('hiddenArrow');
+					rightArrow.classList.remove('arrow');
+					heroTwo.classList.add('heroSlideLeft');
+					heroTwo.classList.remove('heroSlideActive');
+					heroThree.classList.add('heroSlideActive');
+					heroThree.classList.remove('heroSlideRight');
+					navIconTwo.classList.remove('heroNavButtonActive');
+					navIconThree.classList.add('heroNavButtonActive');
+					this.setState({ currentPosition: 3 });
+				} else if (state.currentPosition === 3 && change === -1) {
+					rightArrow.classList.add('arrow');
+					rightArrow.classList.remove('hiddenArrow');
+					heroThree.classList.add('heroSlideRight');
+					heroThree.classList.remove('heroSlideActive');
+					heroTwo.classList.add('heroSlideActive');
+					heroTwo.classList.remove('heroSlideLeft');
+					navIconThree.classList.remove('heroNavButtonActive');
+					navIconTwo.classList.add('heroNavButtonActive');
+					this.setState({ currentPosition: 2 });
+				} else if (state.currentPosition === 2 && change === -1) {
+					leftArrow.classList.add('hiddenArrow');
+					leftArrow.classList.remove('arrow');
+					heroTwo.classList.add('heroSlideRight');
+					heroTwo.classList.remove('heroSlideActive');
+					heroOne.classList.add('heroSlideActive');
+					heroOne.classList.remove('heroSlideLeft');
+					navIconTwo.classList.remove('heroNavButtonActive');
+					navIconOne.classList.add('heroNavButtonActive');
+					this.setState({ currentPosition: 1 });
+				} else if (state.currentPosition === 3 && change === 1) {
+					leftArrow.classList.add('hiddenArrow');
+					leftArrow.classList.remove('arrow');
+					rightArrow.classList.add('arrow');
+					rightArrow.classList.remove('hiddenArrow');
+					heroOne.classList.add('heroSlideActive');
+					heroOne.classList.remove('heroSlideLeft');
+					heroTwo.classList.add('heroSlideRight');
+					heroTwo.classList.remove('heroSlideActive');
+					heroTwo.classList.remove('heroSlideLeft');
+					heroThree.classList.add('heroSlideRight');
+					heroThree.classList.remove('heroSlideActive');
+					navIconOne.classList.add('heroNavButtonActive');
+					navIconTwo.classList.remove('heroNavButtonActive');
+					navIconThree.classList.remove('heroNavButtonActive');
+					this.setState({ currentPosition: 1 });
+				}
+			};
+			handleCarousel(this.state, 1);
+		}, 7000);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.interval);
 	}
 
 	render() {
@@ -70,6 +148,8 @@ class Hero extends Component {
 			} else if (state.currentPosition === 3 && change === 1) {
 				leftArrow.classList.add('hiddenArrow');
 				leftArrow.classList.remove('arrow');
+				rightArrow.classList.add('arrow');
+				rightArrow.classList.remove('hiddenArrow');
 				heroOne.classList.add('heroSlideActive');
 				heroOne.classList.remove('heroSlideLeft');
 				heroTwo.classList.add('heroSlideRight');
@@ -82,9 +162,11 @@ class Hero extends Component {
 				navIconThree.classList.remove('heroNavButtonActive');
 				this.setState({ currentPosition: 1 });
 			}
+			clearInterval(this.interval);
 		};
 
 		const handleNav = (change) => {
+			clearInterval(this.interval);
 			const heroOne = document.querySelector('#heroOne');
 			const heroTwo = document.querySelector('#heroTwo');
 			const heroThree = document.querySelector('#heroThree');

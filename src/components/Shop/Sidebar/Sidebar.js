@@ -1,46 +1,57 @@
-import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Fragment, Component } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { AiFillCaretRight } from 'react-icons/ai';
+import { connect } from 'react-redux';
 import { IconContext } from 'react-icons';
 import './sidebar.css';
 
-function Sidebar() {
-	return (
-		<Fragment>
-			<div className="sidebarContainer">
-				<h3 className="viewMenu">Menu</h3>
-				<h2 className="sidebarHeading">Shop by Category</h2>
-				<NavLink className="sidebarLink" to="/shop/Panels/any">
-					Panels
-				</NavLink>
-				<NavLink className="sidebarLink" to="/shop/Batteries/any">
-					Batteries
-				</NavLink>
-				<NavLink className="sidebarLink" to="/shop/Lights/any">
-					Lights
-				</NavLink>
-				<IconContext.Provider value={{ size: '25px' }}>
-					<AiFillCaretRight className="sidebarArrow" />
-				</IconContext.Provider>
-				<h2 className="sidebarHeading">Shop by Brand</h2>
-				<NavLink className="sidebarLink" to="/shop/any/Sola+">
-					Sola+
-				</NavLink>
-				<NavLink className="sidebarLink" to="/shop/any/Green_Bean">
-					Green Bean
-				</NavLink>
-				<NavLink className="sidebarLink" to="/shop/any/Commercial_Tech">
-					Commercial Tech
-				</NavLink>
-				<NavLink className="sidebarLink" to="/shop/any/Martian_Sun">
-					Martian Sun
-				</NavLink>
-				<div className="sidebarHero">
-					<p className="sidebarHeroText">Find Store</p>
+class Sidebar extends Component {
+	render() {
+		return (
+			<Fragment>
+				<div className="sidebarContainer">
+					<h3 className="viewMenu">Menu</h3>
+					<h2 className="sidebarHeading">Shop by Category</h2>
+					{this.props.categoriesList !== null
+						? this.props.categoriesList.map((category) => (
+								<Link
+									key={category}
+									to={'/shop/' + category.replace(' ', '_') + '/any'}
+									className="sidebarLink"
+								>
+									{category}
+								</Link>
+						  ))
+						: null}
+					<IconContext.Provider value={{ size: '25px' }}>
+						<AiFillCaretRight className="sidebarArrow" />
+					</IconContext.Provider>
+					<h2 className="sidebarHeading">Shop by Brand</h2>
+					{this.props.brandList !== null
+						? this.props.brandList.map((brand) => (
+								<NavLink
+									key={brand}
+									to={'/shop/any/' + brand.replace(' ', '_')}
+									className="sidebarLink"
+								>
+									{brand}
+								</NavLink>
+						  ))
+						: null}
+
+					<Link to="/findstore" className="sidebarHero">
+						<p className="sidebarHeroSubtext">Need help selecting?</p>
+						<p className="sidebarHeroText">Visit Us In Store</p>
+					</Link>
 				</div>
-			</div>
-		</Fragment>
-	);
+			</Fragment>
+		);
+	}
 }
 
-export default Sidebar;
+const mapStateToProps = (state) => ({
+	categoriesList: state.nav.categoriesList,
+	brandList: state.nav.brandList,
+});
+
+export default connect(mapStateToProps)(Sidebar);

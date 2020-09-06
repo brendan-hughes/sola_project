@@ -1,0 +1,22 @@
+.specialCarousel {
+	margin-top: 100px;
+}
+.announcements {
+	position: absolute;
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(10px) opacity(0.5) drop-shadow(10px 10px 10px #303030);
+	top: 115px;
+	left: 45vw;
+	border-radius: 20px;
+	width: 200px;
+	height: 25px;
+	display: flex;
+}
+
+.announcementText {
+	color: #3066be;
+	font-weight: normal;
+	margin: auto;
+
+	transform: translateY(0px);
+}

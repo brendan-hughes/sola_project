@@ -1,5 +1,12 @@
 import axios from 'axios';
-import { LOAD_NAV, NAV_FAIL, LOAD_SEARCH, REMOVE_SEARCH } from './types';
+import {
+	LOAD_NAV,
+	NAV_FAIL,
+	LOAD_SEARCH,
+	REMOVE_SEARCH,
+	VIEWED_MODAL,
+	VIEWED_BUBBLE,
+} from './types';
 
 export const loadNav = () => async (dispatch) => {
 	const config = {
@@ -42,6 +49,22 @@ export const removeSearchProducts = () => async (dispatch) => {
 	try {
 		dispatch({
 			type: REMOVE_SEARCH,
+		});
+	} catch (error) {}
+};
+
+export const viewedModal = () => (dispatch) => {
+	try {
+		dispatch({
+			type: VIEWED_MODAL,
+		});
+	} catch (error) {}
+};
+
+export const viewedBubble = () => (dispatch) => {
+	try {
+		dispatch({
+			type: VIEWED_BUBBLE,
 		});
 	} catch (error) {}
 };
