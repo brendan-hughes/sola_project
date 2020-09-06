@@ -38,7 +38,10 @@ class About extends Component {
 							</p>
 						</div>
 						<div className="aboutAchievmentsContainer">
-							<div className="aboutAchievementCard" id="achievementA">
+							<div
+								className="aboutAchievementCard carouselCard"
+								id="achievementA"
+							>
 								<p className="topAchievementText">HISTORICALLY GREAT</p>
 								<hr></hr>
 								<p className="middleAchievementText">1.5M</p>

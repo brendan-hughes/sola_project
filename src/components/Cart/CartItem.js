@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './cart.css';
 import { connect } from 'react-redux';
 import firebase from 'firebase/app';
@@ -65,15 +66,19 @@ class CartItem extends Component {
 				{this.state.imgLoading ? (
 					<div className="loader"></div>
 				) : (
-					<img
-						alt="productImage"
-						className="cartItemImage"
-						src={this.state.img}
-					></img>
+					<Link className="gridLink" to={`/product/${this.props.productSku}`}>
+						<img
+							alt="productImage"
+							className="cartItemImage"
+							src={this.state.img}
+						></img>
+					</Link>
 				)}
 
 				<div className="cartItemDetailsDiv">
-					<p className="cartItemTitle">{this.props.productTitle}</p>
+					<Link className="gridLink" to={`/product/${this.props.productSku}`}>
+						<p className="cartItemTitle">{this.props.productTitle}</p>
+					</Link>
 					<p className="cartItemSku">SKU: #{this.props.productSku}</p>
 				</div>
 				<div className="productViewQuantityDiv cartQuantityDiv">

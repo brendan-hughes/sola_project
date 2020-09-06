@@ -1,9 +1,17 @@
 import React, { Fragment, Component } from 'react';
 import { viewedBubble } from '../../actions/nav';
+import { sendEmail } from '../../actions/contact';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import '../Navbar/navbar.css';
 
 class ChatBubble extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			userEmail: '',
+		};
+	}
 	componentDidMount() {
 		setTimeout(() => {
 			if (this.props.didViewBubble === false) {
@@ -41,8 +49,20 @@ class ChatBubble extends Component {
 							id="chatBubbleInput"
 							type="email"
 							placeholder="Email Address"
+							onChange={(e) => {
+								this.setState({ userEmail: e.target.value });
+							}}
 						/>
-						<button className="newsletterButton chatBubbleButton">
+						<button
+							className="newsletterButton chatBubbleButton"
+							onClick={(e) => {
+								this.props.sendEmail(this.state.userEmail);
+								this.props.viewedBubble();
+								const chatBubble = document.querySelector('.chatBubble');
+								chatBubble.classList.add('chatBubbleHidden');
+								chatBubble.classList.remove('fadeChatBubble');
+							}}
+						>
 							Sign Up
 						</button>
 					</div>
@@ -56,4 +76,6 @@ const mapStateToProps = (state) => ({
 	didViewBubble: state.nav.viewedBubble,
 });
 
-export default connect(mapStateToProps, { viewedBubble })(ChatBubble);
+export default connect(mapStateToProps, { viewedBubble, sendEmail })(
+	ChatBubble
+);

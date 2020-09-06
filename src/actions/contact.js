@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { CONTACT_SUBMIT, CONTACT_FAIL, REFRESH_MESSAGE_PANEL } from './types';
+import {
+	CONTACT_SUBMIT,
+	CONTACT_FAIL,
+	REFRESH_MESSAGE_PANEL,
+	NEWSLETTER_SUBMIT,
+} from './types';
 
 export const submitMessage = (subject, email, name, message) => async (
 	dispatch
@@ -37,5 +42,18 @@ export const submitMessage = (subject, email, name, message) => async (
 export const refreshMessagePanel = () => (dispatch) => {
 	dispatch({
 		type: REFRESH_MESSAGE_PANEL,
+	});
+};
+
+export const sendEmail = (email) => async (dispatch) => {
+	const body = JSON.stringify({ email });
+	const config = {
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	};
+	const response = await axios.post('/api/contact/newsletter', body, config);
+	dispatch({
+		type: NEWSLETTER_SUBMIT,
 	});
 };

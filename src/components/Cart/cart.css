@@ -1,11 +1,3 @@
-/* Dark Blue: #010620
-True Blue: #3066BE
-Khaki: #828E82
-Pewter Blue: #95B2B8
-Jonquil: #E6C229 
-	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-*/
-
 .cartSection {
 	min-height: 100vh;
 	display: flex;

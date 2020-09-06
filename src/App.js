@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
 import Navbar from './components/Navbar/Navbar';
+import ChatBubble from './components/Layout/ChatBubble';
 import Home from './components/Home/Home';
 import Contact from './components/Contact/Contact';
 import SignIn from './components/SignIn/SignIn';
@@ -57,6 +58,7 @@ class App extends Component {
 					<Route exact path="/cart" component={Cart} />
 					<Route exact path="/success" component={SuccessfulCheckout} />
 					<Route exact path="/admin" component={Admin} />
+					<ChatBubble />
 					<Footer />
 				</Router>
 			</Provider>

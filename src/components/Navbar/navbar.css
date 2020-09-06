@@ -16,6 +16,7 @@ Jonquil: #E6C229 */
 		rgba(246, 246, 246, 1) 60%,
 		rgba(255, 255, 255, 1) 100% /*209 217 231*/
 	);
+
 	z-index: 10;
 	height: 110px;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
