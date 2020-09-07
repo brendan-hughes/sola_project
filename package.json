@@ -60,7 +60,6 @@
 		"server": "nodemon server",
 		"client": "npm start",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
-		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix sola_project && npm run build --prefix sola_project",
 		"predeploy": "yarn build",
 		"deploy": "gh-pages -d build"
 	},
