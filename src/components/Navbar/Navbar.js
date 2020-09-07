@@ -24,6 +24,7 @@ class Navbar extends Component {
 		this.state = {
 			searchQuery: '',
 			searchLoading: false,
+			mobileMenuOpen: false,
 		};
 	}
 	componentDidMount() {
@@ -39,7 +40,7 @@ class Navbar extends Component {
 							<h1 className="navHeader navLink">Sola</h1>
 						</NavLink>
 					</div>
-					<div>
+					<div className="desktopMenu">
 						<NavLink
 							activeStyle={activeStyle}
 							className="navLink hvr-underline-from-center shopNavLink"
@@ -83,7 +84,7 @@ class Navbar extends Component {
 								: null}
 						</div>
 					</div>
-					<div>
+					<div className="desktopMenu">
 						<NavLink
 							activeStyle={activeStyle}
 							className="navLink hvr-underline-from-center contactNavLink"
@@ -168,7 +169,7 @@ class Navbar extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="cartDiv navIcon">
+					<div className="cartDiv navIcon desktopMenu">
 						<p className="cartQuantityText navIcon">
 							{this.props.cartQuantity}
 						</p>
@@ -182,7 +183,7 @@ class Navbar extends Component {
 					{this.props.isAdmin ? (
 						<NavLink
 							activeStyle={activeStyle}
-							className="navLink hvr-underline-from-center signRegister"
+							className="navLink hvr-underline-from-center signRegister desktopMenu"
 							activeClassName="act-underline-from-center"
 							to="/admin"
 						>
@@ -191,7 +192,7 @@ class Navbar extends Component {
 					) : null}
 					{this.props.isAuthenticated ? (
 						<div
-							className="navLink hvr-underline-from-center signOutButton signRegister"
+							className="navLink hvr-underline-from-center signOutButton signRegister desktopMenu"
 							onClick={this.props.logout}
 						>
 							Sign Out
@@ -199,13 +200,127 @@ class Navbar extends Component {
 					) : (
 						<NavLink
 							activeStyle={activeStyle}
-							className="navLink hvr-underline-from-center signRegister"
+							className="navLink hvr-underline-from-center signRegister desktopMenu"
 							activeClassName="act-underline-from-center"
 							to="/signin"
 						>
 							Sign In/Register
 						</NavLink>
 					)}
+					<div className="cartDiv navIcon mobileCart">
+						<p className="cartQuantityText navIcon">
+							{this.props.cartQuantity}
+						</p>
+						<Link to="/cart">
+							<IconContext.Provider value={{ color: '#3066be', size: '50px' }}>
+								<FiShoppingCart className="cartIcon" />
+							</IconContext.Provider>
+						</Link>
+					</div>
+					<div
+						className="mobileBurger"
+						onClick={() => {
+							const mobileMenu = document.querySelector('.mobileMenu');
+							if (this.state.mobileMenuOpen) {
+								mobileMenu.classList.remove('mobileMenuActive');
+								this.setState({ mobileMenuOpen: false });
+							} else {
+								mobileMenu.classList.add('mobileMenuActive');
+								this.setState({ mobileMenuOpen: true });
+							}
+						}}
+					>
+						<div className="line1"></div>
+						<div className="line2"></div>
+						<div className="line3"></div>
+					</div>
+					<nav className="mobileMenu">
+						<div className="mobileNavSection">
+							<NavLink
+								activeStyle={activeStyle}
+								className="navLink shopNavLink mobileNavHeader"
+								to="/shop/Panels/any"
+							>
+								Shop
+							</NavLink>
+
+							<p className="mobileNavSubheader">Categories</p>
+							{this.props.categoriesList !== null
+								? this.props.categoriesList.map((category) => (
+										<Link
+											key={category}
+											to={'/shop/' + category.replace(' ', '_') + '/any'}
+											className="navDetailLink navDetailOption"
+										>
+											{category}
+										</Link>
+								  ))
+								: null}
+							<Link
+								to="/shop/any/any"
+								className="navDetailLink navDetailOption"
+							>
+								All Products
+							</Link>
+							<p className="mobileNavSubheader">Brands</p>
+							{this.props.categoriesList !== null
+								? this.props.brandList.map((brand) => (
+										<Link
+											key={brand}
+											to={'/shop/any/' + brand.replace(' ', '_')}
+											className="navDetailLink navDetailOption"
+										>
+											{brand}
+										</Link>
+								  ))
+								: null}
+						</div>
+						<div className="mobileNavSection">
+							<NavLink
+								activeStyle={activeStyle}
+								className="navLink shopNavLink mobileNavHeader"
+								to="/shop/Panels/any"
+							>
+								Contact
+							</NavLink>
+
+							<Link to="/contact" className="mobileNavOption">
+								Email
+							</Link>
+							<Link to="/findstore" className="mobileNavOption">
+								Find Store
+							</Link>
+						</div>
+						<div className="mobileNavSection mobileSignInSection">
+							{this.props.isAdmin ? (
+								<NavLink
+									activeStyle={activeStyle}
+									className="navLink signRegister mobileNavHeader"
+									activeClassName="act-underline-from-center"
+									to="/admin"
+								>
+									Admin
+								</NavLink>
+							) : null}
+							{this.props.isAuthenticated ? (
+								<div
+									className="navLink signOutButton signRegister mobileNavHeader"
+									onClick={this.props.logout}
+								>
+									Sign Out
+								</div>
+							) : (
+								<NavLink
+									activeStyle={activeStyle}
+									className="navLink signRegister mobileNavHeader"
+									activeClassName="act-underline-from-center"
+									to="/signin"
+								>
+									Sign In/Register
+								</NavLink>
+							)}
+						</div>
+					</nav>
 				</nav>
 			</div>
 		);

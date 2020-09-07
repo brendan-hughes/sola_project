@@ -230,3 +230,20 @@ Jonquil: #E6C229
 		transform: rotate(360deg);
 	}
 }
+
+@media screen and (max-width: 850px) {
+	.orderItemCard {
+		max-width: 400px;
+		height: 400px;
+	}
+	.orderCardTopRow,
+	.orderCardBottomRow {
+		flex-direction: column;
+		width: 100%;
+	}
+	.orderCardCustomerDetails,
+	.orderCardCartDetails,
+	.orderCardNotesDiv {
+		margin: 10px auto 10px 0px;
+	}
+}

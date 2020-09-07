@@ -7,6 +7,7 @@ Jonquil: #E6C229 */
 .navbar {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -39,15 +40,14 @@ Jonquil: #E6C229 */
 .navLinks {
 	display: flex;
 	list-style: none;
-	margin: 0;
+
 	padding: 0;
 }
 
 .navLink {
-	margin-left: 50px;
-	margin-right: 50px;
 	text-decoration: none;
 	color: rgb(68, 115, 208);
+	margin: 0px 10px;
 	min-width: 120px;
 	text-align: center;
 }
@@ -61,13 +61,12 @@ Jonquil: #E6C229 */
 .cartIcon {
 	height: 20px;
 	min-width: 80px;
-	margin-right: 50px;
 	margin-bottom: 3px;
 }
 
 .cartDiv {
 	display: flex;
-	margin-left: 50px;
+
 	justify-content: center;
 	align-items: center;
 }
@@ -95,11 +94,10 @@ Jonquil: #E6C229 */
 .searchIconDiv {
 	margin-top: auto;
 	margin-bottom: auto;
-	margin-right: 50px;
 }
 .signRegister {
-	margin-left: 100px;
 	cursor: pointer;
+	margin-left: 30px;
 }
 
 .navLink:hover {
@@ -220,12 +218,15 @@ Jonquil: #E6C229 */
 }
 
 .contactDetails {
-	transform: translate(63px);
+	transform: translateX(20px);
+}
+.shopDetails {
+	transform: translateX(0px);
 }
 
 .signOutButton {
 	cursor: pointer;
-	margin-left: 100px;
+	margin-left: 30px;
 }
 
 .searchBarContainer {
@@ -539,6 +540,83 @@ Jonquil: #E6C229 */
 .chatBubble:hover {
 	opacity: 1;
 }
+.mobileCart {
+	margin-right: 20px;
+}
+.mobileCart,
+.mobileSearch {
+	display: none;
+	margin-top: 10px;
+}
+.mobileBurger {
+	display: none;
+	margin: auto 30px auto auto;
+}
+
+.mobileBurger div {
+	width: 25px;
+	height: 3px;
+	border: 1px solid #3066be;
+	background-color: #3066be;
+	margin: 5px;
+}
+
+.mobileBurger:hover {
+	cursor: pointer;
+}
+
+.mobileMenu {
+	background: white;
+	border-bottom-left-radius: 20px;
+	background: rgba(255, 255, 255, 0.8);
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
+	border: 0px solid transparent;
+	border-top: none;
+	position: fixed;
+	top: 110px;
+	right: -5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: 0px;
+	transition: 0.3s ease;
+}
+.mobileMenuActive {
+	height: 540px;
+	border: 2px solid #3066be;
+	border-top: none;
+	opacity: 1;
+}
+
+.mobileNavSection {
+	margin: 20px 30px 10px 30px;
+	max-height: 50vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	overflow: hidden;
+}
+.mobileNavOption {
+	font-weight: lighter;
+	color: black;
+}
+.mobileNavOption:hover {
+	color: #3066be;
+	text-decoration: none;
+}
+
+.mobileNavHeader {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+.mobileNavSubheader {
+	font-weight: normal;
+	color: black;
+	margin: 10px;
+}
 
 @keyframes wiggle {
 	0% {
@@ -558,15 +636,54 @@ Jonquil: #E6C229 */
 	}
 }
 
-@media screen and (max-width: 1260px) {
-	.navLink,
-	.cartIcon {
-		margin-left: 20px;
-		margin-right: 20px;
+@media screen and (min-width: 900px) {
+	.mobileMenuActive {
+		display: none;
+		opacity: 0;
 	}
 }
 
 @media screen and (max-width: 900px) {
+	.desktopMenu {
+		display: none;
+	}
+	.mobileBurger {
+		display: block;
+	}
+	.mobileCart,
+	.mobileSearch {
+		display: flex;
+	}
+	.signRegister {
+		margin-left: 0px;
+	}
+	.searchBarInput {
+		opacity: 1;
+		width: 220px;
+		font-size: 14px;
+	}
+	.chatBubble {
+		right: 20px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.searchBarInput {
+		opacity: 1;
+		width: 125px;
+		font-size: 10px;
+	}
+
+	.searchBarInput:hover {
+		width: 125px;
+	}
+	.searchBarInput:focus {
+		width: 125px;
+	}
+	.chatBubble {
+		right: 10px;
+		bottom: 30px;
+	}
 }
 
 @keyframes spin {

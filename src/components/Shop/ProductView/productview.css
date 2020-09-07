@@ -9,7 +9,6 @@ Jonquil: #E6C229
 .productViewSection {
 	display: flex;
 	padding-top: 170px;
-	display: flex;
 	justify-content: space-around;
 	background-image: linear-gradient(
 		to bottom,
@@ -121,30 +120,34 @@ Jonquil: #E6C229
 .productViewPriceValue {
 	color: black;
 	font-size: 32px;
+	margin-top: auto;
+	margin-bottom: 0px;
 }
 
 .productViewImageDiv {
 	width: 40%;
+	height: 100%;
 }
 
 .productViewMainImageDiv {
 	display: flex;
 }
 .productViewMainImage {
-	height: 500px;
-	margin: auto;
+	width: 100%;
+	max-width: 500px;
+	margin: 50px;
 	padding: 50px;
 }
 
 .productViewSubImageCarousel {
-	height: 200px;
+	margin: 50px auto;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 .recommenderContainer {
-	width: 80%;
-	margin: auto auto 50px auto;
+	width: 100%;
+	margin: auto;
 }
 
 .productViewQuantAndValueDiv {
@@ -157,8 +160,8 @@ Jonquil: #E6C229
 .productViewPriceValue {
 	margin-left: auto;
 	margin-top: auto;
-	margin-bottom: auto;
 	padding-right: 20px;
+	padding-bottom: 0px;
 }
 
 .productViewAddToCart,
@@ -259,6 +262,7 @@ Jonquil: #E6C229
 	border-radius: 10px;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 	outline: none;
+	margin: 0px 20px;
 }
 
 .recommendationItemContainer:hover {
@@ -273,4 +277,68 @@ Jonquil: #E6C229
 	text-decoration-line: none;
 	transform: scale(0.98);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+@media screen and (max-width: 1270px) {
+	.productViewHeader {
+		font-size: 24px;
+	}
+
+	.recommenderHeader {
+		font-size: 14px;
+	}
+	.recommenderContainer {
+		width: 100%;
+		margin: auto;
+	}
+	.recommendationImageContainer {
+		width: 50px;
+		height: 50px;
+	}
+	.recommendationImage {
+		width: 50px;
+	}
+	.productViewDescription {
+		font-size: 12px;
+	}
+	.productViewDetailsDiv {
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.productViewSection {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.productViewImageDiv {
+		width: 80%;
+		margin: auto;
+	}
+	.productViewMainImage {
+		margin: auto;
+	}
+	.productViewDetailsDiv {
+		width: 100%;
+		padding: 10px 125px;
+		margin-bottom: 80px;
+	}
+	.recommenderContainer {
+		display: none;
+	}
+	.recommendationImageContainer {
+		margin: auto;
+	}
+	.recommendationImage {
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.productViewDetailsDiv {
+		width: 100%;
+		padding: 10px 80px;
+		margin-bottom: 80px;
+	}
 }

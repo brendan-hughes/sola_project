@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { LOAD_PRODUCT, PRODUCT_FAIL, LOAD_RECOMMENDATIONS } from './types';
+import {
+	LOAD_PRODUCT,
+	PRODUCT_FAIL,
+	LOAD_RECOMMENDATIONS,
+	CLEAR_RECOMMENDATIONS,
+} from './types';
 
 export const loadProduct = (path) => async (dispatch) => {
 	const config = {
@@ -85,4 +90,10 @@ export const updateSession = (session, productSku) => async (dispatch) => {
 	} catch (error) {
 		console.log(error);
 	}
+};
+
+export const clearRecommendations = () => (dispatch) => {
+	dispatch({
+		type: CLEAR_RECOMMENDATIONS,
+	});
 };

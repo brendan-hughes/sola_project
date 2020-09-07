@@ -2,6 +2,7 @@ import {
 	LOAD_PRODUCT,
 	PRODUCT_FAIL,
 	LOAD_RECOMMENDATIONS,
+	CLEAR_RECOMMENDATIONS,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +19,11 @@ export default function (state = initialState, action) {
 			return {
 				...state,
 				recommendations: payload,
+			};
+		case CLEAR_RECOMMENDATIONS:
+			return {
+				...state,
+				recommendations: [],
 			};
 		case PRODUCT_FAIL:
 		default:

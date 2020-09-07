@@ -234,12 +234,26 @@ ul {
 	border-radius: 5px;
 	padding: 10px;
 	border: 1px solid white;
-
 	transition: 0.2s ease-in-out;
 }
 
 .heroLink {
 	margin-left: auto;
+}
+
+.heroLinkTwo {
+	margin-right: auto;
+}
+.heroLink:hover {
+	text-decoration: none;
+}
+
+.heroTwoViewButton {
+	background-color: #3066be;
+	border-radius: 5px;
+	padding: 10px;
+	border: 1px solid white;
+	transition: 0.2s ease-in-out;
 }
 
 .viewButtonHidden {
@@ -254,7 +268,8 @@ ul {
 }
 
 .viewButton:hover,
-.viewButtonHidden:hover {
+.viewButtonHidden:hover,
+.heroTwoViewButton:hover {
 	transform: scale(1.1);
 	cursor: pointer;
 }
@@ -313,6 +328,9 @@ ul {
 	.cardValue {
 		font-size: 20px;
 	}
+	.heroTwoBubble {
+		width: 70%;
+	}
 }
 
 @media screen and (max-width: 900px) {
@@ -334,5 +352,11 @@ ul {
 		height: 40px;
 		width: 93px;
 		margin-left: 0px;
+	}
+	.leftArrow {
+		left: 10px;
+	}
+	.rightArrow {
+		right: 10px;
 	}
 }

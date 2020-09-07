@@ -15,9 +15,11 @@ class HeroOne extends Component {
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat
 						facilis fuga cumque deserunt error alias ut magni eveniet rerum at.
 					</p>
-					<div className="viewButtonHidden">
-						<p className="viewButtonText">View More</p>
-					</div>
+					<Link className="heroLink" to={'/product/585009295'}>
+						<div className="viewButtonHidden">
+							<p className="viewButtonText">View More</p>
+						</div>
+					</Link>
 				</div>
 
 				<div className="rightHero">

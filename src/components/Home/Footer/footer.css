@@ -23,6 +23,7 @@ footer {
 
 .leftUpperFooter {
 	margin-left: 50px;
+	margin-right: auto;
 	margin-top: auto;
 	margin-bottom: auto;
 }
@@ -30,18 +31,17 @@ footer {
 .rightUpperFooter {
 	margin-top: auto;
 	margin-bottom: auto;
+	margin-left: auto;
 	margin-right: 50px;
 }
 
 .newsletterSignupContainer {
-	width: 300px;
 	display: flex;
 	flex-direction: row;
 }
 
 .middleUpperFooter {
-	margin-top: auto;
-	margin-bottom: auto;
+	margin: auto;
 	text-align: center;
 }
 
@@ -105,4 +105,18 @@ footer {
 .devLink {
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+@media screen and (max-width: 900px) {
+	.footerHeader,
+	.footerLink {
+		font-size: 10px;
+	}
+	.newsletterInput {
+		width: 150px;
+		font-size: 10px;
+	}
+	.newsletterButton {
+		font-size: 10px;
+	}
 }

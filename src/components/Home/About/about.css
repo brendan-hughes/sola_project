@@ -265,34 +265,47 @@ hr {
 }
 
 @media screen and (max-width: 900px) {
-	.gradientImage {
-		display: none;
+	.aboutProductCarousel {
+		display: hidden;
 	}
-
 	.aboutSection {
 		align-items: center;
 		margin-left: 0px;
+		padding-left: 0px;
 	}
 
+	.rightAbout {
+		display: none;
+	}
+	.leftAbout {
+		width: 100%;
+	}
+	.aboutHeaderContainer {
+		margin-left: 0px;
+	}
 	.aboutHeader {
-		margin: auto;
+		margin-left: auto;
+		margin-right: 10px;
 	}
 
 	.aboutIcon {
-		display: none;
+		margin-right: auto;
+	}
+	.aboutIconImage {
+		height: 40px;
+		margin-top: 10px;
 	}
 
 	.aboutTextContainer {
 		width: 80%;
+		font-size: 12px;
 		margin-top: 25px;
 		margin-left: auto;
 		margin-right: auto;
 		text-align: center;
 	}
 	.aboutAchievmentsContainer {
-		width: 80%;
 		margin-left: auto;
 		margin-right: auto;
-		margin-top: 25px;
 	}
 }

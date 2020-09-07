@@ -13,6 +13,7 @@ import {
 	loadProduct,
 	startSession,
 	updateSession,
+	clearRecommendations,
 } from '../../../actions/product';
 import { v4 as uuid } from 'uuid';
 import TagManager from 'react-gtm-module';
@@ -48,6 +49,7 @@ class ProductView extends Component {
 	}
 
 	componentDidMount() {
+		this.props.clearRecommendations();
 		navFunctionality();
 
 		if (!firebase.apps.length) {
@@ -371,4 +373,5 @@ export default connect(mapStateToProps, {
 	loadProduct,
 	startSession,
 	updateSession,
+	clearRecommendations,
 })(ProductView);

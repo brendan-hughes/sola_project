@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import './hero.css';
+import { Link } from 'react-router-dom';
 
 class HeroTwo extends Component {
 	render() {
@@ -14,9 +15,11 @@ class HeroTwo extends Component {
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat
 						facilis fuga cumque deserunt error alias ut magni eveniet rerum at.
 					</p>
-					<div className="viewButtonHidden">
-						<p className="viewButtonText">View More</p>
-					</div>
+					<Link className="heroLink heroLinkTwo" to={'/findstore'}>
+						<div className="heroTwoViewButton">
+							<p className="viewButtonText">View More</p>
+						</div>
+					</Link>
 				</div>
 			</div>
 		);

@@ -162,3 +162,16 @@ Grey: #c6c8cc;
 	font-size: 12px;
 	padding-top: 5px;
 }
+
+@media screen and (max-width: 800px) {
+	.findStoreSearchArea {
+		height: 250px;
+		width: 400px;
+		position: absolute;
+		top: 140px;
+		left: 50px;
+	}
+	.findStoreInfoModal {
+		display: none;
+	}
+}
