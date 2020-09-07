@@ -275,30 +275,32 @@ class InventoryItem extends Component {
 													key={this.props.sku + image}
 													className="inventoryItemImageLine addNewImageTextDiv addedImageTextDiv"
 												>
-													<IconContext.Provider
-														value={{ color: '#3066be', size: '12px' }}
-													>
-														<AiFillCloseCircle
-															className="removeNewImageIcon"
-															onClick={(e) => {
-																this.props.removeImage(this.state, image);
-																const imageList = [
-																	...this.state.images,
-																	...this.state.addedImages,
-																];
-																let newList = [];
-																imageList.forEach((imageName) => {
-																	if (imageName !== image) {
-																		newList.push(imageName);
-																	}
-																});
-																this.setState({
-																	...this.state,
-																	images: [...newList],
-																});
-															}}
-														/>
-													</IconContext.Provider>
+													<div className="imageRemoveBtnContainer">
+														<IconContext.Provider
+															value={{ color: '#3066be', size: '12px' }}
+														>
+															<AiFillCloseCircle
+																className="removeNewImageIcon"
+																onClick={(e) => {
+																	this.props.removeImage(this.state, image);
+																	const imageList = [
+																		...this.state.images,
+																		...this.state.addedImages,
+																	];
+																	let newList = [];
+																	imageList.forEach((imageName) => {
+																		if (imageName !== image) {
+																			newList.push(imageName);
+																		}
+																	});
+																	this.setState({
+																		...this.state,
+																		images: [...newList],
+																	});
+																}}
+															/>
+														</IconContext.Provider>
+													</div>
 													<p className="inventoryCardText inventoryCardImageTitleText addImageText">
 														{image}
 													</p>

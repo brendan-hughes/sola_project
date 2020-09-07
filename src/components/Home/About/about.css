@@ -6,7 +6,7 @@ Jonquil: #E6C229 */
 
 .aboutSection {
 	height: 80vh;
-	padding: 100px 0px 50px 50px;
+	padding: 70px 0px 50px 50px;
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
@@ -27,6 +27,9 @@ Jonquil: #E6C229 */
 	width: 40vw;
 	margin-left: auto;
 	display: flex;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 .aboutHeaderContainer {
@@ -79,6 +82,21 @@ Jonquil: #E6C229 */
 	transition: 0.2s ease;
 }
 
+.aboutCartIcon {
+	margin-right: 10px;
+	margin-left: 0px;
+}
+
+#aboutItemImage {
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	max-height: 100%;
+}
+#aboutItemTitle {
+	margin-top: 10px;
+}
+
 #achievementA:hover,
 #achievementB:hover,
 #achievementC:hover {
@@ -126,15 +144,109 @@ hr {
 	height: 60px;
 }
 
-.aboutProductCarousel {
+.aboutProductCard {
 	width: 300px;
 	height: 400px;
-	margin: auto;
 	background: rgb(223, 228, 236);
 	box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 	border-radius: 20px;
 	overflow: hidden;
 	transition: 0.3s ease-out;
+	transition: 0.3s ease;
+	opacity: 1;
+}
+
+.aboutViewDetailsButton {
+	width: 50%;
+	margin: auto 5px auto 5px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.aboutAddToCartButton {
+	width: 50%;
+	margin: auto 5px auto 5px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#aboutItemDetailText {
+	font-size: 14px;
+	padding-top: 20px;
+	margin: auto;
+}
+
+#aboutDetailsLine {
+	margin-top: 5px;
+}
+
+.aboutProductCarousel {
+	display: flex;
+	padding: 50px;
+	justify-content: center;
+}
+
+.aboutCardRight {
+	padding: 0px;
+	transform: translateX(300px);
+	display: hidden;
+	transition: 0.3s ease;
+	display: hidden;
+	width: 0;
+	opacity: 0;
+}
+
+.aboutCardLeft {
+	padding: 0px;
+	transform: translateX(-300px);
+	opacity: 0;
+	display: hidden;
+	transition: 0.1s ease;
+	width: 0;
+}
+
+.aboutNav {
+	height: 30px;
+	width: 150px;
+	background: rgba(68, 115, 208, 0.5);
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	border-radius: 20px;
+	padding: 0px;
+	margin: 0px auto auto auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	opacity: 0.7;
+	transition: 0.2s ease;
+}
+
+.aboutNavButton {
+	width: 15px;
+	height: 15px;
+	border-radius: 100px;
+	border: 2px solid #cfd9e9;
+	background: transparent;
+	transition: 0.2s ease;
+	outline: none;
+}
+
+.aboutNavButton:hover {
+	border: 2px solid white;
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.aboutNavButtonActive {
+	background: white;
+}
+
+.aboutNavButtonActive:hover {
+	background: #cfd9e9;
+	border: 2px solid #cfd9e9;
 }
 
 @media screen and (max-width: 1260px) {

@@ -7,7 +7,6 @@ Jonquil: #E6C229
 */
 
 .productViewSection {
-	height: 100vh;
 	display: flex;
 	padding-top: 170px;
 	display: flex;
@@ -145,7 +144,7 @@ Jonquil: #E6C229
 }
 .recommenderContainer {
 	width: 80%;
-	margin: auto;
+	margin: auto auto 50px auto;
 }
 
 .productViewQuantAndValueDiv {
@@ -175,6 +174,8 @@ Jonquil: #E6C229
 	justify-content: center;
 	margin-top: 20px;
 	padding: 10px;
+	outline: none;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .productViewFindInStore {
@@ -192,13 +193,17 @@ Jonquil: #E6C229
 .productViewFindInStore:hover {
 	transform: scale(1.1);
 	text-decoration: none;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .productViewFindInStore:hover {
-	transform: scale(1.1);
 	color: #3066be;
 }
 
+.productViewAddToCart:active,
+.productViewFindInStore:active {
+	transform: scale(1);
+}
 .productViewQuantityButtonPositive:hover,
 .productViewQuantityButtonNegative:hover {
 	cursor: pointer;
@@ -253,11 +258,19 @@ Jonquil: #E6C229
 	border: none;
 	border-radius: 10px;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	outline: none;
 }
 
 .recommendationItemContainer:hover {
 	opacity: 1;
 	text-decoration-line: none;
-	transform: scale(1.05);
+	transform: scale(1.03);
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.recommendationItemContainer:active {
+	opacity: 1;
+	text-decoration-line: none;
+	transform: scale(0.98);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }

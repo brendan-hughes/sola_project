@@ -26,7 +26,6 @@ class Home extends Component {
 		return (
 			<Fragment>
 				<div className="specialCarousel"></div>
-
 				<Carousel />
 				<Hero />
 				<ReverseCarousel />

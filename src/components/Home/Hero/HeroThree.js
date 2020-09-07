@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import './hero.css';
 
 class HeroThree extends Component {
@@ -21,17 +22,19 @@ class HeroThree extends Component {
 
 				<div className="rightHero">
 					<div className="heroCard">
-						<h1 className="cardTitle">Card Title</h1>
+						<h1 className="cardTitle">Panel Alpha</h1>
 						<img
 							alt="Product View"
-							src={require('../../../assets/solar_panel3.png')}
+							src={require('../../../assets/panelalpha.png')}
 							className="imagePlaceholder"
 						></img>
 						<div className="cardFooter">
-							<h3 className="cardValue">$500</h3>
-							<div className="viewButton">
-								<p className="viewButtonText">View More</p>
-							</div>
+							<h3 className="cardValue">$150</h3>
+							<Link className="heroLink" to={'/product/265903905'}>
+								<div className="viewButton">
+									<p className="viewButtonText">View More</p>
+								</div>
+							</Link>
 						</div>
 					</div>
 				</div>

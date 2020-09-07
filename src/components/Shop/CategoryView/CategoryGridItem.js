@@ -84,7 +84,7 @@ class CategoryGridItem extends Component {
 									className="gridAddToCartButton"
 									onClick={(e) => productAddToCart(e, this.props)}
 								>
-									<p className="gridCartText">Add To Cart</p>
+									<p className="gridItemDetailHeaderWhite">Add To Cart</p>
 									<IconContext.Provider value={{ size: '20px' }}>
 										<AiOutlineShoppingCart className="gridCartIcon" />
 									</IconContext.Provider>

@@ -97,6 +97,30 @@ Jonquil: #E6C229 */
 	border-radius: 20px;
 }
 
+.heroTwoBubble {
+	margin: 0 auto 0 auto;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
+	border-radius: 20px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
+}
+
+.heroSubheaderTwo {
+	color: #cfd9e9;
+	padding-bottom: 0px;
+	margin: 0px;
+}
+
+.heroHeaderTwo {
+	color: white;
+	font-weight: lighter;
+	margin: 10px;
+}
+
 .heroCard {
 	border-radius: 20px;
 	padding: 20px;
@@ -187,8 +211,10 @@ ul {
 }
 
 .imagePlaceholder {
-	height: 200px;
+	max-height: 200px;
+	max-width: 200px;
 	margin: auto;
+	padding-top: 20px;
 }
 
 .cardFooter {
@@ -208,8 +234,12 @@ ul {
 	border-radius: 5px;
 	padding: 10px;
 	border: 1px solid white;
-	margin-left: auto;
+
 	transition: 0.2s ease-in-out;
+}
+
+.heroLink {
+	margin-left: auto;
 }
 
 .viewButtonHidden {

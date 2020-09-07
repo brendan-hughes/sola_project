@@ -5,9 +5,9 @@ class HeroTwo extends Component {
 	render() {
 		return (
 			<div className="heroTwoContainer">
-				<div className="leftHero">
-					<h2 className="heroSubheader">Solar is the future</h2>
-					<h1 className="heroHeader">
+				<div className="heroTwoBubble">
+					<h2 className="heroSubheaderTwo">Solar is the future</h2>
+					<h1 className="heroHeaderTwo">
 						Time to get <span className="colorize">Sola</span>
 					</h1>
 					<p>
@@ -16,23 +16,6 @@ class HeroTwo extends Component {
 					</p>
 					<div className="viewButtonHidden">
 						<p className="viewButtonText">View More</p>
-					</div>
-				</div>
-
-				<div className="rightHero">
-					<div className="heroCard">
-						<h1 className="cardTitle">Card Title</h1>
-						<img
-							alt="Product View"
-							src={require('../../../assets/solar_panel3.png')}
-							className="imagePlaceholder"
-						></img>
-						<div className="cardFooter">
-							<h3 className="cardValue">$500</h3>
-							<div className="viewButton">
-								<p className="viewButtonText">View More</p>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>
