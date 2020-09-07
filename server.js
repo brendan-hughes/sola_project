@@ -19,16 +19,6 @@ app.use('/api/contact', require('./routes/api/contact'));
 app.use('/api/charge', require('./routes/api/charge'));
 app.use('/api/admin', require('./routes/api/admin'));
 
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('sola_project/build'));
-
-	app.get('*', (req, res) => {
-		res.sendFile(
-			path.resolve(__dirname, 'sola_project', 'build', 'index.html')
-		);
-	});
-}
-
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
