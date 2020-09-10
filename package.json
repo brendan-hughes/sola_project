@@ -52,11 +52,12 @@
 		"uuid": "^8.3.0"
 	},
 	"scripts": {
-		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"install-all": "npm install",
+		"heroku-postbuild": "npm run install-all && npm run build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"startserver": "node server",
+		"start": "node server",
 		"server": "nodemon server",
 		"client": "npm start",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
