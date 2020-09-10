@@ -686,6 +686,32 @@ Jonquil: #E6C229 */
 	}
 }
 
+@media screen and (max-width: 500px) {
+	.navContainer {
+		margin-left: 0px;
+	}
+	.searchBarInput {
+		width: 100px;
+	}
+	.searchBarInput:hover {
+		width: 100px;
+	}
+	.searchBarInput:focus {
+		width: 100px;
+	}
+	.cartQuantityText {
+		left: 60px;
+	}
+
+	.cartIcon {
+		min-width: 0px;
+	}
+
+	.navLink {
+		min-width: 90px;
+	}
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
