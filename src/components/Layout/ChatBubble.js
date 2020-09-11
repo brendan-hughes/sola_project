@@ -24,53 +24,51 @@ class ChatBubble extends Component {
 		}, 2000);
 	}
 	render() {
-		if (window.innerWidth >= 500) {
-			return (
-				<Fragment>
-					<div className="chatBubble chatBubbleHidden">
+		return (
+			<Fragment>
+				<div className="chatBubble chatBubbleHidden">
+					<button
+						className="exitChatBubble"
+						onClick={() => {
+							const chatBubble = document.querySelector('.chatBubble');
+							chatBubble.classList.add('chatBubbleHidden');
+							chatBubble.classList.remove('fadeChatBubble');
+							this.props.viewedBubble();
+						}}
+					>
+						X
+					</button>
+					<p className="chatBubbleHeader">Welcome to Sola!</p>
+					<p className="chatBubbleSubheader">Join the Sola Network:</p>
+					<div
+						className="newsletterSignupContainer"
+						id="chatBubbleSignupContainer"
+					>
+						<input
+							className="newsletterInput"
+							id="chatBubbleInput"
+							type="email"
+							placeholder="Email Address"
+							onChange={(e) => {
+								this.setState({ userEmail: e.target.value });
+							}}
+						/>
 						<button
-							className="exitChatBubble"
-							onClick={() => {
+							className="newsletterButton chatBubbleButton"
+							onClick={(e) => {
+								this.props.sendEmail(this.state.userEmail);
+								this.props.viewedBubble();
 								const chatBubble = document.querySelector('.chatBubble');
 								chatBubble.classList.add('chatBubbleHidden');
 								chatBubble.classList.remove('fadeChatBubble');
-								this.props.viewedBubble();
 							}}
 						>
-							X
+							Sign Up
 						</button>
-						<p className="chatBubbleHeader">Welcome to Sola!</p>
-						<p className="chatBubbleSubheader">Join the Sola Network:</p>
-						<div
-							className="newsletterSignupContainer"
-							id="chatBubbleSignupContainer"
-						>
-							<input
-								className="newsletterInput"
-								id="chatBubbleInput"
-								type="email"
-								placeholder="Email Address"
-								onChange={(e) => {
-									this.setState({ userEmail: e.target.value });
-								}}
-							/>
-							<button
-								className="newsletterButton chatBubbleButton"
-								onClick={(e) => {
-									this.props.sendEmail(this.state.userEmail);
-									this.props.viewedBubble();
-									const chatBubble = document.querySelector('.chatBubble');
-									chatBubble.classList.add('chatBubbleHidden');
-									chatBubble.classList.remove('fadeChatBubble');
-								}}
-							>
-								Sign Up
-							</button>
-						</div>
 					</div>
-				</Fragment>
-			);
-		}
+				</div>
+			</Fragment>
+		);
 	}
 }
 

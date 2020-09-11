@@ -702,7 +702,9 @@ Jonquil: #E6C229 */
 	.cartQuantityText {
 		left: 60px;
 	}
-
+	.chatBubble {
+		display: none;
+	}
 	.cartIcon {
 		min-width: 0px;
 	}
