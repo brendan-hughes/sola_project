@@ -341,4 +341,10 @@ Jonquil: #E6C229
 		padding: 10px 80px;
 		margin-bottom: 80px;
 	}
+	.productViewImageDiv {
+		width: 60%;
+		background: rgba(255, 255, 255, 0.8);
+		backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
+		border-radius: 100px;
+	}
 }
