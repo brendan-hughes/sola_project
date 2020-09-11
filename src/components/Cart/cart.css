@@ -257,6 +257,10 @@
 		width: 100%;
 		margin: 70px 0px 0px 0px;
 	}
+	.cartItemDiv {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
 	.cartPaymentDiv {
 		width: 100%;
 		padding-top: 30px;
@@ -298,6 +302,7 @@
 	}
 	.cartSubtotalHeader {
 		margin-right: 10px;
+		font-size: 18px;
 	}
 	.cartSubtotalDiv {
 		margin-right: 10px;
