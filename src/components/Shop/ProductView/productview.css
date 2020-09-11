@@ -346,5 +346,9 @@ Jonquil: #E6C229
 		background: rgba(255, 255, 255, 0.8);
 		backdrop-filter: blur(10px) opacity(1) drop-shadow(10px 10px 10px #303030);
 		border-radius: 100px;
+		margin: 50px auto;
+	}
+	.productViewPriceValue {
+		margin-left: 20px;
 	}
 }

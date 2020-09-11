@@ -98,3 +98,9 @@ textarea:focus {
 	border: 1px solid red;
 	background: rgba(255, 0, 0, 0.116);
 }
+
+@media screen and (max-width: 700px) {
+	.contactForm {
+		width: 90%;
+	}
+}

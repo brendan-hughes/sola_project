@@ -166,10 +166,10 @@ Grey: #c6c8cc;
 @media screen and (max-width: 800px) {
 	.findStoreSearchArea {
 		height: 250px;
-		width: 400px;
+		width: 95%;
 		position: absolute;
 		top: 140px;
-		left: 50px;
+		left: 10px;
 	}
 	.findStoreInfoModal {
 		display: none;

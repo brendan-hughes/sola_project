@@ -178,5 +178,6 @@ Jonquil: #E6C229
 @media screen and (max-width: 700px) {
 	.categoryGrid {
 		grid-template-columns: repeat(1, 1fr);
+		padding: 50px 0px;
 	}
 }

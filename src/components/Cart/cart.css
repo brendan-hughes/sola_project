@@ -248,3 +248,23 @@
 .cardPaymentElement:hover {
 	color: white;
 }
+
+@media screen and (max-width: 950px) {
+	.cartSection {
+		flex-direction: column;
+	}
+	.cartItemsDiv {
+		width: 100%;
+	}
+	.cartPaymentDiv {
+		width: 100%;
+		padding-top: 30px;
+	}
+	.checkoutButton {
+		width: 100%;
+	}
+	.cartHeader {
+		text-align: center;
+		margin-left: 0px;
+	}
+}
