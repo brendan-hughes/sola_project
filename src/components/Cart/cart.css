@@ -255,6 +255,7 @@
 	}
 	.cartItemsDiv {
 		width: 100%;
+		margin: 70px 0px 0px 0px;
 	}
 	.cartPaymentDiv {
 		width: 100%;
@@ -266,5 +267,39 @@
 	.cartHeader {
 		text-align: center;
 		margin-left: 0px;
+	}
+	.productImage {
+		width: 80px;
+	}
+	.cartItemTitle {
+		font-size: 16px;
+	}
+	.cartItemSku {
+		font-size: 8px;
+	}
+	.productViewQuantityDiv {
+		display: none;
+	}
+	.cartItemImage {
+		width: 80px;
+		margin-right: 10px;
+	}
+	.cartItemValue {
+		font-size: 18px;
+	}
+	.cartItemRemoveDiv {
+		margin: 0px 20px;
+	}
+	.cartViewBackButtonDiv {
+		margin-left: 20px;
+	}
+	.cartSubtotalAmount {
+		font-size: 18px;
+	}
+	.cartSubtotalHeader {
+		margin-right: 10px;
+	}
+	.cartSubtotalDiv {
+		margin-right: 10px;
 	}
 }
